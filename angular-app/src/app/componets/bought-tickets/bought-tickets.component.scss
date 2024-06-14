@@ -1,0 +1,53 @@
+/* tickets.css */
+.ticket-container {
+    .ticket-container-child{
+        border: 1px solid black;
+        
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding: 1rem;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        background-color: black;
+        
+    }
+    
+    div{
+        display: flex;
+        margin-top: 2rem;
+        justify-content: space-between;
+        .event_image{
+            height: 10rem;
+            width: 10rem;
+        }
+    }
+  }
+  
+  .ticket-header h3 {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .ticket-details p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  .ticket-details strong {
+    display: block;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .qr-code img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin-top: 20px;
+  }
+  

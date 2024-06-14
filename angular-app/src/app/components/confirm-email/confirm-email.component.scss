@@ -1,0 +1,28 @@
+.body {
+    position: relative;
+    height: 100vh; /* Use viewport height for full-page height */
+    width: 100%; /* Full width of the viewport */
+    text-align: center;
+}
+
+.card {
+    text-align: center;
+    width: 50%; /* Width of the card */
+    padding: 3rem;
+    border-radius: 2rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Centering logic */
+
+   .check {
+        font-weight: bold;
+        color: green;
+        font-size: 2rem;
+    }
+
+   .spam {
+        font-weight: bold;
+        font-size: larger;
+    }
+}

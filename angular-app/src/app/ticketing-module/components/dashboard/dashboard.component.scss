@@ -1,0 +1,15 @@
+.container-fluid{
+    .row-items{
+        display: flex;
+
+        .left{
+            height: 100% !important;
+            width: fit-content;
+        }
+        .right{
+            width: 100%;
+            text-align: center;
+        }
+
+    }
+}

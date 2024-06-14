@@ -1,0 +1,1 @@
+Click here or paste this link in your browser to set your password: 'http://localhost:4200/verify/{{ $token }}'

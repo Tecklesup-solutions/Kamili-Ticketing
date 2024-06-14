@@ -1,0 +1,17 @@
+<div class="body">
+    <div class="card border-0 shadow-lg">
+        <p class="account-text">Choose Account Type</p>
+        <p class="plan">Select best plan for you</p>
+
+        <div class="accounts">
+            <div class="user" (click)="choosenAccount('single')">
+                <img src="assets/images/white_user.png" alt="">
+                <p>Single User Account</p>
+            </div>
+            <div class="organization" (click)="choosenAccount('organization')">
+                <img src="assets/images/white_group.png" alt="">
+                <p>Organization Account</p>
+            </div>
+        </div>
+    </div>  
+</div>

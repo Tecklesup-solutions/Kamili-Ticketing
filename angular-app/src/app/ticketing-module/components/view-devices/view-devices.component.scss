@@ -1,0 +1,14 @@
+.table{
+    tbody{
+        tr{
+            .icons{
+                display: flex;
+                padding-left: 1rem;
+                img{
+                    height: 1rem;
+                    width: 1rem;
+                }
+            }
+        }
+    }
+}

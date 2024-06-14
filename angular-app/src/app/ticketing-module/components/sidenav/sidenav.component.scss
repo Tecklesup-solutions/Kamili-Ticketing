@@ -1,0 +1,15 @@
+.card{
+    height: 100vh;
+    width: 20vh;
+
+    .nav-items{
+        cursor: pointer;
+
+        .route{
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+            margin-top: 1rem;
+        }
+    }
+}

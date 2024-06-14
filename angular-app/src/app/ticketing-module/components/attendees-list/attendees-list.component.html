@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row-items">
+      <div class="left">
+          <app-sidenav></app-sidenav>
+      </div>
+      <div class="right">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Event name</th>
+                  <th scope="col">Customer Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users; let i = index">
+                  <th scope="row">{{ i }}</th>
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.first_name }} {{ user.last_name }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.validated ? 'Checked In' : 'Not Checked In' }}</td>
+                  <td>{{ user.type }}</td> 
+                </tr>
+              </tbody>
+            </table>
+      </div>    
+      <!-- Modal -->
+      
+      
+  </div>
+</div>

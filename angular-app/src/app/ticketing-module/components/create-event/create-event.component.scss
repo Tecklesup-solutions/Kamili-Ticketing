@@ -1,0 +1,21 @@
+.container-fluid{
+    .row-items{
+        display: flex;
+
+        .left{
+            height: 100% !important;
+            width: fit-content;
+        }
+        .right{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding-top: 10rem;
+            .card{
+                width: 80%;
+                padding: 2rem;
+                height: fit-content;
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+.welcome{
+    text-align: center;
+    .center{
+        text-align: center;
+        padding-top: 2rem;
+    }
+    .top{
+        display: flex;
+        padding: 2rem;
+        .right{
+            width: 40%;
+            img{
+                height: 20rem;
+            }
+        }
+    }
+  
+
+   
+}
+.why-us{
+    padding: 10rem 0;
+    background-image: url('https://i.pinimg.com/236x/86/f6/6f/86f66ffa12314d6a1f49c706d821bb6e.jpg');
+    background-size: cover; /* Adjusts the size of the background image */
+    background-position: center; /* Centers the background image */
+    text-align: center;
+    text-align: center;
+    color: white;
+   .data{
+    display: flex;
+    .right{
+        width: 40%;
+     img{
+         height: 10rem;
+     }
+    } 
+   }
+   
+ }

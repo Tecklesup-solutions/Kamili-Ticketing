@@ -1,0 +1,15 @@
+<div class="ticket-container">
+    <div *ngFor="let ticket of purchasedTickets" class="ticket-container-child">
+        <img [src]="eventImage" alt="Event Image" class="event_image"> 
+      <div class="ticket-header">
+        <h3>{{ ticket.name }}</h3>
+      </div>
+      <div class="ticket-details">
+        <p><strong>Customer Name:</strong> {{ ticket.first_name }} {{ ticket.last_name }}</p>
+        <p><strong>Email:</strong> {{ ticket.email }}</p>
+      </div>
+      <div class="qr-code">
+        <img *ngIf="ticket.qrCodeDataURL" [src]="ticket.qrCodeDataURL" alt="QR Code">
+      </div>
+    </div>
+</div>

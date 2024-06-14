@@ -1,0 +1,19 @@
+.container{
+    padding-top: 5rem;
+    .row-items{
+        display: flex;
+        .right{
+            width: 50%;
+            text-align: center;
+        }
+        .left{
+            width: 50%;
+        }
+    }
+    .spinner{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

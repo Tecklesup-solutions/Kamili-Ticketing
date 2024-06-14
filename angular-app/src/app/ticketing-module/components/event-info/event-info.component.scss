@@ -1,0 +1,49 @@
+.container-fluid{
+    .row-items{
+        display: flex;
+
+        .left{
+            height: 100% !important;
+            width: fit-content;
+        }
+        .right{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            text-align: center;
+            padding-top: 10rem;
+            .card{
+                width: 80%;
+                padding: 2rem;
+                height: fit-content;
+                .card-items{
+                    display: flex;
+                    flex-direction: row;
+                    .left-card{
+                        width: 50%;
+                        justify-content: center;
+                       }
+                       .right-card{
+                        .row{
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                        
+                       }
+                       .right-card{
+                        .row{
+                           
+                            button{
+                                width: fit-content;
+                                margin-right: 1rem;
+                            }
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                        }
+                       }
+                }              
+            }
+        }
+    }
+}

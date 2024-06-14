@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row-items">
+      <!-- Left section -->
+      <div class="left">
+        <app-sidenav></app-sidenav>
+      </div>
+      <!-- Right section -->
+      <div class="right">
+        <div class="card border-0 shadow-lg">
+          <div class="card-items">
+            <div class="left-card">
+              <h3>Event Name: {{ eventDetails?.name }}</h3>
+              <!-- Assuming imageUrl is a property in your eventDetails -->
+              <img [src]="eventDetails?.image" alt="Event Image" height="200px" width="200px">
+            </div>
+            <div class="right-card">
+              <p>Total Event tickets : {{ eventDetails?.capacity }}</p>
+              <p>No of Tickets Sold : {{ eventDetails?.sold_tickets }}</p>
+              <p>No of Tickets Remaining : {{ eventDetails?.remaining_tickets }}</p>
+              <!-- Assuming image is a property in your eventDetails -->
+              <p>Total Money Obtained: </p>
+  
+              <div class="row">
+                
+                  <button class="btn btn-success" (click)="navigateToAttendeesList()">
+                    View Attendees
+                  </button>
+              
+                
+                  <button class="btn btn-success">
+                    Edit Event
+                  </button>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

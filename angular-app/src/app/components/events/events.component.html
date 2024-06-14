@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="navbar-top">
+        <app-navbar />
+    </div>
+    <div class="row-items">
+      
+        <!-- Display events in cards -->
+        <div class="events mt-3">
+          <div class="row">
+            <!-- Loop through each event and create a card -->
+            <div class="col-md-3 col-sm-6 mt-3" *ngFor="let event of events">
+              <div class="card border-0 shadow-lg" style="width: 18rem;">
+                <!-- Example image placeholder (replace src attribute with actual image URL) -->
+                <img class="card-img-top" [src]="event.image" alt="Card image cap" style="height: 12rem;">
+                <div class="card-body">
+                  <h5 class="card-title">{{ event.name }}</h5>
+                  <p class="card-text">Date : {{ event.event_date }}</p>
+                  <p class="card-text">Venue:{{ event.venue }}</p>
+                  <p class="card-text">Price :{{ event.ticket_price }}</p>
+                  <p class="card-text">Remaining Tickets : 200</p>
+                  <!-- Button to view event details (replace '#' with actual route or action) -->
+                  <a class="btn btn-primary" (click)="purchaseTicket(event.id)">Buy Ticket</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  

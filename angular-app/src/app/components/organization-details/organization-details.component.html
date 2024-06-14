@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <div class="card border-0 shadow-lg">
+        
+            <h3 class="title">Welcome </h3>
+            <p>Create and Organization to access more app features</p>
+
+            <form [formGroup]="organizationForm" (ngSubmit)="createOrganization()">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group mt-3">
+                            <label for="exampleInputEmail1">Organization Name</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name" formControlName="name">
+                          </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group mt-3">
+                            <label for="exampleInputEmail1">Address</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Address" formControlName="address">
+                          </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group mt-3">
+                            <label for="exampleInputEmail1">Country</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Country" formControlName="country">
+                          </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group mt-3">
+                            <label for="exampleInputEmail1">City</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="City" formControlName="city">
+                          </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group mt-3">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" formControlName="email">
+                          </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group mt-3">
+                            <label for="exampleInputEmail1">Phone</label>
+                            <input type="tel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Phone" formControlName="phone">
+                          </div>
+                    </div>
+                </div>
+             <div class="button">
+              <button type="submit"  class="btn btn-success mt-3">Create Organization</button>
+             </div>
+              
+            </form>
+
+            <div class="spinner" *ngIf="loading">
+                <mat-spinner></mat-spinner>
+              </div>
+
+            
+
+    </div>
+</div>

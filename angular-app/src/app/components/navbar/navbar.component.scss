@@ -1,0 +1,40 @@
+.card{
+    .container{
+        display: flex;
+        justify-content: space-between;
+        .left{
+            img{
+                height: 5rem;
+            }
+        }
+        .right{
+            ul{
+                display: flex;
+                justify-content: space-between;
+                list-style-type: none;  
+                padding-top: 2rem;
+                li{
+                    padding-left: 5rem;
+                    cursor: pointer;
+                }
+            }
+        }
+        .icon{
+            display: none;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+   .card{
+    .container{
+        .right{
+            display: none;
+        }
+        .icon{
+            padding-top: 1rem;
+            display: block;
+        }
+    }
+   }
+}

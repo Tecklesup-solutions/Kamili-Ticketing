@@ -1,0 +1,42 @@
+.container-fluid{
+    .card{
+        width: 40%;
+        padding: 5rem;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        .title{
+            font-weight: bold;
+            font-size: 2rem;
+            text-align: center;
+        }
+        p{
+            font-size: larger;
+        }
+        
+        form{
+            .forgot{
+                display: flex;
+                justify-content: flex-end;
+            }
+            .form-group{
+                label{
+                    font-size: medium;
+                    font-weight: 500;
+                    padding: 1rem 0 0.5rem 0;
+                }
+            }
+            .button{
+                text-align: center;
+            }
+        }
+        .spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+    }
+}

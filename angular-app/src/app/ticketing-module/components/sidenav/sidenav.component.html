@@ -1,0 +1,19 @@
+<div class="card border-0 shadow-lg">
+    <button class="w3-button w3-teal w3-xlarge" (click)="toggleSideNav()">☰</button>
+
+    <div class="nav-items" *ngIf="showSidenav">
+       
+        <div class="route" (click)="navigateToEvents()">
+            <!-- <img src="assets/icons/event.png" alt="" height="20rem"> -->
+            <p>Events</p>
+        </div>
+        <div class="route" (click)="navigateToDevices()">
+            <!-- <img src="assets/icons/logout.png" alt="" height="20rem"> -->
+            <p>Devices</p>
+        </div>
+        <div class="route" (click)="navigateToLogout()">
+            <!-- <img src="assets/icons/logout.png" alt="" height="20rem"> -->
+            <p>Logout</p>
+        </div>
+    </div>
+</div>
