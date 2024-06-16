@@ -1,41 +1,90 @@
 <div class="container-fluid">
-    <div class="row-items">
-        <div class="left">
-            <app-sidenav />
-        </div>
-        <div class="right">
-            <div class="card border-0 shadow-lg">
-              <form [formGroup]="eventsForm" (ngSubmit)="submitForm()" enctype="multipart/form-data">
-                
-                <!-- File Input -->
-                <div class="form-group">
-                  <label for="exampleFormControlFile1">Example file input</label>
-                  <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="onFileSelected($event)">
-                </div>                 
-
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Name</label>
-                      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter name" formControlName="name">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputCapacity">Capacity</label>
-                      <input type="number" class="form-control" id="exampleInputCapacity" placeholder="Enter capacity" formControlName="capacity">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputVenue">Venue</label>
-                      <input type="text" class="form-control" id="exampleInputVenue" placeholder="Enter venue" formControlName="venue">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputTicketPrice">Ticket Price</label>
-                      <input type="number" class="form-control" id="exampleInputTicketPrice" placeholder="Enter ticket price" formControlName="ticket_price">
-                    </div>
-                    <button type="submit" class="btn btn-primary mt-2">Create Event</button>
-                  </form>
-                  
-            </div>
-        </div>    
-        <!-- Modal -->
-        
-        
+  <div class="row-items">
+    <div class="left">
+      <app-sidenav />
     </div>
+    <div class="right">
+      <div class="card border-0 shadow-lg">
+        <form
+          [formGroup]="eventsForm"
+          (ngSubmit)="submitForm()"
+          enctype="multipart/form-data"
+        >
+          <div class="poster-section">
+            <div class="form-group">
+              <label for="exampleFormControlFile1"
+                ><b>Add Existing poster</b></label
+              >
+              <input
+                type="file"
+                class="form-control-file"
+                id="exampleFormControlFile1"
+                (change)="onFileSelected($event)"
+              />
+            </div>
+            <div class="form-group">
+              <button
+                type="button"
+                (click)="createPoster()"
+                class="btn btn-primary"
+              >
+                Create Poster
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputEmail1"
+              placeholder="Enter name"
+              formControlName="name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputCapacity">Capacity</label>
+            <input
+              type="number"
+              class="form-control"
+              id="exampleInputCapacity"
+              placeholder="Enter capacity"
+              formControlName="capacity"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputVenue">Venue</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputVenue"
+              placeholder="Enter venue"
+              formControlName="venue"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputTicketPrice">Ticket Price</label>
+            <select
+              class="form-control"
+              id="exampleInputTicketPrice"
+              formControlName="ticket_price"
+            >
+              <option
+                *ngFor="let option of ticketPriceOptions"
+                [value]="option"
+              >
+                {{ option }}
+              </option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary mt-2">
+            Create Event
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- Modal -->
+  </div>
 </div>

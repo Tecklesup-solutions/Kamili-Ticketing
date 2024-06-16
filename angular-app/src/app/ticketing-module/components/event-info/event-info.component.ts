@@ -11,6 +11,8 @@ export class EventInfoComponent implements OnInit {
 
   eventId!: number; // Property to store the event id
   eventDetails: any; // Property to store event details
+  remainingTickets!:number;
+  totalTicketsSold!: number;
 
   constructor(
     private router: Router,
@@ -26,7 +28,11 @@ export class EventInfoComponent implements OnInit {
       this.eventsService.fetchSingleEvent(this.eventId).subscribe(
         response => {
           console.log(response);
-          this.eventDetails = response.events; // Assign the single event directly to eventDetails
+          this.eventDetails = response.event; 
+          this.remainingTickets = response.remaining_tickets;
+
+          // Calculate total tickets sold
+          this.totalTicketsSold = this.eventDetails.capacity - this.remainingTickets;
         },
         error => {
           // Handle error

@@ -21,7 +21,7 @@
                 <p class="card-text">Date: {{ event.event_date }}</p>
                 <p class="card-text">Venue: {{ event.venue }}</p>
                 <p class="card-text">Price: {{ event.ticket_price }}</p>
-                <p class="card-text">Remaining Tickets: 200</p>
+                <p class="card-text">Remaining Tickets: {{ event.remaining_tickets }}</p>
                 <!-- Button to view event details (replace '#' with actual route or action) -->
                 <a class="btn btn-primary" (click)="eventInfo(event.id)">View Event</a>
               </div>

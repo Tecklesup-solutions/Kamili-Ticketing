@@ -21,6 +21,7 @@ class OrganizationController extends Controller
                 'phone' => 'required',
             ]);
 
+            // Create new Organization
             $organization = new Organization();
 
             $organization->name = $request->name;
@@ -30,41 +31,32 @@ class OrganizationController extends Controller
             $organization->email = $request->email;
             $organization->phone = $request->phone;
 
+            // Save organization to database
             $res = $organization->save();
 
             if ($res) {
-                // Check if the user is authenticated
-                // if (Auth::check()) {
-                    // Create user with org_id
-                    // $user = Auth::user();
-                    
-                    // $user->org_id = $organization->id; 
+                // Update org_id in User table for the authenticated user
+                $user = Auth::user();
+                if ($user instanceof User) { // Check if Auth::user() returns User instance
+                    $user->org_id = $organization->id; // Assuming organization id is used as org_id
+                    $user->save();
 
-                    // $user->save();
-
-                    return response(
-                        [
-                            'success' => true,
-                            'message' => 'Organization created successfully',
-                            'organization' => $organization,
-                        ],
-                        200
-                    );
-                // } else {
-                //     // Handle case where user is not authenticated
-                //     return response()->json([
-                //         'success' => false,
-                //         'message' => 'User must be logged in to perform this action'
-                //     ], 401);
-                // }
-            } else {
-                return response(
-                    [
+                    return response([
+                        'success' => true,
+                        'message' => 'Organization created successfully',
+                        'organization' => $organization,
+                    ], 200);
+                } else {
+                    return response([
                         'success' => false,
-                        'message' => 'Failed to register user'
-                    ],
-                    201
-                );
+                        'message' => 'User not authenticated',
+                    ], 401);
+                }
+            } else {
+                return response([
+                    'success' => false,
+                    'message' => 'Failed to create organization',
+                ], 201);
             }
         } catch (\Throwable $th) {
             return response()->json([

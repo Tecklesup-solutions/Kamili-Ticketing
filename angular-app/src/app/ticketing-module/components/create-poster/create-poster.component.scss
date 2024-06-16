@@ -1,0 +1,39 @@
+.container-fluid{
+    .row-items{
+        display: flex;
+
+        .left{
+            height: 100% !important;
+            width: fit-content;
+        }
+        .right{
+            position: relative;
+            justify-content: center;
+            width: 100%;
+            padding-top: 1rem;
+            
+            .top-header{
+                font-size: 2rem;
+                font-weight: bold;
+            }
+
+            .buttons{
+                button{
+                    width: fit-content;
+                }
+            }
+
+            .card {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 50%; /* Adjust width as needed */
+                padding: 2rem;
+                margin-top: 1rem;
+                border: 1px solid black; /* Add border */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+              }
+            
+        }
+    }
+}

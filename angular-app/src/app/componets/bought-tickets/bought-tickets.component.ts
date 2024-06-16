@@ -36,4 +36,13 @@ export class BoughtTicketsComponent implements OnInit {
       });
     });
   }
+
+  downloadPDF(): void {
+    // const options = {
+    //   filename: 'bought_tickets.pdf',
+    //   image: { type: 'jpeg', quality: 0.98 },
+    //   html2canvas: { scale: 3 },
+    //   jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    // };
+  }
 }

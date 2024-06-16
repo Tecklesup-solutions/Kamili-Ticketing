@@ -21,6 +21,10 @@ export class SidenavComponent {
     this.router.navigate(['ticketing'])
   }
 
+  navigateToSubscription(){
+    this.router.navigate(['ticketing/subscription'])
+  }
+
   navigateToDevices(){
     this.router.navigate(['ticketing/devices']);
   }

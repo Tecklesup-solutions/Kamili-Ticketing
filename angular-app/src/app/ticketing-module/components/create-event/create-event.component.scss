@@ -15,6 +15,11 @@
                 width: 80%;
                 padding: 2rem;
                 height: fit-content;
+
+                .poster-section{
+                    display: flex;
+                    justify-content: space-between;
+                }
             }
         }
     }

@@ -24,6 +24,8 @@ class eventsController extends Controller
             
             // Get authenticated user details
             $user = Auth::user();
+            $user_id = $user->id;
+            $org_id = $user->org_id;
     
             // Handle image upload
             if ($request->hasFile('image')) {
@@ -39,8 +41,8 @@ class eventsController extends Controller
     
             // Create new event instance
             $event = new Events();
-            $event->user_id = 1;
-            $event->org_id = 12;
+            $event->user_id = $user_id;
+            $event->org_id = $org_id;
             $event->name = $validatedData['name'];
             $event->event_id = uniqid(); // Generate a unique event ID
             $event->event_date = date('Y-m-d');
@@ -94,21 +96,29 @@ class eventsController extends Controller
 
     public function fetchEvents(){
         try{
-
-            $user = Auth::user();
-
+            // Fetch all events
             $events = Events::all();
-
+    
+            // Fetch the number of purchased tickets for each event
             foreach ($events as $event) {
-                $event->image = asset('images/' . $event->image); // Prepend base URL to image URL
+                $purchasedTicketsCount = Tickets::where('event_id', $event->event_id)
+                                                ->where('purchased', 1)
+                                                ->count();
+                // Calculate the number of remaining tickets
+                $remainingTickets = $event->capacity - $purchasedTicketsCount;
+    
+                // Add the number of remaining tickets to each event
+                $event->remaining_tickets = $remainingTickets;
+    
+                // Prepend base URL to image URL
+                $event->image = asset('images/' . $event->image);
             }
-
+    
             return response()->json([
                 'status'=> true,
                 'message'=>'events fetched successfully',
                 'events' => $events
             ]);
-
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,
@@ -116,20 +126,31 @@ class eventsController extends Controller
             ], 500);
         }
     }
+    
 
     public function fetchSingleEvent($id){
         try{
-
-            $event = Events::where('id', $id)->first();
-
+            // Find the event by its ID
+            $event = Events::findOrFail($id);
+    
+            // Fetch the number of purchased tickets for the event
+            $purchasedTicketsCount = Tickets::where('event_id', $event->event_id)
+                                            ->where('purchased', 1)
+                                            ->count();
+    
+            // Calculate the number of remaining tickets
+            $remainingTickets = $event->capacity - $purchasedTicketsCount;
+    
+            // Prepend base URL to image URL
             $event->image = asset('images/' . $event->image); 
-
+    
             return response()->json([
                 'status'=> true,
-                'message'=>'event fetched successfully',
-                'events' => $event
+                'message'=>'Event fetched successfully',
+                'event' => $event,
+                'remaining_tickets' => $remainingTickets
             ]);
-
+    
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,
@@ -137,6 +158,7 @@ class eventsController extends Controller
             ], 500);
         }
     }
+    
 
     public function fetchEventUsers($id){
         try{

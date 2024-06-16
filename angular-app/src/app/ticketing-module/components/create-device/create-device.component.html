@@ -1,22 +1,26 @@
 <div class="card shadow-lg border-0">
 
-    <form>
+    <form [formGroup]="deviceForm" (ngSubmit)="createDevice()">
         
         <div class="form-group">
           <label for="inputAddress">Device Name</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="Name">
+          <input type="text" class="form-control" id="inputAddress" placeholder="Name" formControlName="device_name">
         </div>
         <div class="form-group">
           <label for="inputAddress2">Location</label>
-          <input type="text" class="form-control" id="inputAddress2" placeholder="Gate A, Gate B, or Main Entrance">
+          <input type="text" class="form-control" id="inputAddress2" placeholder="Gate A, Gate B, or Main Entrance" formControlName="device_location">
         </div>
         <div class="form-group">
             <label for="inputAddress">Pin</label>
-            <input type="number" class="form-control" id="inputAddress" placeholder="1254">
+            <input type="number" class="form-control" id="inputAddress" placeholder="1254" formControlName="device_pin">
           </div>
         
         
         <button type="submit" class="btn btn-primary mt-2">Create Device</button>
       </form>
+
+      <div class="spinner" *ngIf="loading">
+        <mat-spinner></mat-spinner>
+      </div>
 
 </div>

@@ -15,6 +15,8 @@ import { AttendeesListComponent } from './components/attendees-list/attendees-li
 import { DevicesComponent } from './components/devices/devices.component';
 import { CreateDeviceComponent } from './components/create-device/create-device.component';
 import { ViewDevicesComponent } from './components/view-devices/view-devices.component';
+import { CreatePosterComponent } from './components/create-poster/create-poster.component';
+import { SubscriptionComponent } from './components/subscription/subscription.component';
 
 
 const ticketingRoutes: Routes = [
@@ -23,7 +25,9 @@ const ticketingRoutes: Routes = [
   {path:'create-event', component:CreateEventComponent},
   {path:'event-info/:id', component:EventInfoComponent},
   { path: 'event-info/:id/attendees-list', component: AttendeesListComponent },
-  {path:'devices', component:DevicesComponent}
+  {path:'devices', component:DevicesComponent},
+  {path:'create-poster', component:CreatePosterComponent},
+  {path:'subscription', component:SubscriptionComponent}
   
 ];
 
@@ -36,7 +40,9 @@ const ticketingRoutes: Routes = [
     AttendeesListComponent,
     DevicesComponent,
     CreateDeviceComponent,
-    ViewDevicesComponent
+    ViewDevicesComponent,
+    CreatePosterComponent,
+    SubscriptionComponent
 
   ],
   imports: [

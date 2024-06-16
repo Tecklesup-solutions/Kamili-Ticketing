@@ -1,29 +1,27 @@
+<!-- view-devices.component.html -->
+
 <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Device Name</th>
-        <th scope="col">Location</th>
-        <th scope="col">Pin</th>
-        <th scope="col">Org Id</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>mdo</td>
-        <td>Org Id</td>
-        <td class="icons">
-            <img src="assets/icons/edit.png" alt="Edit Icon">
-            <img src="assets/icons/delete.png" alt="Delete Icon">
-        </td>
-        
-      </tr>
-    
-    </tbody>
-  </table>
-  
-  
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Device Name</th>
+      <th scope="col">Location</th>
+      <th scope="col">Pin</th>
+      <th scope="col">Org Id</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let device of devices">
+      <th scope="row">{{ device.id }}</th>
+      <td>{{ device.device_name }}</td>
+      <td>{{ device.location }}</td>
+      <td>{{ device.pin }}</td>
+      <td>{{ device.org_id }}</td>
+      <td class="icons">
+        <img src="assets/icons/edit.png" alt="Edit Icon">
+        <img src="assets/icons/delete.png" alt="Delete Icon">
+      </td>
+    </tr>
+  </tbody>
+</table>
