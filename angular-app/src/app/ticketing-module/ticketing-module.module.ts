@@ -17,6 +17,12 @@ import { CreateDeviceComponent } from './components/create-device/create-device.
 import { ViewDevicesComponent } from './components/view-devices/view-devices.component';
 import { CreatePosterComponent } from './components/create-poster/create-poster.component';
 import { SubscriptionComponent } from './components/subscription/subscription.component';
+import { OrganizationCheckComponent } from './components/organization-check/organization-check.component';
+import { SetPaymentComponent } from './components/set-payment/set-payment.component';
+import { SetMpesaComponent } from './components/set-mpesa/set-mpesa.component';
+import { SetCardpaymentComponent } from './components/set-cardpayment/set-cardpayment.component';
+import { SetOrgpaymentComponent } from './components/set-orgpayment/set-orgpayment.component';
+import { TicketingComponentComponent } from './components/ticketing-component/ticketing-component.component';
 
 
 const ticketingRoutes: Routes = [
@@ -24,10 +30,13 @@ const ticketingRoutes: Routes = [
   { path: '', component: DashboardComponent },
   {path:'create-event', component:CreateEventComponent},
   {path:'event-info/:id', component:EventInfoComponent},
-  { path: 'event-info/:id/attendees-list', component: AttendeesListComponent },
+  {path: 'event-info/:id/attendees-list', component: AttendeesListComponent },
   {path:'devices', component:DevicesComponent},
   {path:'create-poster', component:CreatePosterComponent},
-  {path:'subscription', component:SubscriptionComponent}
+  {path:'subscription', component:SubscriptionComponent},
+  {path:'payment', component:SetPaymentComponent},
+  {path:'tickets', component:TicketingComponentComponent}
+
   
 ];
 
@@ -42,7 +51,13 @@ const ticketingRoutes: Routes = [
     CreateDeviceComponent,
     ViewDevicesComponent,
     CreatePosterComponent,
-    SubscriptionComponent
+    SubscriptionComponent,
+    OrganizationCheckComponent,
+    SetPaymentComponent,
+    SetMpesaComponent,
+    SetCardpaymentComponent,
+    SetOrgpaymentComponent,
+    TicketingComponentComponent
 
   ],
   imports: [

@@ -15,6 +15,7 @@ class Devices extends Model
         'device_name',
         'location',
         'pin',
-        'api_token'
+        'api_token',
+        'event'
     ];
 }

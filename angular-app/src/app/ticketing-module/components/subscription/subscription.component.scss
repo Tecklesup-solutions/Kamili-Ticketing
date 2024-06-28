@@ -7,11 +7,37 @@
             width: fit-content;
         }
         .right{
-            display: flex;
-            justify-content: center;
             width: 100%;
-            text-align: center;
-            
+            padding: 3rem 1rem 1rem 1rem;
+        .subscription-top{
+            .card{
+                padding: 1rem 0;
+                width: 100%;
+                text-align: center;
+                
+            }
+        }
+        .row{
+            padding-top: 1rem;
+            .col-md-4{
+                .card{
+                    text-align: center;
+                    padding: 4rem 1rem 1rem 1rem;
+                    height: 30rem;
+
+                    h3{
+                        font-size: 2rem;
+                        font-weight: bold;
+                    }
+                    h4{
+                        font-size: 1.5rem;
+                        color: green;
+                        font-weight: bold;
+                        
+                    }
+                }
+            }
+        }
         }
     }
 }

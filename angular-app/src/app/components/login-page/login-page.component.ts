@@ -28,9 +28,16 @@ export class LoginPageComponent {
     this.loading=true
     this.authService.loginUser(this.loginForm.value).subscribe(response=>{
       if(response.success){
+        console.log(response)
         this.authService.storeToken(response.token);
         this.loading=false
-        this.router.navigate(['choose_account']);
+        if(response.user.org_id == null && response.user.single_user == false ){
+          this.router.navigate(['choose_account']);
+        }else{
+          
+          this.router.navigate(['ticketing']);
+        }
+        
       }else{
         this.loading=false
         this.errorMessage = "Failed to login";

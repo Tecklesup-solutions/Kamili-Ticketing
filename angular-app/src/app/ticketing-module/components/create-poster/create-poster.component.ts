@@ -79,7 +79,18 @@ export class CreatePosterComponent implements OnInit {
 
   exportImage(): void {
     const dataURL = this.canvas.toDataURL({ format: 'png' });
-    this.imageService.setImageData(dataURL); // Store image data in service
-    this.router.navigate(['/ticketing/create-event']); // Navigate to create event component
+    // this.imageService.setImageData(dataURL); // Store image data in service
+    this.downloadPoster(dataURL);
+    this.router.navigate(['/ticketing/create-event']);
   }
+  
+  private downloadPoster(dataURL: string): void {
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = 'poster.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+  
 }

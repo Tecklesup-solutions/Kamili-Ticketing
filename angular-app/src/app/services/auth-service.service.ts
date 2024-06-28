@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BASE_URL } from '../constants';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,11 @@ export class AuthServiceService {
   constructor(private httpClient: HttpClient) { }
 
   registerUser(userDetails: any) {
-    return this.httpClient.post<any>('http://127.0.0.1:8000/api/register', userDetails);
+    return this.httpClient.post<any>(`${BASE_URL}register`, userDetails);
   }
 
   loginUser(userDetails:any){
-    return this.httpClient.post<any>('http://127.0.0.1:8000/api/login', userDetails);
+    return this.httpClient.post<any>(`${BASE_URL}login`, userDetails);
   }
 
   storeToken(token: string): void {
@@ -26,7 +27,24 @@ export class AuthServiceService {
   }
 
   verifyUser(id: string) {
-    return this.httpClient.get(`http://127.0.0.1:8000/api/verify/${id}`);
+    return this.httpClient.get(`${BASE_URL}/verify/${id}`);
+  }
+
+  fetchUser(){
+    
+    const url = `${BASE_URL}` + 'fetch_user';
+
+    // Get token from AuthServiceService
+    const token = this.getToken();
+
+    // Prepare headers with Authorization Bearer token
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + token,
+      'Content-Type': 'application/json' // Adjust content type as needed
+    });
+
+    // Make the POST request with headers and orgDetails
+    return this.httpClient.get<any>(url, { headers });
   }
 
 

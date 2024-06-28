@@ -31,6 +31,7 @@ export class RegisterPageComponent implements OnInit {
     // Call your register method here passing user data
     this.authService.registerUser(this.registrationForm.value).subscribe(response => {
       // Optionally, navigate to another page after successful registration
+      console.log(response)
       this.loading = false;
       this.router.navigate(['confirm_email']); // Navigate to login page on success
     }, error => {
@@ -38,6 +39,10 @@ export class RegisterPageComponent implements OnInit {
       this.loading = false;
       this.errorMessage = error.message; // Display error message
     });
+  }
+
+  navigateToPrivacy(){
+    this.router.navigate(['privacy-policy']);
   }
 
   loginRoute() {

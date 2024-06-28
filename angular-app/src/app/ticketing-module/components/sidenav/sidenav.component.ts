@@ -8,14 +8,6 @@ import { Router } from '@angular/router';
 })
 export class SidenavComponent {
   constructor(private router:Router){}
-  showSidenav:boolean =  true;
-
-
-
-  toggleSideNav() {
-    this.showSidenav =!this.showSidenav; // Toggle the state
-  }
-
 
   navigateToEvents(){
     this.router.navigate(['ticketing'])
@@ -31,6 +23,12 @@ export class SidenavComponent {
 
   navigateToLogout(){
     this.router.navigate(['']);
+  }
+  navigateToPayment(){
+    this.router.navigate(['ticketing/payment']);
+  }
+  navigateToTickets(){
+    this.router.navigate(['ticketing/tickets']);
   }
 
 }

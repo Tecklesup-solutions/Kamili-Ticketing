@@ -40,3 +40,17 @@
           }
     }
 }
+@media only screen and (max-width: 600px) {
+    .container-fluid{
+        .card{
+            width: 100%;
+        }
+    }
+}
+@media only screen and (max-width: 850px) {
+    .container-fluid{
+        .card{
+            width: 100%;
+        }
+    }
+}

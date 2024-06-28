@@ -20,6 +20,19 @@
                     display: flex;
                     justify-content: space-between;
                 }
+
+                form{
+                    .spinner{
+                        text-align: center;
+                        width: 100%;
+                        display: flex;
+                        
+                        justify-content: center;
+                        .inner-spin{
+                            padding-top: 1rem;
+                        }
+                    }
+                }
             }
         }
     }

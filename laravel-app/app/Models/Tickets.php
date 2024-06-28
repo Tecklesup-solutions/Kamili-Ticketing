@@ -20,7 +20,8 @@ class Tickets extends Model
         'qr_code',
         'validated',
         'purchased',
-        'price'
+        'price',
+        'qr_code_image'
     ];
 
     public function event()

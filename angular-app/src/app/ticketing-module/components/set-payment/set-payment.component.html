@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="row-items">
+      <!-- Left section -->
+      <div class="left">
+        <app-sidenav></app-sidenav>
+      </div>
+      <!-- Right section -->
+      <div class="right">
+        <div class="top">
+            <button class="btn btn-primary" (click)="setOrg()">Contact us to use our systems</button>
+
+            <button class="btn btn-primary" (click)="setMpesa()">Mpesa</button>
+
+            <!-- <button class="btn btn-primary" (click)="setCard()">Card Payments</button> -->
+        </div>
+         
+        <div class="components">
+            <app-set-orgpayment *ngIf="showOrg"></app-set-orgpayment>
+            <app-set-mpesa *ngIf="showMpesa"></app-set-mpesa>
+            <app-set-cardpayment *ngIf="showCard"></app-set-cardpayment>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  

@@ -1,36 +1,60 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviceService } from '../../services/device-service.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms'; // Import Validators
 import { Router } from '@angular/router';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-create-device',
   templateUrl: './create-device.component.html',
   styleUrls: ['./create-device.component.scss']
 })
-export class CreateDeviceComponent implements OnInit{
-
-  constructor(private deviceService:DeviceService, private router:Router){}
-  loading:boolean = false;
+export class CreateDeviceComponent implements OnInit {
+  loading: boolean = false;
   deviceForm!: FormGroup;
+  eventNames: string[] = []; // Property to hold event names
+
+  constructor(
+    private deviceService: DeviceService,
+    private router: Router,
+    private eventService: EventService
+  ) {}
 
   ngOnInit() {
+    this.eventService.fetchEventNames().subscribe(
+      response => {
+        this.eventNames = response; // Store fetched event names
+      },
+      error => {
+        
+      }
+    );
+
     this.deviceForm = new FormGroup({
-      device_name: new FormControl(''),
-      device_location: new FormControl(''),
-      device_pin: new FormControl(''),
+      device_name: new FormControl('', Validators.required), // Add Validators.required
+      device_location: new FormControl('', Validators.required), // Add Validators.required
+      device_pin: new FormControl('', Validators.required), // Add Validators.required
+      event: new FormControl('', Validators.required) // Add Validators.required
     });
   }
 
-  createDevice(){
-    this.loading = true
-    this.deviceService.createDevice(this.deviceForm.value).subscribe(response=>{
-      this.loading = false
-      this.router.navigate(['ticketing/devices'])
-    },error=>{
-      console.log(error);
-      this.loading = false
-    })
+  createDevice() {
+    if (this.deviceForm.valid) { // Check if form is valid
+      this.loading = true;
+      this.deviceService.createDevice(this.deviceForm.value).subscribe(
+        response => {
+          this.loading = false;
+          this.router.navigate(['ticketing/devices']);
+        },
+        error => {
+          this.loading = false;
+        }
+      );
+    } else {
+      // Mark all fields as touched to trigger validation messages
+      Object.values(this.deviceForm.controls).forEach(control => {
+        control.markAsTouched();
+      });
+    }
   }
-
 }

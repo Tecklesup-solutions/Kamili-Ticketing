@@ -16,6 +16,10 @@ export class EventsService {
     return this.http.get<any>(url)
   }
 
+  fetchEventNames(){
+    
+  }
+
 
   fetchSingleEvent(id:any):Observable<any>{
     const url = BASE_URL + `fetchSingleEvent/${id}`;
@@ -24,7 +28,7 @@ export class EventsService {
 
 
   purchaseTickets(eventId: number, ticketDetails: any): Observable<any> {
-    const url = `http://127.0.0.1:8000/api/buyTicket/${eventId}`;
+    const url = `${BASE_URL}buyTicket/${eventId}`;
     return this.http.post<any>(url, ticketDetails);
   }
 

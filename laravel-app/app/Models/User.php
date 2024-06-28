@@ -19,7 +19,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<int, string>
      */
     protected $fillable = [
-        'firstName', 'lastName', 'email', 'password', 'phoneNumber', 'org_id', 'verify'
+        'firstName', 'lastName', 'email', 'password', 'phoneNumber', 'org_id','single_user', 'verify'
     ];
 
     /**
@@ -54,4 +54,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $this->notify(new \Illuminate\Auth\Notifications\VerifyEmail);
     }
+
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class, 'org_id');
+    }
+   
 }

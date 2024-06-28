@@ -4,8 +4,8 @@
         <!-- Include app-sidenav component (assuming it's a custom component) -->
         <app-sidenav></app-sidenav>
       </div>
-      <div class="right">
-        <div class="buttons">
+      <div class="right" *ngIf="userOrg">
+        <div class="buttons" >
             <button class=" btn btn-primary" (click)="viewAvailableDevices()">Available devices</button>
 
             <button class=" btn btn-secondary" (click)="createDevices()">Create a device</button>
@@ -16,8 +16,9 @@
 
             <app-view-devices *ngIf="viewDevices"></app-view-devices>
         </div>
-
-       
+      </div>
+      <div class="organization-check"*ngIf="!userOrg">
+        <app-organization-check></app-organization-check>
       </div>
     </div>
   </div>

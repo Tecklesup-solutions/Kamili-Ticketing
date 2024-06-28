@@ -1,0 +1,16 @@
+.body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .left{
+        width: 40%;
+        border-radius: 2rem;
+        padding: 2rem;
+        
+
+    }
+    .right{
+        width: 30%;
+        border-radius: 2rem;
+    }
+}

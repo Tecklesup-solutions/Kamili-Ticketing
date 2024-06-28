@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\eventsController;
+use App\Http\Controllers\mpesaPayments;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\ticketsController;
 use Illuminate\Http\Request;
@@ -17,7 +18,11 @@ Route::post('register', [AuthenticationController::class,'register']);
 
 Route::post('login', [AuthenticationController::class,'login']);
 
+Route::get('fetch_user', [AuthenticationController::class,'fetchUser'])->middleware('auth:sanctum');
+
 Route::post('createOrganization', [OrganizationController::class,'createOrganization'])->middleware('auth:sanctum');
+
+Route::post('create_single_account', [OrganizationController::class, 'createSingleUserAccount'])->middleware('auth:sanctum');
 
 Route::get('verify/{id}', [AuthenticationController::class,'verify']);
 
@@ -34,7 +39,7 @@ Route::get('fetchEventUsers/{id}', [eventsController::class,'fetchEventUsers']);
 
 Route::post('buyTicket/{id}',[ticketsController::class,'buyTicket']);
 
-Route::post('create_ticket', [ticketsController::class, 'createTicket']);
+// Route::post('create_ticket', [ticketsController::class, 'createTicket']);
 
 Route::post('validate_ticket', [ticketsController::class,'validateTicket']);
 
@@ -45,3 +50,20 @@ Route::post('create_device', [DeviceController::class, 'createDevice'])->middlew
 Route::get('fetch_devices', [DeviceController::class, 'fetchDevices'])->middleware('auth:sanctum');
 
 Route::post('delete_devices', [DeviceController::class, 'fetchDevices'])->middleware('auth:sanctum');
+
+Route::post('login_device', [DeviceController::class, 'loginDevice']);
+
+Route::post('logout_device',[DeviceController::class,'logoutDevice']);
+
+Route::post('fetch_single_device', [DeviceController::class, 'fetchMobileDevice']);
+
+
+Route::post('create_mpesa_creds', [mpesaPayments::class, 'createMpesaCredentials'])->middleware('auth:sanctum');
+
+Route::get('fetch_mpesa_creds', [mpesaPayments::class, 'fetchMpesaCredentials'])->middleware('auth:sanctum');
+
+
+//payment routes
+Route::post('mpesa_pay', [mpesaPayments::class, 'stkPush']);
+
+Route::post('handle_callback', [mpesaPayments::class, 'handleCallback']);

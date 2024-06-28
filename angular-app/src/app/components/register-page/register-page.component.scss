@@ -7,6 +7,7 @@
         top: 50%;
         transform: translate(-50%, -50%);
 
+
         .title{
             font-weight: bold;
             font-size: 2rem;
@@ -37,6 +38,12 @@
                 left: 50%;
                 transform: translate(-50%, -50%);
               }
+        }
+
+        .privacy-policy{
+            text-decoration: underline;
+            color: blue;
+            cursor: pointer;
         }
     }
 }

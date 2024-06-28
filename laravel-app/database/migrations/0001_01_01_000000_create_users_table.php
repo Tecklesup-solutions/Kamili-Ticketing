@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('verify')->default(false);
             $table->string('phoneNumber');
-            $table->string('org_id')->nullable();
+            $table->integer('org_id')->nullable();
+            $table->boolean('single_user')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

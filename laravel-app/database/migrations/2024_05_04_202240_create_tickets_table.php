@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('event_id');
             $table->string('type');
+            $table->string('qr_code_image')->nullable();
             $table->unsignedBigInteger('no_people')->default(0);
             $table->boolean('validated');
             $table->boolean('purchased');

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { BASE_URL } from 'src/app/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class DeviceService {
     });
 
     // Make the POST request with headers
-    return this.httpClient.post<any>('http://127.0.0.1:8000/api/create_device', deviceDetails, { headers });
+    return this.httpClient.post<any>(`${BASE_URL}create_device`, deviceDetails, { headers });
   }
 
   fetchDevice():Observable<any>{    
@@ -31,6 +32,6 @@ export class DeviceService {
     });
 
     // Make the POST request with headers
-    return this.httpClient.get<any>('http://127.0.0.1:8000/api/fetch_devices',  { headers });
+    return this.httpClient.get<any>(`${BASE_URL}fetch_devices`,  { headers });
   }
 }

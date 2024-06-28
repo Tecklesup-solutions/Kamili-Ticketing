@@ -10,7 +10,7 @@ class Organization extends Model
     use HasFactory;
 
     protected $fillable = 
-    [
+    [   'user_id',
         'name',
         'address',
         'country',
@@ -18,4 +18,9 @@ class Organization extends Model
         'email',
         'phone'
     ];
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

@@ -34,7 +34,6 @@ export class OrganizationDetailsComponent {
     this.loading=true
 
     this.$OrgService.createOrganization(this.organizationForm.value).subscribe(response=>{
-      console.log(response);
       this.loading=false
       this.router.navigate(['ticketing']);
 

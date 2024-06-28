@@ -1,67 +1,53 @@
-<div class="navbar-top">
-    <app-navbar />
-</div>
 <div class="container">
-    
-    <div class="row-items">
-     
-      
-      <div class="left">
-        <form [formGroup]="ticketingForm" >    
-            <div class="form-group mt-3">
-              <label for="exampleInputEmail1">First Name</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name" formControlName="firstName">
-            </div>
-
-            <div class="form-group mt-3">
-              <label for="exampleInputEmail1">Last Name</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Last Name" formControlName="lastName">
-            </div>
-
-            <div class="form-group mt-3">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="email">
-            </div>
-
-              
-            <div class="form-group mt-3">
-              <label for="exampleInputPassword1">No Of Tickets</label>
-              <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="noTickets">
-            </div>
-            <div class="form-group mt-3">
-                <label for="exampleInputPassword1">Phone Number</label>
-                <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Phone number" formControlName="phoneNumber">
-            </div>
-
-            <div class="form-group mt-3">
-                <label for="exampleInputPassword1">Total Cost </label>
-                <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Total" readonly formControlName="totalCost">
-             </div>
-        </form>    
-          
-      </div>
-      <div class="right">
-        <h3>Pay Via</h3>
-        <mat-radio-group aria-label="Select an option">
-            <img src="https://i.pinimg.com/564x/63/7c/8c/637c8c9defd5e4fcb6b9cf1314cf254e.jpg" alt="" height="20rem">
-            <mat-radio-button value="1">Mpesa</mat-radio-button>
-            <img src="https://i.pinimg.com/236x/39/f1/68/39f1685d11cda24b92873226d0f15495.jpg" alt="" height="20rem">
-            <mat-radio-button value="2">Airtel money</mat-radio-button>
-            <img src="https://i.pinimg.com/236x/a6/24/5e/a6245e17a3ac5903df1a347524496e06.jpg" alt="" height="20rem">
-            <mat-radio-button value="2">T cash</mat-radio-button>
-        </mat-radio-group>
-
-        <div class="pay">
-          <div class="btn btn-success mt-3" (click)="purchaseTickets()">Pay Now</div>
+  <div class="row-items">
+    <div class="left">
+      <form [formGroup]="ticketingForm">    
+        <div class="form-group mt-3">
+          <label for="exampleInputEmail1">First Name</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter First Name" formControlName="firstName">
         </div>
-          
-      </div>  
-        
-    </div>
-    <div class="spinner" *ngIf="showSpinner">
-        <mat-spinner></mat-spinner>
 
+        <div class="form-group mt-3">
+          <label for="exampleInputEmail1">Last Name</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Last Name" formControlName="lastName">
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="exampleInputEmail1">Email</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" formControlName="email">
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="exampleInputPassword1">No Of Tickets</label>
+          <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="noTickets">
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="exampleInputPassword1">Phone Number</label>
+          <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Phone number" formControlName="phoneNumber">
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="exampleInputPassword1">Total Cost</label>
+          <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Total" readonly formControlName="totalCost">
+        </div>
+      </form>
     </div>
+
+    <div class="right">
+      <h3>Pay Via</h3>
+      <mat-radio-group aria-label="Select an option">
+        <img src="https://i.pinimg.com/564x/63/7c/8c/637c8c9defd5e4fcb6b9cf1314cf254e.jpg" alt="" height="20rem">
+        <mat-radio-button value="1">Mpesa</mat-radio-button>
+      </mat-radio-group>
+
+      <div class="pay">
+        <div class="btn btn-success mt-3" (click)="purchaseTickets()">Pay Now</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spinner" *ngIf="showSpinner">
+    <mat-spinner></mat-spinner>
+  </div>
 </div>
-
-  

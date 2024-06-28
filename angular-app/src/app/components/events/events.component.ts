@@ -32,12 +32,16 @@ export class EventsComponent implements OnInit, OnDestroy{
   }
 
   purchaseTicket(id: number): void {
-    // Implement ticket purchase logic here
-    console.log('Purchase ticket for event ID:', id);
-
-    // Navigate to a new route upon purchasing ticket (example: ticket purchase page)
-    this.router.navigate(['purchase_ticket', id]);
+    const selectedEvent = this.events.find(event => event.id === id);
+    if (selectedEvent) {
+      this.router.navigate(['purchase_ticket', id], { 
+        queryParams: { 
+          ticket_price: selectedEvent.ticket_price 
+        } 
+      });
+    }
   }
+  
 
   ngOnDestroy(): void {
       this.subscription.unsubscribe();

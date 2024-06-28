@@ -1,0 +1,26 @@
+.container-fluid{
+    .row-items{
+        display: flex;
+
+        .left{
+            height: 100% !important;
+            width: fit-content;
+        }
+        .right{
+           .top{
+            display: flex;
+            justify-content: space-around;
+           }
+            width: 100%;
+            text-align: center;
+            button{
+                margin-top: 1rem;
+                // width: fit-content;
+                height: fit-content;
+            }
+            .components{
+                padding-top: 2rem;
+            }
+        }
+    }
+}

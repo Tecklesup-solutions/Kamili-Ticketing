@@ -1,7 +1,7 @@
 <div class="card border-0 shadow-lg">
-    <button class="w3-button w3-teal w3-xlarge" (click)="toggleSideNav()">☰</button>
+   
 
-    <div class="nav-items" *ngIf="showSidenav">
+    <div class="nav-items" >
        
         <div class="route" (click)="navigateToEvents()">
             <!-- <img src="assets/icons/event.png" alt="" height="20rem"> -->
@@ -10,6 +10,14 @@
         <div class="route" (click)="navigateToDevices()">
             <!-- <img src="assets/icons/logout.png" alt="" height="20rem"> -->
             <p>Devices</p>
+        </div>
+        <div class="route" (click)="navigateToPayment()">
+            <!-- <img src="assets/icons/logout.png" alt="" height="20rem"> -->
+            <p>Payment Method</p>
+        </div>
+        <div class="route" (click)="navigateToTickets()">
+            <!-- <img src="assets/icons/logout.png" alt="" height="20rem"> -->
+            <p>Queries</p>
         </div>
         <div class="route" (click)="navigateToSubscription()">
             <!-- <img src="assets/icons/logout.png" alt="" height="20rem"> -->

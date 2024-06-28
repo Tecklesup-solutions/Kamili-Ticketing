@@ -9,7 +9,8 @@ import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.
 import { ChooseAccountComponent } from './components/choose-account/choose-account.component';
 import { OrganizationDetailsComponent } from './components/organization-details/organization-details.component';
 import { VerifyLoginComponent } from './components/verify-login/verify-login.component';
-import { BoughtTicketsComponent } from './componets/bought-tickets/bought-tickets.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+
 
 const routes: Routes = [
   // { path: '', component: LandingPageComponent },
@@ -18,12 +19,12 @@ const routes: Routes = [
   {path:'confirm_email', component:ConfirmEmailComponent},
   {path:'choose_account', component:ChooseAccountComponent},
   {path:'organization_details', component:OrganizationDetailsComponent},
-
   { path: 'ticketing', loadChildren: () => import('./ticketing-module/ticketing-module.module').then(m => m.TicketingModuleModule) },
   {path:'', component:EventsComponent},
   {path:'purchase_ticket/:id', component:PurchaseTicketComponent},
   {path:'verify/:id', component:VerifyLoginComponent},
-  {path:'bought-tickets', component:BoughtTicketsComponent},
+  {path:'privacy-policy', component:PrivacyPolicyComponent}
+ 
 ];
 
 @NgModule({

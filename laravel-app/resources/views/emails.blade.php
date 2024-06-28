@@ -1,1 +1,2 @@
-Click here or paste this link in your browser to set your password: 'http://localhost:4200/verify/{{ $token }}'
+{{-- Click here or paste this link in your browser to Activate your account: 'http://localhost:4200/verify/{{ $token }}' --}}
+Click here or paste this link in your browser to Activate your account: 'https://jandiko.com/verify/{{ $token }}'

@@ -3,8 +3,11 @@
         display: flex;
         justify-content: space-between;
         .left{
-            img{
-                height: 5rem;
+            h4{
+                padding-top: 1rem;
+                font-size: 2rem;
+                color: green;
+                font-weight: bold;
             }
         }
         .right{
@@ -27,14 +30,14 @@
 
 @media only screen and (max-width: 600px) {
    .card{
+   
     .container{
-        .right{
-            display: none;
+        
+       .left{
+        h4{
+            font-size: 1rem;
         }
-        .icon{
-            padding-top: 1rem;
-            display: block;
-        }
+       }
     }
    }
 }

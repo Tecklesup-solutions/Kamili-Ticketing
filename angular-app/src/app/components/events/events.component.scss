@@ -1,16 +1,18 @@
-.container-fluid{
-    .row-items{
-        .events{
-            .row{
-                .col-md-3{
-                    .card{
-                        // position: absolute;
-                        // left: 50%;
-                        // top:50%;
-                        // transform: translate(-50%, -50%);
+
+@media only screen and (max-width: 600px) {
+    .container-fluid{
+        .row-items{
+            .events{
+                .row{
+                    .col-md-3{
+                        .card{
+                           
+                            left: 50%;
+                            transform: translateX(-50%);
+                        }
                     }
                 }
             }
         }
     }
-}
+ }

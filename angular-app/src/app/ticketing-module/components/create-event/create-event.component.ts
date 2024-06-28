@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -10,10 +10,11 @@ import { ImageService } from '../../services/imageService.service'; // Adjust pa
   templateUrl: './create-event.component.html',
   styleUrls: ['./create-event.component.scss']
 })
-export class CreateEventComponent implements OnDestroy {
+export class CreateEventComponent implements OnInit,OnDestroy {
   private subscription: Subscription;
   fileToUpload: File | null = null; // Optional file upload
   eventsForm: FormGroup;
+  loading:boolean = false;
 
   ticketPriceOptions: string[] = ['Amount', 'Free']; // Options for ticket price
 
@@ -28,6 +29,11 @@ export class CreateEventComponent implements OnDestroy {
     });
   }
 
+  ngOnInit(): void {
+    // this.uploadPosterImage();
+  }
+  
+
   onFileSelected(event: any): void {
     this.fileToUpload = event.target.files[0];
   }
@@ -41,18 +47,22 @@ export class CreateEventComponent implements OnDestroy {
     formData.append('capacity', this.eventsForm.get('capacity')?.value);
     formData.append('venue', this.eventsForm.get('venue')?.value);
     formData.append('ticket_price', this.eventsForm.get('ticket_price')?.value);
-    formData.append('posterImage', this.eventsForm.get('posterImage')?.value);
-
+    formData.append('posterImage', this.eventsForm.get('posterImage')?.value); // Ensure posterImage is appended
+    this.loading = true;
+  
     this.subscription = this.eventsService.createEvent(formData).subscribe(
       response => {
+        this.loading = false;
         this.router.navigate(['/ticketing']);
         console.log("Response:", response); 
       },
       error => {
+        this.loading = false;
         console.error("Error:", error);
       }
     );
   }
+  
 
   createPoster(): void {
     this.router.navigate(['/ticketing/create-poster']);
@@ -63,12 +73,13 @@ export class CreateEventComponent implements OnDestroy {
   }
 
   // Method to handle image upload from service or route
-  uploadPosterImage(): void {
-    const imageData = this.imageService.getImageData(); // Retrieve image data from service
-    if (imageData) {
-      this.eventsForm.patchValue({
-        posterImage: imageData // Set the poster image data in the form
-      });
-    }
-  }
+  // uploadPosterImage(): void {
+  //   const imageData = this.imageService.getImageData(); // Retrieve image data from service
+  //   if (imageData) {
+  //     this.eventsForm.patchValue({
+  //       posterImage: imageData // Set the poster image data in the form
+  //     });
+  //   }
+  // }
+  
 }

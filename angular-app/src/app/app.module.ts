@@ -23,7 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { OrganizationDetailsComponent } from './components/organization-details/organization-details.component';
 import { VerifyLoginComponent } from './components/verify-login/verify-login.component';
-import { BoughtTicketsComponent } from './componets/bought-tickets/bought-tickets.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+
 
 
 
@@ -42,7 +43,7 @@ import { BoughtTicketsComponent } from './componets/bought-tickets/bought-ticket
     ChooseAccountComponent,
     OrganizationDetailsComponent,
     VerifyLoginComponent,
-    BoughtTicketsComponent
+    PrivacyPolicyComponent,
   ],
   imports: [
     BrowserModule,

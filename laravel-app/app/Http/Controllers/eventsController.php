@@ -6,6 +6,15 @@ use App\Models\Events;
 use App\Models\Tickets;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
+use BaconQrCode\Renderer\ImageRenderer;
+use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
+use BaconQrCode\Renderer\RendererStyle\RendererStyle;
+use BaconQrCode\Writer;
+use BaconQrCode\Common\ErrorCorrectionLevel;
+use BaconQrCode\Writer\FileWriter;
+
 
 class eventsController extends Controller
 {
@@ -84,8 +93,25 @@ class eventsController extends Controller
             $ticket->type = 'General Admission'; // You can define ticket types as needed
             $ticket->qr_code = uniqid(); // Generate unique QR code for each ticket
             $ticket->validated = false; // Ticket starts as not validated
-            $ticket->purchased= false;//ticket not purchased yet
+            $ticket->purchased= false; // Ticket not purchased yet
             $ticket->price = $event->ticket_price; // Set initial price (can be updated later if needed)
+
+            // Generate QR code for each ticket
+            $renderer = new ImageRenderer(
+                new RendererStyle(400),
+                new ImagickImageBackEnd()
+            );
+            $writer = new Writer($renderer);
+            $qrCodeFileName = Str::random(10) . '.png'; // Generate random file name for QR code
+            $qrCodePath = '/qr_codes/' . $qrCodeFileName; // Adjust path as needed
+            $qrCodeFile = public_path($qrCodePath);
+
+            // Generate QR code image and save to file
+            $writer->writeFile($ticket->qr_code, $qrCodeFile);
+
+            // Save QR code image file name in ticket (not the full URL)
+            $ticket->qr_code_image = $qrCodeFileName; // Store just the file name
+
             $ticket->save();
             $tickets[] = $ticket;
         }

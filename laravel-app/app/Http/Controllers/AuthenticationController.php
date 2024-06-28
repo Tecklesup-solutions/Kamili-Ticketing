@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,8 @@ class AuthenticationController extends Controller
                     return response([
                         'success' => true,
                         'message' => 'User logged in successfully',
-                        'token' => $token
+                        'token' => $token,
+                        'user'=>$user
                     ], 200);
                 } else {
                     Auth::logout(); // Log out the user if email is not verified
@@ -114,6 +116,27 @@ class AuthenticationController extends Controller
     }
 
    
+    public function fetchUser()
+    {
+        try {
+            $user = Auth::user();
+
+            $user_id = $user->id;
+            
+
+            return response([
+                'success' => true,
+                'message' => 'Fetched user successfully',
+                'user' => $user,
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
 
     public function logout(Request $request){
         try {

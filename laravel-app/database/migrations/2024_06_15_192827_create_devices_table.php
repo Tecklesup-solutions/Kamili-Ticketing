@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('org_id');
             $table->string('device_name');
             $table->string('location');
+            $table->string('event');
             $table->string('pin');
             $table->string('api_token')->nullable();
             $table->timestamps();
