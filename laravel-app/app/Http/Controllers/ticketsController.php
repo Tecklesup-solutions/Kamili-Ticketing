@@ -68,7 +68,7 @@ class ticketsController extends Controller
             // Handle case where model not found (device or event data not found)
             return response()->json([
                 'status' => false,
-                'message' => $e->getMessage()
+                'message' => "Invalid ticket"
             ], 404);
 
         } catch (\Throwable $th) {
