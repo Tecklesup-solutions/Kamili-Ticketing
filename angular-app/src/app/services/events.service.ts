@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BASE_URL } from '../constants';
+import { AuthServiceService } from './auth-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,15 @@ import { BASE_URL } from '../constants';
 export class EventsService {
  
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private $authServ :AuthServiceService) { }
 
   fetchEvents():Observable<any>{
     const url = BASE_URL + 'get_events';
     return this.http.get<any>(url)
   }
+
+
+  
 
   fetchEventNames(){
     

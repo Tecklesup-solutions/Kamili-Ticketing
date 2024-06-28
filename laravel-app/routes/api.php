@@ -34,6 +34,8 @@ Route::post('create_event', [eventsController::class,'createEvent'])->middleware
 
 Route::get('get_events', [eventsController::class, 'fetchEvents']);
 
+Route::get('get_org_events', [eventsController::class,'fetchOrgEvents'])->middleware('auth:sanctum');
+
 Route::delete('delete_event/{id}', [EventsController::class, 'deleteEvent'])->middleware('auth:sanctum'); 
 
 

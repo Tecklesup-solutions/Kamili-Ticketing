@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.subscription.add(
-      this.eventsService$.fetchEvents().subscribe(
+      this.eventsService$.fetchOrgEvents().subscribe(
         (response) => {
           this.events = response.events; // Assign fetched events to 'events' array
           console.log(this.events)

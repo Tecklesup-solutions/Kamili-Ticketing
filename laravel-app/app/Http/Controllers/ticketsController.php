@@ -21,25 +21,30 @@ class ticketsController extends Controller
                 'qr_code' => 'required|string'
             ]);
 
+            // Retrieve api_token from request
             $api_token = $request->api_token;
 
+            // Find device by api_token
             $device = Devices::where('api_token', $api_token)->firstOrFail();
 
+            // Retrieve org_id from device
+            $org_id = $device->org_id;
+
+            // // Retrieve event name from device
             $event = $device->event;
 
-            $eventData = Events::where('name', $event)->firstOrFail();
+            // Find event data based on event name and org_id
+            $eventData = Events::where('name', $event)
+                                ->where('org_id', $org_id)
+                                ->firstOrFail();
 
-            // $eventId = $eventData->id;
+            // // Retrieve event id from event data
+            $eventId = $eventData->event_id;
 
-            // Find the ticket by QR code
-            $ticket = Tickets::where('qr_code', $validatedData['qr_code'])->firstOrFail();
-
-            if (!$ticket) {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Ticket not found'
-                ], 404); // Not Found
-            }
+            // Find the ticket by QR code and event id
+            $ticket = Tickets::where('qr_code', $validatedData['qr_code'])
+                            ->where('event_id', $eventId)
+                            ->firstOrFail();
 
             // Check if the ticket has already been validated
             if ($ticket->validated) {
@@ -58,13 +63,23 @@ class ticketsController extends Controller
                 'message' => 'Ticket validated successfully',
                 'ticket' => $ticket
             ], 200);
+
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            // Handle case where model not found (device or event data not found)
+            return response()->json([
+                'status' => false,
+                'message' => $e->getMessage()
+            ], 404);
+
         } catch (\Throwable $th) {
+            // Handle other exceptions
             return response()->json([
                 'status' => false,
                 'message' => $th->getMessage()
             ], 500); // Internal Server Error
         }
     }
+
 
     public function BuyTicket(Request $request, $id)
     {

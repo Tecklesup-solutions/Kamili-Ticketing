@@ -153,6 +153,40 @@ class eventsController extends Controller
         }
     }
     
+    public function fetchOrgEvents(){
+        try{
+            $user = Auth::user();
+            $org_id = $user->org_id;
+            $events = Events::where('org_id',$org_id)->get();
+            
+    
+            // Fetch the number of purchased tickets for each event
+            foreach ($events as $event) {
+                $purchasedTicketsCount = Tickets::where('event_id', $event->event_id)
+                                                ->where('purchased', 1)
+                                                ->count();
+                // Calculate the number of remaining tickets
+                $remainingTickets = $event->capacity - $purchasedTicketsCount;
+    
+                // Add the number of remaining tickets to each event
+                $event->remaining_tickets = $remainingTickets;
+    
+                // Prepend base URL to image URL
+                $event->image = asset('images/' . $event->image);
+            }
+    
+            return response()->json([
+                'status'=> true,
+                'message'=>'events fetched successfully',
+                'events' => $events
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
 
     public function fetchSingleEvent($id){
         try{

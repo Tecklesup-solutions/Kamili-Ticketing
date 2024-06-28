@@ -32,6 +32,7 @@
                 <p>Type: {{ $ticket->type }}</p>
                 <p>Name: {{ $ticket->first_name }} {{ $ticket->last_name }}</p>
                 <p>Email: {{ $ticket->email }}</p>
+                <p>QrCode: {{ $ticket->qr_code }}</p>
             </div>
             <div class="col-md-6">
                 <div class="qr-code-container">
