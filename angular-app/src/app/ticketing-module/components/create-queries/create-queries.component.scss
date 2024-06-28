@@ -1,0 +1,11 @@
+.card{
+    margin: 3rem;
+    padding: 2rem;
+
+    .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+}

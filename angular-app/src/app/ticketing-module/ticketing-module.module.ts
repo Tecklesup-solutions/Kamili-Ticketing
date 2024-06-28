@@ -23,6 +23,8 @@ import { SetMpesaComponent } from './components/set-mpesa/set-mpesa.component';
 import { SetCardpaymentComponent } from './components/set-cardpayment/set-cardpayment.component';
 import { SetOrgpaymentComponent } from './components/set-orgpayment/set-orgpayment.component';
 import { TicketingComponentComponent } from './components/ticketing-component/ticketing-component.component';
+import { ShowQueriesComponent } from './components/show-queries/show-queries.component';
+import { CreateQueriesComponent } from './components/create-queries/create-queries.component';
 
 
 const ticketingRoutes: Routes = [
@@ -57,7 +59,9 @@ const ticketingRoutes: Routes = [
     SetMpesaComponent,
     SetCardpaymentComponent,
     SetOrgpaymentComponent,
-    TicketingComponentComponent
+    TicketingComponentComponent,
+    ShowQueriesComponent,
+    CreateQueriesComponent
 
   ],
   imports: [

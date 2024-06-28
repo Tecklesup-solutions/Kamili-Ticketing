@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventsService } from 'src/app/services/events.service';
+import { QueriesService } from '../../services/queriesService.service';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-event-info',
@@ -17,7 +19,8 @@ export class EventInfoComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute, // Inject ActivatedRoute
-    private eventsService: EventsService
+    private eventsService: EventsService,
+    private $eventService : EventService
   ) {}
 
   ngOnInit(): void {
@@ -45,6 +48,23 @@ export class EventInfoComponent implements OnInit {
   navigateToAttendeesList(): void {
     // Navigate to the attendees list page for the current event
     this.router.navigate(['ticketing/event-info', this.eventId, 'attendees-list']);
+  }
+
+  deleteEvent(id: number): void {
+    const confirmDelete = confirm("Are you sure you want to delete event?");
+    if (confirmDelete) {
+      this.$eventService.deleteEvent(id).subscribe(
+        response => {
+          console.log('Query deleted successfully', response);
+          // Optionally, you can navigate away or refresh the data on success
+          this.router.navigate(['ticketing']);
+        },
+        error => {
+          console.error('Failed to delete query', error);
+          // Handle error
+        }
+      );
+    }
   }
 
 }

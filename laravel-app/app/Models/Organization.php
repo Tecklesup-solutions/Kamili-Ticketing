@@ -23,4 +23,8 @@ class Organization extends Model
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
+    public function queries()
+    {
+        return $this->hasMany(Queries::class, 'org_id');
+    }
 }

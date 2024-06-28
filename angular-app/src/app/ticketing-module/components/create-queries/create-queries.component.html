@@ -1,0 +1,24 @@
+<div class="card shadow-lg border-0">
+    <form [formGroup]="queryForm" (ngSubmit)="createQuery()">
+      <div class="form-group">
+        <label for="queryType">Select Query Type</label>
+        <select class="form-control" id="queryType" formControlName="title" required>
+          <option value="">Select Query Type</option>
+          <option value="customer_support">Customer Support</option>
+          <option value="technical_query">Technical Query</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" rows="5" formControlName="description" required></textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-primary mt-2">Create</button>
+    </form>
+  
+    <div class="spinner" *ngIf="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+  

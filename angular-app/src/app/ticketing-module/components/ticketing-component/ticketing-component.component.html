@@ -1,61 +1,22 @@
 <div class="container-fluid">
-    <div class="row-items">
-      <div class="left">
-        <!-- Include app-sidenav component (assuming it's a custom component) -->
-        <app-sidenav></app-sidenav>
-      </div>
-      <div class="right">
-        <!-- Button to toggle modal -->
-        <button class="btn btn-success" (click)="toggleModal()">Create Query</button>
-  
-        <!-- Display events in cards -->
-        <div class="events mt-3">
-          <div class="row">
-            <!-- Loop through each event and create a card -->
-            <div class="col-md-3 col-sm-6 mt-3">
-              <div class="card border-0 shadow-lg" style="width: 18rem">
-                tickets
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <!-- Modal -->
-        <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': showModal, 'd-block': showModal}">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Create Ticket</h5>
-
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                    <label for="ticketTitle">Query Title</label>
-                        <select class="form-control" id="ticketTitle">
-                          <option value="" disabled selected>Select Query Title</option>
-                          <option value="Billing Issue">Billing Issue</option>
-                          <option value="Technical Support">Technical Support</option>
-                          <option value="Feature Request">Feature Request</option>
-                          <option value="Bug Report">Bug Report</option>
-                        
-                      </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="moreData">More Data</label>
-                    <textarea class="form-control" id="moreData" rows="3" placeholder="Enter more data"></textarea>
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" (click)="toggleModal()">Close</button>
-                <button type="button" class="btn btn-primary">Submit</button>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-      </div>
+  <div class="row-items" *ngIf="userOrg">
+    <div class="left">
+      <!-- Include app-sidenav component (assuming it's a custom component) -->
+      <app-sidenav></app-sidenav>
+    </div>
+    <div class="right">
+      <!-- Toggle buttons -->
+      <button class="btn btn-success" (click)="toggleModal()" *ngIf="!showModal">Create Query</button>
+      <button class="btn btn-success" (click)="toggleModal()" *ngIf="showModal">View all Queries</button>
+      
+      <!-- Conditional rendering of components -->
+      <app-show-queries *ngIf="!showModal"></app-show-queries>
+      <app-create-queries *ngIf="showModal" (queryCreated)="handleQueryCreated()"></app-create-queries>
     </div>
   </div>
-  
+  <div class="organization-check"*ngIf="!userOrg">
+    <app-organization-check></app-organization-check>
+  </div>
+
+
+</div>

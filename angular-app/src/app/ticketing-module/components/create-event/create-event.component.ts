@@ -72,14 +72,6 @@ export class CreateEventComponent implements OnInit,OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  // Method to handle image upload from service or route
-  // uploadPosterImage(): void {
-  //   const imageData = this.imageService.getImageData(); // Retrieve image data from service
-  //   if (imageData) {
-  //     this.eventsForm.patchValue({
-  //       posterImage: imageData // Set the poster image data in the form
-  //     });
-  //   }
-  // }
+
   
 }

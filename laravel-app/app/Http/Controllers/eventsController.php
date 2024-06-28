@@ -213,13 +213,44 @@ class eventsController extends Controller
     }
     
 
-    public function editEvent(Request $request){
-        try{
+    public function deleteEvent($id)
+    {
+        try {
+            // Find the event by its ID
+            $event = Events::findOrFail($id);
+
+            // Delete associated tickets and their QR code images
+            $tickets = Tickets::where('event_id', $event->event_id)->get();
+
+            foreach ($tickets as $ticket) {
+                // Delete QR code image
+                $qrCodeImagePath = public_path('/qr_codes/' . $ticket->qr_code_image);
+                if (file_exists($qrCodeImagePath)) {
+                    unlink($qrCodeImagePath);
+                }
+
+                // Delete the ticket
+                $ticket->delete();
+            }
+
+            // Delete event image
+            $eventImagePath = public_path('/images/' . $event->image);
+            if (file_exists($eventImagePath)) {
+                unlink($eventImagePath);
+            }
+
+            // Finally, delete the event
+            $event->delete();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Event deleted successfully',
+            ]);
 
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => $th->getMessage()
+                'message' => $th->getMessage(),
             ], 500);
         }
     }

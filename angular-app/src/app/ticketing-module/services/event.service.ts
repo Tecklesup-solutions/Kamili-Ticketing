@@ -12,16 +12,18 @@ export class EventService {
 
   constructor(private http: HttpClient, private authService:AuthServiceService) { }
 
+  token = this.authService.getToken();
+
   createEvent(formData: FormData): Observable<any> {
     
     const url = `${BASE_URL}` + 'create_event';
 
     // Get token from AuthServiceService
-    const token = this.authService.getToken();
+    
 
     // Prepare headers with Authorization Bearer token
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer ' + token
+      'Authorization': 'Bearer ' + this.token
     });
 
     // Make the POST request with headers and formData
@@ -41,6 +43,15 @@ export class EventService {
         return eventNames;
       })
     );
+  }
+
+  deleteEvent(id: any): Observable<any> {
+    const url = `${BASE_URL}delete_event/${id}`;
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token
+    });
+
+    return this.http.delete<any>(url, { headers });
   }
 
 }
