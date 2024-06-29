@@ -1,3 +1,57 @@
+.container-fluid{
+    .container{
+        .row-items{
+            .events{
+                .row{
+                    div{
+                        .card{
+                            cursor: pointer;
+                            border-radius: 2rem;
+                            .card-img-top{
+                                border-radius: 2rem 2rem 0 0;
+                                .card-body{
+                                    .left{
+                                        display: flex;
+                                        flex-direction: column;
+                                        // width: 20%;
+                                        p{
+                                            color: blue;
+                                        }
+                                    }
+                                    .right{
+                                        // width: 80%;
+                                        .card-title{
+                                            font-weight: bold;
+                                            color: black;
+                                        }
+                                        .card-text{
+                                            color: gray;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .load-more-button{
+                text-align: center;
+                padding: 3rem 0;
+                .load-more{
+                    padding: 1rem;
+                    width: 10rem;
+                    border-radius: 2rem;
+                    color: blue;
+                    border: 1px solid blue;
+                }
+            }
+        }
+    }
+
+
+}
+
 
 @media only screen and (max-width: 600px) {
     .container-fluid{

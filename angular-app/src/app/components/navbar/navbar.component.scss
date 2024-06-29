@@ -1,4 +1,6 @@
 .card{
+    color: white;
+    background-color: #3D37F1 ;
     .container{
         display: flex;
         justify-content: space-between;
@@ -6,7 +8,7 @@
             h4{
                 padding-top: 1rem;
                 font-size: 2rem;
-                color: green;
+                color: white;
                 font-weight: bold;
             }
         }
@@ -25,6 +27,40 @@
         .icon{
             display: none;
         }
+    }
+
+    .bottom{
+       text-align: center; 
+       .title{
+        font-size: 2rem;
+        font-weight: bold;
+        padding-top: 1rem;
+       }
+       .title-desc{
+        padding: 2rem 0;
+       }
+       .buttons{
+        display: flex;
+        justify-content: space-evenly;
+        padding-bottom: 1rem;
+
+        .get-ticket{
+            border-radius: 2rem;
+            background-color: red;
+            color: white;
+            border-radius: 10rem;
+            width: 10rem;
+            border: none;
+        }
+        .learn-more{
+            border: 1px solid white;
+            border-radius: 10rem;
+            background-color: transparent;
+            color: white;
+            padding: 1rem;
+            width: 10rem;
+        }
+       }
     }
 }
 
