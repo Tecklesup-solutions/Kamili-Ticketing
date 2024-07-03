@@ -1,5 +1,25 @@
 footer{
     padding: 2rem 0;
-    background-color: blue !important;
+    background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%);
     color: white !important;
+    .contents{
+        .row{
+            .col-md-3{
+                text-align: center;
+                .logo{
+                   
+                    img{
+                        height: 2rem;
+                    }
+                }
+                .input{
+                    .input-text{
+                        padding: 1rem;
+                        border-radius: 3rem;
+                    }
+                }
+                
+            }
+        }
+    }
 }

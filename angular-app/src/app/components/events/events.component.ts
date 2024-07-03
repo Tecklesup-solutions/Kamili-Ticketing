@@ -16,6 +16,8 @@ export class EventsComponent implements OnInit, OnDestroy{
 
   private subscription : Subscription;
 
+  visibleEvents: any[] = [];
+  pageSize = 6;
 
   ngOnInit(): void {
     this.subscription.add(
@@ -30,6 +32,7 @@ export class EventsComponent implements OnInit, OnDestroy{
       )
     );
   }
+  
 
   purchaseTicket(id: number): void {
     const selectedEvent = this.events.find(event => event.id === id);

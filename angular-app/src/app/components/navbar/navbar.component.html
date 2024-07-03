@@ -1,20 +1,21 @@
 <div class="card border-0 shadow-lg">
     <div class="container">
         <div class="left" (click)="navigateHome()">
-            <h4>tiko-kamili</h4>
+            <img src="../../../assets/images/logo.png"alt="">
         </div>
+        
         <div class="right">
             <ul>
-                <li>Schedule</li>
-                <li>Ticket</li>
-                <li>Contact</li>
-                <li (click)="navigateToLogin()">Login</li>
+                <li class="nav-button">Schedule</li>
+                <li class="nav-button">Ticket</li>
+                <li class="nav-button">Contact</li>
+                <li class="nav-button" (click)="navigateToLogin()">Login</li>
             </ul>
         </div>
     </div>
     <div class="bottom">
         <p class="title">Tiko-Kamili Ticketing</p>
-        <p class="title">Seamless Events!</p>
+        <p class="title-small">Seamless Events!</p>
 
         <p class="title-desc">Look no further!Our tickets are the simplest way for you<br>
         to book events and manage your events.</p>

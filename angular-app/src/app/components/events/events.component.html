@@ -9,21 +9,22 @@
           <div class="row">
             <!-- Loop through each event and create a card -->
             <div class="col-md-4 col-sm-12 mt-3" *ngFor="let event of events">
-              <div class="card border-0 shadow-lg" style="width: 18rem;">
-                <!-- Example image placeholder (replace src attribute with actual image URL) -->
+              <div class="card border-0 shadow-lg">
                 <img class="card-img-top" [src]="event.image" alt="Card image cap" style="height: 12rem;">
                 <div class="card-body row">
+
                   <div class="left col-3">
                     <p class="card-text"> {{ event.event_date }}</p>
                      <p class="date">Apr <br>14<br>2024</p>
-                     
                   </div>
+
                   <div class="right col-8">
-                     <h5 class="card-title">{{ event.name }}</h5>
-                     <p class="card-text">Venue:{{ event.venue }}</p>
-                     <p class="card-text">Price :{{ event.ticket_price }}</p>
-                     <p class="card-text">Remaining Tickets: {{ event.remaining_tickets }}</p>
+                     <h5 class="card-title1">{{ event.name }}</h5>
+                     <p class="card-text1">Venue:{{ event.venue }}</p>
+                     <p class="card-text1">Price :{{ event.ticket_price }}</p>
+                     <p class="card-text1">Remaining Tickets: {{ event.remaining_tickets }}</p>
                   </div>
+
                   <!-- <a class="btn btn-primary" (click)="purchaseTicket(event.id)">Buy Ticket</a> -->
                 </div>
               </div>
@@ -32,7 +33,8 @@
         </div>
 
         <div class="load-more-button">
-          <button class="load-more">Load More</button>
+          <!-- <button class="load-more">Load More</button> -->
+          <!-- <button class="load-more" (click)="onLoadMore()">Load More</button> -->
         </div>
         
     </div>
