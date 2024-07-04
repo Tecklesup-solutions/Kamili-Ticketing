@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '20'
 
     - name: Install npm dependencies
       run: npm install
@@ -31,9 +31,9 @@ jobs:
         username: ${{ secrets.CPANEL_USERNAME }}  # cPanel SSH username
         key: ${{ secrets.SSH_PRIVATE_KEY }}  # SSH private key (stored as a secret)
         script: |
-          cd /path/to/your/public_html  # Replace with your cPanel directory path
+          cd /home/jandikoc/public_html
           rm -rf *  # Clear existing files (optional)
-          rsync -avz --delete $GITHUB_WORKSPACE/dist/ .  # Sync Angular build files
+          rsync -avz --delete $GITHUB_WORKSPACE/dist/ .  
 
     - name: Clean up
       run: npm ci --cache .npm --prefer-offline
