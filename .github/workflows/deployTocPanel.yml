@@ -29,11 +29,11 @@ jobs:
       with:
         host: ${{ secrets.FTP_SERVER }}  # cPanel SSH host
         username: ${{ secrets.FTP_USERNAME }}  # cPanel SSH username
-        key: ${{ secrets.FTP_PASSWORD}}  # SSH private key (stored as a secret)
+        password: ${{ secrets.FTP_PASSWORD }}  # FTP password (stored as a secret)
         script: |
           cd /home/jandikoc/public_html
           rm -rf *  # Clear existing files (optional)
-          rsync -avz --delete $GITHUB_WORKSPACE/dist/ .  
+          rsync -avz --delete $GITHUB_WORKSPACE/dist/ .
 
     - name: Clean up
       run: npm ci --cache .npm --prefer-offline
