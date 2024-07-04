@@ -7,30 +7,35 @@
                         .card{
                             cursor: pointer;
                             border-radius: 2rem;
-                            .card-img-top{
-                                border-radius: 2rem 2rem 0 0;
-                                height: 3rem;
-                                .card-body{
-                                    .left{
-                                        display: flex;
-                                        flex-direction: column;
-                                        p{
-                                            color: blue;
+                            .image{
+                                text-align: center;
+                                padding-top: 1rem;
+                                .card-img-top{
+                                   
+                                    height: 3rem;
+                                    .card-body{
+                                        .left{
+                                            display: flex;
+                                            flex-direction: column;
+                                            p{
+                                                color: blue;
+                                            }
                                         }
-                                    }
-                                    .right{
-                                        .card-title1{
-                                            font-weight: bold;
-                                            color: #000000;
-                                            font-size: 1rem;
-                                        }
-                                        .card-text1{
-                                            color: #6A6A6A;
-                                            font-size: 1.2rem;
+                                        .right{
+                                            .card-title1{
+                                                font-weight: bold;
+                                                color: #000000;
+                                                font-size: 1rem;
+                                            }
+                                            .card-text1{
+                                                color: #6A6A6A;
+                                                font-size: 1.2rem;
+                                            }
                                         }
                                     }
                                 }
                             }
+                            
                         }
                     }
                 }

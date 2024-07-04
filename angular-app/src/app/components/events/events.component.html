@@ -10,7 +10,10 @@
             <!-- Loop through each event and create a card -->
             <div class="col-md-4 col-sm-12 mt-3" *ngFor="let event of events">
               <div class="card border-0 shadow-lg">
-                <img class="card-img-top" [src]="event.image" alt="Card image cap" style="height: 12rem;">
+                <div class="image">
+                  <img class="card-img-top" [src]="event.image" alt="Card image cap" style="height: 10rem;width: 10rem;">
+                </div>
+                
                 <div class="card-body row">
 
                   <div class="left col-3">
