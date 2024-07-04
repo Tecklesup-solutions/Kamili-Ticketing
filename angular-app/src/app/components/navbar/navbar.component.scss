@@ -74,14 +74,68 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
-   .card{
-    .container{
-       .left{
-        h4{
-            font-size: 1rem;
+
+@media only screen and (min-width: 601px) and (max-width: 980px) {
+    .card{
+        .container{
+           .left{
+            h4{
+                font-size: 1rem;
+            }
+            img{
+                height: 5rem;
+            }
+           }
+        }
+        .bottom{
+            .title{
+                font-size: 2rem;
+            }
+            .title-small{
+                font-size: 1.5rem;
+            }
         }
        }
+ }
+
+ @media only screen and (max-width: 600px) {
+    .card {
+      .container {
+        .left {
+          display: none; /* Hide the logo on small screens */
+        }
+  
+        .right {
+          ul {
+            display: flex;
+            flex-direction: column; /* Display navigation items in a column */
+            padding-top: 1rem;
+  
+            li {
+              display: block; /* Ensure each navigation item is displayed as a block */
+              padding-left: 0; /* Remove the left padding */
+              padding-bottom: 1rem; /* Add some bottom spacing between items */
+              cursor: pointer;
+  
+              &:hover {
+                color: green; /* Change text color on hover */
+              }
+            }
+          }
+        }
+      }
+  
+      .bottom {
+        .title {
+          font-size: 1.2rem; /* Adjust the title font size */
+        }
+        .title-small {
+          font-size: 1rem; /* Adjust the small title font size */
+        }
+        .title-desc {
+          padding: 1rem 0; /* Adjust padding for description */
+        }
+      }
     }
-   }
-}
+  }
+  
