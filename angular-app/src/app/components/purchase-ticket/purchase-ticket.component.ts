@@ -79,6 +79,8 @@ export class PurchaseTicketComponent implements OnInit {
         URL.revokeObjectURL(blobUrl);
 
         this.showSpinner = false;
+
+        this.router.navigate(['']);
       },
       (error) => {
         console.error('Error purchasing tickets:', error);

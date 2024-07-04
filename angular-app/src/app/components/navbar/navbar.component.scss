@@ -5,9 +5,12 @@
         display: flex;
         justify-content: space-between;
         .left{
+            img{
+                height: 5rem;
+            }
             h4{
-                padding-top: 1rem;
-                font-size: 2rem;
+                padding-top: 2rem;
+                font-size: 1.5rem;
                 color: white;
                 font-weight: bold;
             }
@@ -37,18 +40,19 @@
     }
 
     .bottom{
+        padding-top: 1rem;
        text-align: center; 
        .title{
-        font-size: 6rem;
+        font-size: 4rem;
         font-weight: bold;
        }
        .title-small{
-        font-size: 3rem;
+        font-size: 2rem;
         padding-top: 3rem;
         font-weight: bold;
        }
        .title-desc{
-        padding: 2rem 0;
+        padding: 1.5rem 0;
        }
        .buttons{
         padding-bottom: 1rem;
