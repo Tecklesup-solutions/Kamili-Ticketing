@@ -1,0 +1,42 @@
+name: Deploy to cPanel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install npm dependencies
+      run: npm install
+
+    - name: Build Angular app
+      run: npm run build --prod
+
+    - name: Deploy to cPanel
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.CPANEL_HOST }}  # cPanel SSH host
+        username: ${{ secrets.CPANEL_USERNAME }}  # cPanel SSH username
+        key: ${{ secrets.SSH_PRIVATE_KEY }}  # SSH private key (stored as a secret)
+        script: |
+          cd /path/to/your/public_html  # Replace with your cPanel directory path
+          rm -rf *  # Clear existing files (optional)
+          rsync -avz --delete $GITHUB_WORKSPACE/dist/ .  # Sync Angular build files
+
+    - name: Clean up
+      run: npm ci --cache .npm --prefer-offline
+
+    - name: Finish
+      run: echo "Deployment completed successfully."
