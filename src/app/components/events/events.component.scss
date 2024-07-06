@@ -14,22 +14,20 @@
                                    
                                     height: 3rem;
                                     .card-body{
-                                        .left{
-                                            display: flex;
-                                            flex-direction: column;
-                                            p{
-                                                color: blue;
-                                            }
-                                        }
+                                     
                                         .right{
                                             .card-title1{
                                                 font-weight: bold;
-                                                color: #000000;
+
+                                                color:#3D37F1;
                                                 font-size: 1rem;
                                             }
                                             .card-text1{
                                                 color: #6A6A6A;
                                                 font-size: 1.2rem;
+                                            }
+                                            .card-date1{
+                                                color:#3D37F1;
                                             }
                                         }
                                     }

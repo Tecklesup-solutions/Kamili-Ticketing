@@ -16,16 +16,14 @@
                 
                 <div class="card-body row" >
 
-                  <div class="left col-3">
-                    <p class="card-text"> {{ event.event_date }}</p>
-                     <p class="date">Apr <br>14<br>2024</p>
-                  </div>
-
-                  <div class="right col-8">
-                     <h5 class="card-title1">{{ event.name }}</h5>
+                 
+                  <div class="right ">
+                     <h1 class="card-title1">{{ event.name }}</h1>
+                     <p class="card-date1"> {{ event.event_date }}</p>
                      <p class="card-text1">Venue:{{ event.venue }}</p>
                      <p class="card-text1">Price :{{ event.ticket_price }}</p>
                      <p class="card-text1">Remaining Tickets: {{ event.remaining_tickets }}</p>
+        
                   </div>
                 </div>
               </div>
@@ -34,7 +32,7 @@
         </div>
 
         <div class="load-more-button">
-          <!-- <button class="load-more">Load More</button> -->
+          <button class="load-more">Load More</button>
           <!-- <button class="load-more" (click)="onLoadMore()">Load More</button> -->
         </div>
         

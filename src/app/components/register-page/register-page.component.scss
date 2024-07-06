@@ -1,7 +1,12 @@
 .container-fluid{
+    background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     .card{
         width: 40%;
-        padding: 5rem;
+        padding: 1rem;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -12,7 +17,7 @@
             font-weight: bold;
             font-size: 2rem;
             text-align: center;
-            color: green;
+           
         }
         p{
             font-size: larger;
@@ -31,6 +36,13 @@
             }
             .button{
                 text-align: center;
+                    .btn-register{
+                        background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+                        color: white;
+                        border: none;
+                        padding: 0.5rem 3rem;
+                        border-radius: 2rem;
+                    }
             }
             .spinner {
                 position: absolute;
@@ -39,11 +51,19 @@
                 transform: translate(-50%, -50%);
               }
         }
-
-        .privacy-policy{
-            text-decoration: underline;
-            color: blue;
-            cursor: pointer;
+        .links{
+            text-align: center;
+            display:flex;
+            flex-direction: column;
+            .privacy-policy{
+                padding-top: 1rem;
+                text-decoration: none;
+                color: blue;
+                cursor: pointer;
+            }
+            
         }
+
+       
     }
 }

@@ -1,4 +1,9 @@
 .container-fluid{
+    background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     .card{
         width: 40%;
         padding: 5rem;
@@ -30,6 +35,13 @@
             }
             .button{
                 text-align: center;
+                .btn-login{
+                    background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+                    color: white;
+                    border: none;
+                    padding: 0.5rem 3rem;
+                    border-radius: 2rem;
+                }
             }
         }
         .spinner {
@@ -38,7 +50,19 @@
             left: 50%;
             transform: translate(-50%, -50%);
           }
+          .register{
+            text-align: center;
+            padding-top: 3rem;
+          }
     }
+}
+
+.link{
+    text-decoration: none;
+    color: Red;
+    font-size: 1rem;
+    padding-top: 0.5rem;
+    cursor: pointer;
 }
 @media only screen and (max-width: 600px) {
     .container-fluid{

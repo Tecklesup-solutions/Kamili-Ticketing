@@ -13,9 +13,26 @@ footer{
                     }
                 }
                 .input{
+                    width: 100%;
+                    position: relative;
                     .input-text{
                         padding: 1rem;
                         border-radius: 3rem;
+                        position: absolute;
+                        left: 0;
+                        width: 100%;
+                        border: none;
+                    }
+                    .btn-subscribe{
+                        position: absolute;
+                        z-index: 1;
+                        right: 0.3rem;
+                        top: 0.2rem;
+                        border-radius: 3rem;
+                        color: white;
+                        background-color: #F5167E;
+                        border: none;
+                        padding: 0.8rem;
                     }
                 }
                 
