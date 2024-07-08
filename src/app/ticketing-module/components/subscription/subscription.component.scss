@@ -31,9 +31,15 @@
                     }
                     h4{
                         font-size: 1.5rem;
-                        color: green;
                         font-weight: bold;
-                        
+                    }
+                    .btn-subscription{
+                        background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+                        color: white;
+                        border: none;
+                        padding: 0.5rem 3rem;
+                        border-radius: 2rem;
+                        margin-top: 2rem;
                     }
                 }
             }

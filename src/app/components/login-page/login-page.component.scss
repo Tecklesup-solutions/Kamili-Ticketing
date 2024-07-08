@@ -67,14 +67,28 @@
 @media only screen and (max-width: 600px) {
     .container-fluid{
         .card{
-            width: 100%;
+            width: 80%;
         }
+    }
+    .link{
+        text-decoration: none;
+        color: Red;
+        font-size: 0.5rem;
+        padding-top: 0.5rem;
+        cursor: pointer;
     }
 }
 @media only screen and (max-width: 850px) {
     .container-fluid{
         .card{
-            width: 100%;
+            width: 80%;
         }
+    }
+    .link{
+        text-decoration: none;
+        color: Red;
+        font-size: 0.5rem;
+        padding-top: 0.5rem;
+        cursor: pointer;
     }
 }

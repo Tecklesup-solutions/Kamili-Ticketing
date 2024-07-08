@@ -1,52 +1,79 @@
+<!-- purchase-ticket.component.html -->
 <div class="container">
-  <div class="row-items">
-    <div class="left">
-      <form [formGroup]="ticketingForm">    
-        <div class="form-group mt-3">
-          <label for="exampleInputEmail1">First Name</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter First Name" formControlName="firstName">
+  <div class="row">
+    <!-- Left column with event details -->
+    <form>    
+    <div class="col-md-6 col-sm-12">
+      <!-- Display event details -->
+      <p>Event Name</p>
+      <p>Kes . 1500.00</p>
+      <p>In stock</p>
+      <img src="https://i.pinimg.com/236x/ec/ae/24/ecae244acad489986c8c3aca3c41072e.jpg" alt="">
+      <!-- Display total cost based on selected quantity -->
+      <div class="row mt-3">
+        <div class="col">
+          <p>Total</p>
         </div>
-
-        <div class="form-group mt-3">
-          <label for="exampleInputEmail1">Last Name</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Last Name" formControlName="lastName">
+        <div class="col">
+          <p>{{ 'KSH ' + ticketingForm.get('totalCost')?.value }}</p>
         </div>
-
-        <div class="form-group mt-3">
-          <label for="exampleInputEmail1">Email</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" formControlName="email">
-        </div>
-
-        <div class="form-group mt-3">
-          <label for="exampleInputPassword1">No Of Tickets</label>
-          <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="noTickets">
-        </div>
-
-        <div class="form-group mt-3">
-          <label for="exampleInputPassword1">Phone Number</label>
-          <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Phone number" formControlName="phoneNumber">
-        </div>
-
-        <div class="form-group mt-3">
-          <label for="exampleInputPassword1">Total Cost</label>
-          <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Total" readonly formControlName="totalCost">
-        </div>
-      </form>
-    </div>
-
-    <div class="right">
-      <h3>Pay Via</h3>
-      <mat-radio-group aria-label="Select an option">
-        <img src="https://i.pinimg.com/564x/63/7c/8c/637c8c9defd5e4fcb6b9cf1314cf254e.jpg" alt="" height="20rem">
-        <mat-radio-button value="1">Mpesa</mat-radio-button>
-      </mat-radio-group>
-
-      <div class="pay">
-        <div class="btn btn-success mt-3" (click)="purchaseTickets()">Pay Now</div>
       </div>
     </div>
+
+    <!-- Right column with form inputs -->
+    <div class="col-md-6 col-sm-12">
+      <!-- Quantity selection -->
+      <p>Quantity</p>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-secondary" (click)="decreaseQuantity()">-</button>
+        <input type="text" class="form-control text-center" formControlName="noTickets">
+        <button type="button" class="btn btn-secondary" (click)="increaseQuantity()">+</button>
+      </div>
+
+      <!-- Payment method selection -->
+      <p>Payment Method</p>
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <button class="button">Mpesa</button>
+        </div>
+        <div class="col">
+          <button class="button">Card</button>
+        </div>
+      </div>
+
+      <!-- Personal information inputs -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group mt-3">
+            <label for="firstName">First Name *</label>
+            <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" formControlName="firstName">
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="form-group mt-3">
+            <label for="lastName">Last Name *</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" formControlName="lastName">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mt-3">
+        <label for="phoneNumber">Phone Number *</label>
+        <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" formControlName="phoneNumber">
+      </div>
+
+      <div class="form-group mt-3">
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control" id="email" placeholder="Email Address" formControlName="email">
+      </div>
+
+      <!-- Submit button -->
+      <button class="btn btn-primary mt-3" (click)="purchaseTickets()">PAY {{ 'KES ' + ticketingForm.get('totalCost')?.value }}</button>
+    </div>
+  </form>  
   </div>
 
+  <!-- Spinner for loading state -->
   <div class="spinner" *ngIf="showSpinner">
     <mat-spinner></mat-spinner>
   </div>

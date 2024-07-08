@@ -2,20 +2,23 @@
     <div class="card border-0 shadow-lg">
         
             <h3 class="title">Welcome </h3>
-            <p>Create and Organization to access more app features</p>
+            <div class="org-title">
+                <p>Create and Organization to access more app features</p>
+            </div>
+            
 
             <form [formGroup]="organizationForm" (ngSubmit)="createOrganization()">
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="form-group mt-3">
                             <label for="exampleInputEmail1">Organization Name</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name" formControlName="name">
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name" formControlName="name" required>
                           </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <div class="form-group mt-3">
                             <label for="exampleInputEmail1">Address</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Address" formControlName="address">
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Address" formControlName="address" required>
                           </div>
                     </div>
                 </div>
@@ -23,13 +26,13 @@
                     <div class="col-md-6 col-sm-12">
                         <div class="form-group mt-3">
                             <label for="exampleInputEmail1">Country</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Country" formControlName="country">
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Country" formControlName="country" required>
                           </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <div class="form-group mt-3">
                             <label for="exampleInputEmail1">City</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="City" formControlName="city">
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="City" formControlName="city" required>
                           </div>
                     </div>
                 </div>
@@ -37,18 +40,18 @@
                     <div class="col-md-6 col-sm-12">
                         <div class="form-group mt-3">
                             <label for="exampleInputEmail1">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" formControlName="email">
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" formControlName="email" required>
                           </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <div class="form-group mt-3">
                             <label for="exampleInputEmail1">Phone</label>
-                            <input type="tel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Phone" formControlName="phone">
+                            <input type="tel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Phone" formControlName="phone" required>
                           </div>
                     </div>
                 </div>
              <div class="button">
-              <button type="submit"  class="btn btn-success mt-3">Create Organization</button>
+              <button type="submit"  class="btn-create">Create Organization</button>
              </div>
               
             </form>

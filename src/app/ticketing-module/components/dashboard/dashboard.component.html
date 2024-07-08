@@ -20,10 +20,12 @@
                 <h5 class="card-title">{{ event.name }}</h5>
                 <p class="card-text">Date: {{ event.event_date }}</p>
                 <p class="card-text">Venue: {{ event.venue }}</p>
-                <p class="card-text">Price: {{ event.ticket_price }}</p>
+                <p class="card-text1">
+                  Price: {{ event.ticket_price === 0 ? 'Free' : event.ticket_price }}
+              </p>
                 <p class="card-text">Remaining Tickets: {{ event.remaining_tickets }}</p>
                 <!-- Button to view event details (replace '#' with actual route or action) -->
-                <a class="btn btn-primary" (click)="eventInfo(event.id)">View Event</a>
+                <button class="btn-create" (click)="eventInfo(event.id)">View Event</button>
               </div>
             </div>
           </div>

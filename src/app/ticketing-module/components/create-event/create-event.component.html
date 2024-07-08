@@ -44,6 +44,13 @@
             />
           </div>
           <div class="form-group">
+            <label for="categorySelect">Category</label>
+            <select class="form-control" id="categorySelect" formControlName="category_id" required>
+              <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
             <label for="exampleInputCapacity">Capacity</label>
             <input
               type="number"
@@ -72,6 +79,7 @@
               placeholder="Enter capacity"
               formControlName="ticket_price"
             />
+            <small>input 0 for free events</small>
            
           </div>
 

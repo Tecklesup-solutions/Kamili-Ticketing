@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { EventsService } from 'src/app/services/events.service';
+import { EventService } from 'src/app/ticketing-module/services/event.service';
 
 @Component({
   selector: 'app-events',
@@ -9,7 +10,10 @@ import { EventsService } from 'src/app/services/events.service';
   styleUrls: ['./events.component.scss']
 })
 export class EventsComponent implements OnInit, OnDestroy{
-  constructor(private eventsService$ : EventsService, private router:Router){
+  constructor(
+    private eventsService$ : EventsService,
+     private router:Router
+    ){
     this.subscription = new Subscription()
   }
    events : any[] = [];
@@ -20,17 +24,7 @@ export class EventsComponent implements OnInit, OnDestroy{
   pageSize = 6;
 
   ngOnInit(): void {
-    this.subscription.add(
-      this.eventsService$.fetchEvents().subscribe(
-        (response) => {
-          this.events = response.events; // Assign fetched events to 'events' array
-          console.log(this.events)
-        },
-        (error) => {
-          console.error('Error fetching events:', error);
-        }
-      )
-    );
+    this.fetchEvents();
   }
   
 
@@ -44,6 +38,22 @@ export class EventsComponent implements OnInit, OnDestroy{
       });
     }
   }
+
+  fetchEvents(){
+    this.subscription.add(
+      this.eventsService$.fetchEvents().subscribe(
+        (response) => {
+          this.events = response.events; // Assign fetched events to 'events' array
+          console.log(this.events)
+        },
+        (error) => {
+          console.error('Error fetching events:', error);
+        }
+      )
+    );
+  }
+
+
   
 
   ngOnDestroy(): void {

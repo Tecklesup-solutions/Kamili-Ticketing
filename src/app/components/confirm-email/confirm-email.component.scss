@@ -1,28 +1,48 @@
 .body {
+    background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
     position: relative;
-    height: 100vh; /* Use viewport height for full-page height */
-    width: 100%; /* Full width of the viewport */
+    height: 100vh; 
+    width: 100%; 
     text-align: center;
+    .card {
+        text-align: center;
+        width: 50%; /* Width of the card */
+        padding: 3rem;
+        border-radius: 2rem;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); /* Centering logic */
+    
+       .check {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+    
+       .spam {
+            font-weight: bold;
+            font-size: small;
+        }
+
+        .image{
+            img{
+                height: 6rem;
+                width: 5rem;
+                padding-bottom: 2rem;
+            }
+        }
+    }
 }
 
-.card {
-    text-align: center;
-    width: 50%; /* Width of the card */
-    padding: 3rem;
-    border-radius: 2rem;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); /* Centering logic */
-
-   .check {
-        font-weight: bold;
-        color: green;
-        font-size: 2rem;
-    }
-
-   .spam {
-        font-weight: bold;
-        font-size: larger;
+@media only screen and (max-width: 600px) {
+    .body{
+        .card{
+            .check{
+                font-size: 1rem;
+            }
+            .spam{
+                font-size: 0.6rem;
+            }
+        }
     }
 }

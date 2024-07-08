@@ -43,8 +43,16 @@ export class EventService {
         'Authorization': 'Bearer ' + token,
       });
   
-      // Make the POST request with headers
       return this.http.get<any>(`${BASE_URL}get_org_events`,  { headers });
+  }
+
+  fetchEventCategories():Observable<any>{
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders({
+        'Authorization': 'Bearer ' + token,
+      });
+  
+      return this.http.get<any>(`${BASE_URL}categories`,  { headers });
   }
 
   fetchEventNames(): Observable<string[]> {

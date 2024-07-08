@@ -16,4 +16,12 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
+    .button{
+        background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+        color: white;
+        border: none;
+        padding: 0.5rem 3rem;
+        margin-top: 1rem;
+        border-radius: 2rem;
+    }
 }

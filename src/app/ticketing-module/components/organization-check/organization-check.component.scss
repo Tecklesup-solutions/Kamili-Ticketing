@@ -1,28 +1,56 @@
 .body {
-    position: relative;
-    height: 100vh; /* Use viewport height for full-page height */
-    width: 100%; /* Full width of the viewport */
-    text-align: center;
-}
+    background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-.card {
-    text-align: center;
-    width: 50%; /* Width of the card */
-    padding: 3rem;
-    border-radius: 2rem;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); /* Centering logic */
-
-   .check {
-        font-weight: bold;
-        color: green;
-        font-size: 2rem;
+    .card {
+        text-align: center;
+        width: 50%; /* Width of the card */
+        padding: 3rem;
+        border-radius: 2rem;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); /* Centering logic */
+    
+    
+       .spam {
+            font-weight: bold;
+            font-size: larger;
+        }
+        .image{
+            img{
+                height: 6rem;
+                width: 5rem;
+                padding-bottom: 2rem;
+            }
+        }
+        .btn-upgrade{
+            background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+            color: white;
+            border: none;
+            padding: 0.5rem 3rem;
+            border-radius: 2rem;
+        }
     }
 
-   .spam {
-        font-weight: bold;
-        font-size: larger;
+}
+
+@media only screen and (max-width: 600px) {
+    .body{
+        .card{
+            .spam{
+                font-weight: bold;
+                font-size: small;
+            }
+            .btn-upgrade{
+                width: fit-content;
+                border-radius: 2rem;
+            }
+        }
     }
 }
+
+

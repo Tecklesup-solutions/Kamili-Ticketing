@@ -1,4 +1,9 @@
 .container-fluid{
+    background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     .card{
         width: 70%;
         padding: 5rem;
@@ -11,7 +16,9 @@
             font-weight: bold;
             font-size: 2rem;
             text-align: center;
-            color: green;
+        }
+        .org-title{
+            text-align: center;
         }
         p{
             font-size: larger;
@@ -30,6 +37,14 @@
             }
             .button{
                 text-align: center;
+                .btn-create{
+                    background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+                    color: white;
+                    border: none;
+                    padding: 0.5rem 3rem;
+                    border-radius: 2rem;
+                    margin-top: 2rem;
+                }
             }
         }
         .spinner {

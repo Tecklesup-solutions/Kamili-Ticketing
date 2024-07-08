@@ -6,8 +6,8 @@
     </div>
     <div class="right">
       <!-- Toggle buttons -->
-      <button class="btn btn-success" (click)="toggleModal()" *ngIf="!showModal">Create Query</button>
-      <button class="btn btn-success" (click)="toggleModal()" *ngIf="showModal">View all Queries</button>
+      <button class="btn-query" (click)="toggleModal()" *ngIf="!showModal">Create Query</button>
+      <button class="btn-query" (click)="toggleModal()" *ngIf="showModal">View all Queries</button>
       
       <!-- Conditional rendering of components -->
       <app-show-queries *ngIf="!showModal"></app-show-queries>
