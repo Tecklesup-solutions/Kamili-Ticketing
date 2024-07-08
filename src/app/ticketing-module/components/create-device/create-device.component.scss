@@ -9,3 +9,11 @@
         transform: translate(-50%, -50%);
       }
 }
+
+.btn-submit{
+  background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+  color: white;
+  border: none;
+  padding: 0.5rem 3rem;
+  border-radius: 2rem;
+}

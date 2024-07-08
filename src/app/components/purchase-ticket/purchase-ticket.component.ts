@@ -11,38 +11,43 @@ import { EventsService } from 'src/app/services/events.service';
 export class PurchaseTicketComponent implements OnInit {
   eventId!: number;
   showSpinner: boolean = false;
-  ticketPrice: number = 1500; // Initialize with a default ticket price
+  event: any = null; // Initialize event as null
 
   ticketingForm!: FormGroup;
 
-  constructor(private route: ActivatedRoute, private $events: EventsService, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private $events: EventsService, 
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.eventId = +params['id'];
-      console.log('Event ID:', this.eventId);
+      this.fetchEvent(); 
     });
-  
+
     this.ticketingForm = new FormGroup({
       firstName: new FormControl(''),
       lastName: new FormControl(''),
       email: new FormControl(''),
       phoneNumber: new FormControl(''),
-      noTickets: new FormControl(1), // Initialize with 1 ticket
-      totalCost: new FormControl(this.ticketPrice) // Initialize with default price
+      noTickets: new FormControl(1), 
+      totalCost: new FormControl()
     });
   
     // Subscribe to changes in noTickets to calculate totalCost dynamically
     this.ticketingForm.get('noTickets')?.valueChanges.subscribe(value => {
-      const noTickets = parseInt(value, 10);
-      if (!isNaN(noTickets)) {
-        const totalCost = noTickets * this.ticketPrice;
-        this.ticketingForm.patchValue({ totalCost });
+      if (this.event) {
+        const noTickets = parseInt(value, 10);
+        if (!isNaN(noTickets)) {
+          const totalCost = noTickets * this.event.ticket_price;
+          this.ticketingForm.patchValue({ totalCost });
+        }
       }
     });
   }
   
-
   increaseQuantity() {
     let currentValue = this.ticketingForm.get('noTickets')?.value;
     currentValue++;
@@ -55,6 +60,19 @@ export class PurchaseTicketComponent implements OnInit {
       currentValue--;
       this.ticketingForm.patchValue({ noTickets: currentValue });
     }
+  }
+
+  fetchEvent() {
+    this.$events.fetchSingleEvent(this.eventId).subscribe(
+      (response: any) => {
+        this.event = response.event;
+        // After fetching event, initialize ticketPrice and totalCost
+        this.ticketingForm.patchValue({ totalCost: this.event.ticket_price });
+      },
+      (error) => {
+        console.error('Error fetching event:', error);
+      }
+    );
   }
 
   purchaseTickets() {

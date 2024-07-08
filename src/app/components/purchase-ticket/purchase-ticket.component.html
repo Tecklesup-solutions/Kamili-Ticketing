@@ -1,14 +1,16 @@
 <!-- purchase-ticket.component.html -->
 <div class="container">
+  <form [formGroup]="ticketingForm">
   <div class="row">
     <!-- Left column with event details -->
-    <form>    
+          
     <div class="col-md-6 col-sm-12">
       <!-- Display event details -->
-      <p>Event Name</p>
-      <p>Kes . 1500.00</p>
-      <p>In stock</p>
-      <img src="https://i.pinimg.com/236x/ec/ae/24/ecae244acad489986c8c3aca3c41072e.jpg" alt="">
+      <p>{{ event.name }}</p>
+      <p>Kes . {{ event.ticket_price }}</p>
+      <p> {{ event.remaining_tickets === 0 ? 'Events Sold Out!' : 'Tickets Available' }}</p>
+      
+      <img class="card-img-top" [src]="event.image" alt="Card image cap" style="height: 10rem;width: 10rem;">
       <!-- Display total cost based on selected quantity -->
       <div class="row mt-3">
         <div class="col">
@@ -24,11 +26,13 @@
     <div class="col-md-6 col-sm-12">
       <!-- Quantity selection -->
       <p>Quantity</p>
+
       <div class="btn-group" role="group">
         <button type="button" class="btn btn-secondary" (click)="decreaseQuantity()">-</button>
-        <input type="text" class="form-control text-center" formControlName="noTickets">
+        <input type="number" class="form-control text-center" style="color: black;" formControlName="noTickets" [readonly]="true">
         <button type="button" class="btn btn-secondary" (click)="increaseQuantity()">+</button>
       </div>
+      
 
       <!-- Payment method selection -->
       <p>Payment Method</p>
@@ -68,13 +72,13 @@
       </div>
 
       <!-- Submit button -->
-      <button class="btn btn-primary mt-3" (click)="purchaseTickets()">PAY {{ 'KES ' + ticketingForm.get('totalCost')?.value }}</button>
+      <button class="button mt-3" (click)="purchaseTickets()">PAY Now</button>
     </div>
-  </form>  
   </div>
 
   <!-- Spinner for loading state -->
   <div class="spinner" *ngIf="showSpinner">
     <mat-spinner></mat-spinner>
   </div>
+</form>
 </div>

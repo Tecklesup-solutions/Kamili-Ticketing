@@ -8,17 +8,19 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent {
-  constructor(private router:Router, private $authServe: AuthServiceService){}
+  constructor(private router: Router, private $authServe: AuthServiceService) {}
 
-  navigateToEvents(){
-    this.router.navigate(['ticketing'])
+  showBars: boolean = false;
+
+  navigateToEvents() {
+    this.router.navigate(['ticketing']);
   }
 
-  navigateToSubscription(){
-    this.router.navigate(['ticketing/subscription'])
+  navigateToSubscription() {
+    this.router.navigate(['ticketing/subscription']);
   }
 
-  navigateToDevices(){
+  navigateToDevices() {
     this.router.navigate(['ticketing/devices']);
   }
 
@@ -38,11 +40,16 @@ export class SidenavComponent {
       }
     );
   }
-  navigateToPayment(){
+
+  navigateToPayment() {
     this.router.navigate(['ticketing/payment']);
   }
-  navigateToTickets(){
+
+  navigateToTickets() {
     this.router.navigate(['ticketing/tickets']);
   }
 
+  toggleBars() {
+    this.showBars = !this.showBars; // Toggle showBars between true and false
+  }
 }

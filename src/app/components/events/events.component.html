@@ -1,81 +1,60 @@
 <div class="container-fluid">
-    <div class="navbar-top">
-        <app-navbar />
+  <div class="navbar-top">
+    <app-navbar></app-navbar>
+  </div>
+  <div class="container">
+    <div class="filter-section">
+      <select class="form-select" aria-label="Default select example" (change)="filterEventsByCategory($event)">
+        <option selected>Select Category</option>
+        <option value="">All</option>
+        <option value="1">Music</option>
+        <option value="2">Sports</option>
+        <option value="3">Arts & Theater</option>
+        <option value="4">Conferences & Seminars</option>
+        <option value="5">Exhibitions & Trade Shows</option>
+        <option value="6">Community & Festivals</option>
+        <option value="7">Family & Kids</option>
+        <option value="8">Film & Entertainment</option>
+        <option value="9">Charity & Fundraisers</option>
+        <option value="10">Workshops & Classes</option>
+        <option value="11">Religious & Spiritual</option>
+        <option value="12">Health & Wellness</option>
+        <option value="13">Technology & Innovation</option>
+        <option value="14">Gaming & eSports</option>
+        <option value="15">Travel & Adventure</option>
+      </select>
     </div>
-    <div class="container">
-      <div class="filter-section">
-        <input type="date" id="birthday" name="birthday">
-      
-        <div class="form-group">
-          <label>Maximum Price</label>
-          <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Price">
-        </div>
-        
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Select Category</option>
-          <option value="1">Music</option>
-          <option value="2">Sports</option>
-          <option value="3">Arts & Theater</option>
-          <option value="4">Conferences & Seminars</option>
-          <option value="5">Exhibitions & Trade Shows</option>
-          <option value="6">Community & Festivals</option>
-          <option value="7">Family & Kids</option>
-          <option value="8">Film & Entertainment</option>
-          <option value="9">Charity & Fundraisers</option>
-          <option value="10">Workshops & Classes</option>
-          <option value="11">Religious & Spiritual</option>
-          <option value="12">Health & Wellness</option>
-          <option value="13">Technology & Innovation</option>
-          <option value="14">Gaming & eSports</option>
-          <option value="15">Travel & Adventure</option>
-        </select>
-        
-        <button class="search-btn">Search</button>
-
-      </div>
-      <div class="row-items">
-        
-        <div class="events mt-3">
-          <div class="row">
-            <!-- Loop through each event and create a card -->
-            <div class="col-md-4 col-sm-12 mt-3" *ngFor="let event of events">
-              <div class="card border-0 shadow-lg" (click)="purchaseTicket(event.id)">
-                <div class="image">
-                  <img class="card-img-top" [src]="event.image" alt="Card image cap" style="height: 10rem;width: 10rem;">
-                </div>
-                
-                <div class="card-body row" >
-
-                 
-                  <div class="right ">
-                     <h1 class="card-title1">{{ event.name }}</h1>
-                     <p class="card-date1"> {{ event.category_id }}</p>
-                     <p class="card-date1"> {{ event.event_date }}</p>
-                     <p class="card-text1">Venue:{{ event.venue }}</p>
-                     <p class="card-text1">
-                      Price: {{ event.ticket_price === 0 ? 'Free' : 'KES ' + event.ticket_price }}
+    <div class="row-items">
+      <div class="events mt-3">
+        <div class="row">
+          <!-- Loop through each event and create a card -->
+          <div class="col-md-4 col-sm-12 mt-3" *ngFor="let event of visibleEvents">
+            <div class="card border-0 shadow-lg" (click)="purchaseTicket(event.id)">
+              <div class="image">
+                <img class="card-img-top" [src]="event.image" alt="Card image cap" style="height: 10rem;width: 10rem;">
+              </div>
+              <div class="card-body row">
+                <div class="right">
+                  <h1 class="card-title1">{{ event.name }}</h1>
+                  <p class="card-date1">{{ getCategoryName(event.category_id) }}</p>
+                  <p class="card-date1">{{ event.event_date }}</p>
+                  <p class="card-text1">Venue: {{ event.venue }}</p>
+                  <p class="card-text1">
+                    Price: {{ event.ticket_price === 0 ? 'Free' : 'KES ' + event.ticket_price }}
                   </p>
-                     <p class="card-text1">Remaining Tickets: {{ event.remaining_tickets }}</p>
-        
-                  </div>
+                  <p class="card-text1">Remaining Tickets: {{ event.remaining_tickets }}</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="load-more-button">
-          <button class="load-more">Load More</button>
-        </div>
-        
+      </div>
+      <div class="load-more-button">
+        <button class="load-more">Load More</button>
+      </div>
     </div>
-
-    </div>
-
-    <div class="footer">
-      <app-footer></app-footer>
-    </div>
-    
-    </div>
-
-  
+  </div>
+  <div class="footer">
+    <app-footer></app-footer>
+  </div>
+</div>

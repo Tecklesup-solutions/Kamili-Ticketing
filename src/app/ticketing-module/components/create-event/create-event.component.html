@@ -26,7 +26,7 @@
               <button
                 type="button"
                 (click)="createPoster()"
-                class="btn btn-primary"
+                class="btn-submit"
               >
                 Create Poster
               </button>
@@ -83,7 +83,7 @@
            
           </div>
 
-          <button type="submit" class="btn btn-primary mt-2" *ngIf="!loading">
+          <button type="submit" class="btn-submit" *ngIf="!loading">
             Create Event
           </button>
           <div class="spinner" *ngIf="loading">

@@ -1,8 +1,8 @@
 <div class="card border-0 shadow-lg">
-   
-
-    <div class="nav-items" >
-       
+    <div class="nav-items" [ngClass]="{ 'show-bars': showBars }">
+        <div class="toggle-button ml-5">
+            <img src="assets/icons/fa-bars.svg" alt="" height="20rem" (click)="toggleBars()">
+        </div>
         <div class="route" (click)="navigateToEvents()">
             <img src="assets/icons/event.png" alt="" height="20rem">
             <p>Events</p>
