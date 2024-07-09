@@ -12,7 +12,7 @@
         top: 50%;
         transform: translate(-50%,-50%);
         .account-text{
-            color: green;
+            color: #ED4690;
             font-size: 2rem;
             font-weight: 500;
         }
@@ -43,7 +43,7 @@
                 }
             }
             .user:hover,.organization:hover{
-                background-color: green !important;
+                background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
                 border: none;
                 color: white;
             }

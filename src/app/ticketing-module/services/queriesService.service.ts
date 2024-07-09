@@ -12,9 +12,11 @@ export class QueriesService {
 
   constructor(private http: HttpClient, private $authServ : AuthServiceService) { }
 
-  token = this.$authServ.getToken();
+  
 
   createQuery(queryData: any): Observable<any> {
+
+    const token = this.$authServ.getToken();
 
     const url = `${BASE_URL}` + 'create_query';
 
@@ -23,7 +25,7 @@ export class QueriesService {
 
     // Prepare headers with Authorization Bearer token
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer ' + this.token
+      'Authorization': 'Bearer ' + token
     });
 
     // Make the POST request with headers and formData
@@ -33,8 +35,9 @@ export class QueriesService {
 
   fetchQueries():Observable<any>{
     // Prepare headers with Authorization Bearer token
+    const token = this.$authServ.getToken();
     const headers = new HttpHeaders({
-        'Authorization': 'Bearer ' + this.token,
+        'Authorization': 'Bearer ' + token,
         'Content-Type': 'application/json'
       });
   

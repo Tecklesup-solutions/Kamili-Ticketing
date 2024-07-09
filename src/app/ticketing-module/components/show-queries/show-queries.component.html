@@ -4,13 +4,13 @@
         <div class="card border-0 shadow-lg mt-4" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">{{ query.title }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ query.created_at }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{ query.created_at | date}}</h6>
             <p class="card-text">{{ query.description }}</p>
             <p class="card-text">Organization: {{ query.organization.name }}</p> <!-- Assuming organization has a 'name' property -->
             <p class="card-text">User: {{ query.user.firstName }} {{ query.user.lastName }}</p> <!-- Display user's name -->
-            <!-- Add more details as per your data structure -->
-            <a href="#" class="card-link">Pending</a>
-            <a href="#" class="card-link">Resolved</a>
+            
+            <a  href="#" class="card-link">{{ query.status}} </a>
+           
           </div>
         </div>
       </div>
