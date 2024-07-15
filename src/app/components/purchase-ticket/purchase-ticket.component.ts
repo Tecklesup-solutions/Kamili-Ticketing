@@ -11,7 +11,8 @@ import { EventsService } from 'src/app/services/events.service';
 export class PurchaseTicketComponent implements OnInit {
   eventId!: number;
   showSpinner: boolean = false;
-  event: any = null; // Initialize event as null
+  event: any = null;
+  remaining_tickets!:number;
 
   ticketingForm!: FormGroup;
 
@@ -65,8 +66,11 @@ export class PurchaseTicketComponent implements OnInit {
   fetchEvent() {
     this.$events.fetchSingleEvent(this.eventId).subscribe(
       (response: any) => {
+  
         this.event = response.event;
-        // After fetching event, initialize ticketPrice and totalCost
+        
+        this.remaining_tickets = parseInt(response.remaining_tickets)
+      
         this.ticketingForm.patchValue({ totalCost: this.event.ticket_price });
       },
       (error) => {
@@ -77,23 +81,40 @@ export class PurchaseTicketComponent implements OnInit {
 
   purchaseTickets() {
     this.showSpinner = true;
-    console.log(this.ticketingForm.value)
+    
+    // Get the number of tickets user wants to purchase
+    const noTickets = parseInt(this.ticketingForm.get('noTickets')?.value, 10);
+
+    if(this.remaining_tickets == 0 ){
+      alert("Event Sold out!")
+      this.resetTicketingForm()
+      this.showSpinner = false;
+      return
+    }else if(noTickets > this.remaining_tickets){
+      console.log("remaining tickets is " + this.remaining_tickets);
+      alert("Not enough tickets available")
+      this.resetTicketingForm()
+      this.showSpinner = false;
+      return
+    }
+  
+  
+  
     this.$events.purchaseTickets(this.eventId, this.ticketingForm.value).subscribe(
       (response: any) => {
-        console.log('Tickets purchased successfully:', response);
         const pdfData = response.pdf;
         const blob = this.base64toBlob(pdfData, 'application/pdf');
         const blobUrl = URL.createObjectURL(blob);
-
+  
         const link = document.createElement('a');
         link.href = blobUrl;
         link.download = 'tickets.pdf';
         document.body.appendChild(link);
-
+  
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(blobUrl);
-
+  
         this.showSpinner = false;
         this.router.navigate(['']);
       },
@@ -103,6 +124,7 @@ export class PurchaseTicketComponent implements OnInit {
       }
     );
   }
+  
 
   private base64toBlob(base64Data: string, contentType: string): Blob {
     const sliceSize = 512;
@@ -122,5 +144,16 @@ export class PurchaseTicketComponent implements OnInit {
     }
 
     return new Blob(byteArrays, { type: contentType });
+  }
+
+  resetTicketingForm() {
+    this.ticketingForm.reset({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phoneNumber: '',
+      noTickets: 1,
+      totalCost: null
+    });
   }
 }

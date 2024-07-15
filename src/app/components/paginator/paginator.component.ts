@@ -33,7 +33,6 @@ export class PaginatorComponent implements OnInit, OnChanges {
     const startPage = Math.max(1, this.currentPage - 2);
     const endPage = Math.min(this.totalPages, startPage + 4); // Show up to 5 pages
     this.pages = this.getRange(startPage, endPage);
-    console.log('Current Page:', this.currentPage, 'Total Pages:', this.totalPages, 'Pages:', this.pages);
   }
 
   getRange(start: number, end: number): number[] {

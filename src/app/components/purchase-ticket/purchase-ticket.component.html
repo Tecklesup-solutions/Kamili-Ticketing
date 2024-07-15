@@ -8,7 +8,8 @@
       <!-- Display event details -->
       <p>{{ event.name }}</p>
       <p>Kes . {{ event.ticket_price }}</p>
-      <p> {{ event.remaining_tickets === 0 ? 'Events Sold Out!' : 'Tickets Available' }}</p>
+      <p> <b>{{ remaining_tickets == 0 ? 'Events Sold Out!' : 'Tickets Available' }}</b></p>
+      <p>Remaining Tickets : {{ remaining_tickets }}</p>
       
       <img class="card-img-top" [src]="event.image" alt="Card image cap" style="height: 10rem;width: 10rem;">
       <!-- Display total cost based on selected quantity -->
@@ -71,8 +72,17 @@
         <input type="email" class="form-control" id="email" placeholder="Email Address" formControlName="email" required>
       </div>
 
-      <!-- Submit button -->
-      <button class="button mt-3" (click)="purchaseTickets()">PAY Now</button>
+      <button class="button mt-3" (click)="purchaseTickets()" [disabled]="event.remaining_tickets === 0 || ticketingForm.get('noTickets')?.value > event.remaining_tickets">
+        PAY NOW
+      </button>
+      
+      <!-- Display error message if no tickets remaining -->
+      <p *ngIf="event.remaining_tickets === 0" class="text-danger">Events Sold Out!</p>
+      
+      <!-- Display error message if user tries to purchase more tickets than available -->
+      <p *ngIf="ticketingForm.get('noTickets')?.value > event.remaining_tickets" class="text-danger">Not enough tickets remaining!</p>
+      
+      
     </div>
   </div>
 

@@ -18,11 +18,11 @@ export class ShowQueriesComponent implements OnInit {
   fetchQueries() {
     this.$queryServ.fetchQueries().subscribe(
       (response) => {
-        console.log(response); // Ensure you receive the data correctly
+        // console.log(response); // Ensure you receive the data correctly
         this.queries = response.data; // Assign fetched data to the queries array
       },
       (error) => {
-        console.log(error);
+        // console.log(error);
       }
     );
   }

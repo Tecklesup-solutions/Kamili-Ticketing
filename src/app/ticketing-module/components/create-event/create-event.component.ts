@@ -42,11 +42,10 @@ export class CreateEventComponent implements OnInit, OnDestroy {
   fetchEventCategories(): void {
     this.subscription = this.eventsService.fetchEventCategories().subscribe(
       (response: any) => {
-        console.log('Categories fetched successfully', response);
         this.categories = response.categories; // Assuming categories are returned as an array under 'categories' key
       },
       error => {
-        console.log('Error fetching categories', error);
+        // console.log('Error fetching categories', error);
       }
     );
   }

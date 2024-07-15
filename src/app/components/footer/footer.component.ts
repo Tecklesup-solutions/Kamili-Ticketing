@@ -22,7 +22,6 @@ export class FooterComponent implements OnInit {
   onSubmit() {
     this.authService.submitEmail(this.newsLetterForm.value).subscribe(
       (response) => {
-        console.log(response);
         if (response.status) {
           this.subscriptionMessage = response.message;
           this.newsLetterForm.reset(); // Reset the form

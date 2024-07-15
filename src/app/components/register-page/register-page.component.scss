@@ -12,12 +12,10 @@
         top: 50%;
         transform: translate(-50%, -50%);
 
-
         .title{
             font-weight: bold;
             font-size: 2rem;
             text-align: center;
-           
         }
         p{
             font-size: larger;
@@ -55,10 +53,12 @@
             text-align: center;
             display:flex;
             flex-direction: column;
+
             .privacy-policy{
-                padding-top: 1rem;
                 text-decoration: none;
-                color: blue;
+                color: Red;
+                font-size: 1rem;
+                padding-top: 1rem;
                 cursor: pointer;
             }
             

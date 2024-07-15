@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 
@@ -22,6 +22,7 @@ export class RegisterPageComponent implements OnInit {
       email: new FormControl(''),
       phoneNumber: new FormControl(''),
       password: new FormControl(''),
+      repeatPassword : new FormControl(''),
     });
   }
 
@@ -31,11 +32,9 @@ export class RegisterPageComponent implements OnInit {
     // Call your register method here passing user data
     this.authService.registerUser(this.registrationForm.value).subscribe(response => {
       // Optionally, navigate to another page after successful registration
-      console.log(response)
       this.loading = false;
       this.router.navigate(['confirm_email']); // Navigate to login page on success
     }, error => {
-      console.log(error)
       this.loading = false;
       this.errorMessage = error.message; // Display error message
     });
@@ -48,4 +47,19 @@ export class RegisterPageComponent implements OnInit {
   loginRoute() {
     this.router.navigate(['login']);
   }
+
+  passwordMatchValidator(formGroup: FormGroup): ValidationErrors | null {
+    const passwordControl = formGroup.get('password');
+    const confirmPasswordControl = formGroup.get('repeatPassword');
+  
+    if (!passwordControl || !confirmPasswordControl) {
+      return null; // Early return if either control is missing
+    }
+  
+    const password = passwordControl.value;
+    const confirmPassword = confirmPasswordControl.value;
+  
+    return password === confirmPassword ? null : { notSame: true };
+  }
+  
 }

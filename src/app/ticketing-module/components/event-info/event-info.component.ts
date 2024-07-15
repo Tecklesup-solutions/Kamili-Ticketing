@@ -30,7 +30,6 @@ export class EventInfoComponent implements OnInit {
       // Fetch single event using the eventId
       this.eventsService.fetchSingleEvent(this.eventId).subscribe(
         response => {
-          console.log(response);
           this.eventDetails = response.event; 
           this.remainingTickets = response.remaining_tickets;
 
@@ -38,8 +37,7 @@ export class EventInfoComponent implements OnInit {
           this.totalTicketsSold = this.eventDetails.capacity - this.remainingTickets;
         },
         error => {
-          // Handle error
-          console.log(error)
+  
         }
       );
     });
@@ -55,7 +53,6 @@ export class EventInfoComponent implements OnInit {
     if (confirmDelete) {
       this.$eventService.deleteEvent(id).subscribe(
         response => {
-          console.log('Query deleted successfully', response);
           // Optionally, you can navigate away or refresh the data on success
           this.router.navigate(['ticketing']);
         },

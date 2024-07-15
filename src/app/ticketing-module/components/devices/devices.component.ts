@@ -27,7 +27,6 @@ export class DevicesComponent implements OnInit{
 
   fetchUser(){
     this.authServe.fetchUser().subscribe(response=>{
-      console.log(response)
       if(response.user.org_id == null){
         this.userOrg = false
       }else{

@@ -88,6 +88,20 @@
  }
 
  @media only screen and (max-width: 600px) {
-    
+    .container-fluid{
+        .container{
+            .row-items{
+                .events{
+                    .row{
+                        .col{
+                            .text-danger{
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     
  }

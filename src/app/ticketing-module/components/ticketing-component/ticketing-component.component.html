@@ -1,12 +1,10 @@
 <div class="container-fluid">
-  <div class="row-items" 
-
-  >
+  <div class="row-items">
     <div class="left">
       <!-- Include app-sidenav component (assuming it's a custom component) -->
       <app-sidenav></app-sidenav>
     </div>
-    <div class="right">
+    <div class="right" *ngIf="userOrg">
       <!-- Toggle buttons -->
       <button class="btn-query" (click)="toggleModal()" *ngIf="!showModal">Create Query</button>
       <button class="btn-query" (click)="toggleModal()" *ngIf="showModal">View all Queries</button>
@@ -15,9 +13,11 @@
       <app-show-queries *ngIf="!showModal"></app-show-queries>
       <app-create-queries *ngIf="showModal" (queryCreated)="handleQueryCreated()"></app-create-queries>
     </div>
+
+    <div class="organization-check" *ngIf="!userOrg">
+      <app-organization-check></app-organization-check>
+    </div>
    
   </div>
-  <!-- <div class="organization-check"*ngIf="!userOrg">
-    <app-organization-check></app-organization-check>
-  </div> -->
+ 
 </div>

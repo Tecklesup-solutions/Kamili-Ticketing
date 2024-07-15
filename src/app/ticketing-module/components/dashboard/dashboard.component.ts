@@ -24,11 +24,10 @@ export class DashboardComponent implements OnInit, OnDestroy{
     this.subscription.add(
       this.eventsService$.fetchOrgEvents().subscribe(
         (response) => {
-          this.events = response.events; // Assign fetched events to 'events' array
-          console.log(this.events)
+          this.events = response.events; 
         },
         (error) => {
-          console.error('Error fetching events:', error);
+          // console.error('Error fetching events:', error);
         }
       )
     );

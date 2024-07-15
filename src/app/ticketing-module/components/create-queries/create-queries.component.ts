@@ -32,12 +32,14 @@ export class CreateQueriesComponent implements OnInit {
 
       this.queriesService.createQuery(formData).subscribe(
         (response) => {
+          console.log(response)
           this.loading = false;
           this.queryForm.reset(); 
           // Emit event to parent component to indicate query creation
           this.queryCreated.emit();
         },
         (error) => {
+          console.log(error)
           this.loading = false;
         }
       );

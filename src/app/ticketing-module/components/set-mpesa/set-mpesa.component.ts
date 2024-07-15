@@ -29,7 +29,6 @@ export class SetMpesaComponent implements OnInit {
 
   fetchFormData() {
     this.mpesaServ.fetchMpesaCreds().subscribe(response => {
-      console.log(response);
       this.mpesaData = response.mpesa; // Assign response to mpesaData variable for template binding
 
       if (this.mpesaData) {
@@ -41,7 +40,7 @@ export class SetMpesaComponent implements OnInit {
         });
       }
     }, error => {
-      console.log(error);
+   
     });
   }
 
@@ -59,10 +58,9 @@ export class SetMpesaComponent implements OnInit {
 
   submitForm(): void {
     this.mpesaServ.createMpesaCreds(this.mpesaForm.value).subscribe(response => {
-      console.log(response);
       // Handle success response as needed
     }, error => {
-      console.log(error);
+  
       // Handle error if needed
     });
   }

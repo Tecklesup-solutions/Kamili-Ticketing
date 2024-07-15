@@ -24,8 +24,8 @@ export class LoginPageComponent {
   }
 
   onSubmit() {
-    event?.preventDefault()
     this.loading=true
+    event?.preventDefault()
     this.authService.loginUser(this.loginForm.value).subscribe(response=>{
       this.loading = true;
       if(response.success){
@@ -43,9 +43,8 @@ export class LoginPageComponent {
         this.errorMessage = "Failed to login";
       }
     }, error=>{
-      console.log(error)
       this.loading = false;
-      this.errorMessage = error.message; // Display error message
+      this.errorMessage = "Failed to login please try again"; 
     });
     this.loading=false
   }

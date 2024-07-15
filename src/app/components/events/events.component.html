@@ -31,7 +31,6 @@
           <div class="col" *ngIf="noEventsFound">
             <p class="text-danger">No events found for the selected category.</p>
           </div>
-
           <!-- Loop through each event and create a card -->
           <div class="col-md-4 col-sm-12 mt-3" *ngFor="let event of visibleEvents">
             <div class="card border-0 shadow-lg" (click)="purchaseTicket(event.id)">
@@ -47,7 +46,7 @@
                   <p class="card-text1">
                     Price: {{ event.ticket_price === 0 ? 'Free' : 'KES ' + event.ticket_price }}
                   </p>
-                  <p class="card-text1">Remaining Tickets: {{ event.remaining_tickets }}</p>
+                  <!-- <p class="card-text1">Remaining Tickets: {{ event.remaining_tickets }}</p> -->
                 </div>
               </div>
             </div>

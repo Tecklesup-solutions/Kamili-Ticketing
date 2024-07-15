@@ -52,8 +52,6 @@ export class EventsComponent implements AfterViewInit, OnDestroy {
       this.pageDataUpdated.emit({ currentPage: this.currentPage, totalPages: this.totalPages });
       this.cdr.detectChanges(); 
     }, 100); 
-
-    console.log("pages "+ this.totalPages)
   }
   
 
@@ -65,7 +63,7 @@ export class EventsComponent implements AfterViewInit, OnDestroy {
     this.subscription.add(
       this.eventsService$.fetchEvents(page).subscribe(
         (response) => {
-          console.log(response)
+          console.log("response is", response); 
           if (response.status) {
             this.events = response.events.data;
             this.visibleEvents = [...this.events];

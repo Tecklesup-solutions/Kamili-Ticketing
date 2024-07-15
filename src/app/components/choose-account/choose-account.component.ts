@@ -13,15 +13,12 @@ export class ChooseAccountComponent implements OnInit{
   constructor(private router: Router, private authService:AuthServiceService, private organizationService:OrganizationServiceService){}
 
   ngOnInit(): void {
-    const token =this.authService.getToken();
-    console.log(token)
-      
+    const token =this.authService.getToken();      
   }
 
   choosenAccount(accountType: string){
     if(accountType === 'single'){
       this.organizationService.createSingleAccount().subscribe(response=>{
-        console.log(response)
         if(response.success){
           this.router.navigate(['ticketing']);
         }

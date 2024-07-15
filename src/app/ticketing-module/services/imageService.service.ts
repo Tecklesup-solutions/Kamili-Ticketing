@@ -8,11 +8,9 @@ export class ImageService {
 
   setImageData(data: string): void {
     this.imageData = data;
-    console.log('Image data set:', this.imageData); // Debugging log
   }
 
   getImageData(): string | null {
-    console.log('Getting image data:', this.imageData); // Debugging log
     return this.imageData;
   }
 }

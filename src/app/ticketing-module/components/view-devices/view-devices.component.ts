@@ -21,11 +21,10 @@ export class ViewDevicesComponent implements OnInit {
   fetchDevices(): void {
     this.deviceService.fetchDevice().subscribe(
       response => {
-        console.log(response); // For debugging
         this.devices = response.devices; // Assign fetched devices to component property
       },
       error => {
-        console.error('Error fetching devices:', error); // Log error
+        // console.error('Error fetching devices:', error); // Log error
       }
     );
   }

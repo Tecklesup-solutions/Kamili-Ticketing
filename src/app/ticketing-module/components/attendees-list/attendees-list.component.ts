@@ -29,12 +29,10 @@ export class AttendeesListComponent implements OnInit {
   fetchUsers(): void {
     this.eventsService.fetchEventUsers(this.eventId).subscribe(
       response => {
-        console.log(response)
         this.users = response.users; // Assuming the response contains an array of users
       },
       error => {
         // Handle error
-        console.log(error);
       }
     );
   }
