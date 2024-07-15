@@ -8,26 +8,26 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 })
 export class TicketingComponentComponent implements OnInit{
   showModal: boolean = false;
-  userOrg:boolean  = true
+  // userOrg:boolean  = true
 
   ngOnInit(): void {
-     this.fetchUser();
+    //  this.fetchUser();
   }
 
   constructor(private authServe:AuthServiceService) {}
 
-  fetchUser(){
-    this.authServe.fetchUser().subscribe(response=>{
-      console.log(response)
-      if(response.user.org_id == null){
-        this.userOrg = false
-      }else{
-        this.userOrg = true
-      }
-    }, error=>{
-      // console.log(error)
-    })
-  }
+  // fetchUser(){
+  //   this.authServe.fetchUser().subscribe(response=>{
+  //     console.log(response)
+  //     if(response.user.org_id == null){
+  //       this.userOrg = false
+  //     }else{
+  //       this.userOrg = true
+  //     }
+  //   }, error=>{
+  //     // console.log(error)
+  //   })
+  // }
 
   toggleModal() {
     this.showModal = !this.showModal;

@@ -45,6 +45,7 @@ export class EventService {
   
       return this.http.get<any>(`${BASE_URL}get_org_events`,  { headers });
   }
+  
 
   fetchEventCategories():Observable<any>{
     const token = this.authService.getToken();

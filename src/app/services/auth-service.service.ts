@@ -67,5 +67,10 @@ export class AuthServiceService {
     );
   }
 
+ 
+  submitEmail(userDetails:any){
+    return this.httpClient.post<any>(`${BASE_URL}marketing_email`, userDetails);
+  }
+
 
 }

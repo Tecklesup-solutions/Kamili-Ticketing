@@ -1,25 +1,43 @@
-.container-fluid{
-    .row-items{
-        display: flex;
-
-        .left{
-            height: 100% !important;
-            width: fit-content;
+.container-fluid {
+    .row-items {
+      display: flex;
+  
+      .left {
+        /* Adjust the top value according to your needs */
+        position: sticky;
+        top: 0; /* Stick to the top of the viewport */
+        height: 100% !important;
+        width: fit-content;
+        z-index: 100; /* Ensure it's above other content */
+      }
+  
+      .right {
+        padding-top: 1rem;
+        width: 100%;
+        padding-left: 1rem;
+  
+        .btn-create {
+          background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+          color: white;
+          border: none;
+          padding: 0.5rem 3rem;
+          border-radius: 2rem;
         }
-        .right{
-            padding-top: 1rem;
-            width: 100%;
-            padding-left: 1rem;
-           
-
-            .btn-create{
-                background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
-                color: white;
-                border: none;
-                padding: 0.5rem 3rem;
-                border-radius: 2rem;
+  
+        .events {
+          .row {
+            div {
+              .card {
+                text-align: center;
+                padding-top: 1rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+              }
             }
+          }
         }
-
+      }
     }
-}
+  }
+  

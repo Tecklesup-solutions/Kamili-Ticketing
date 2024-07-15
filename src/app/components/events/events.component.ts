@@ -1,40 +1,81 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { EventsService } from 'src/app/services/events.service';
+import { PaginatorComponent } from '../paginator/paginator.component';
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.scss']
 })
-export class EventsComponent implements OnInit, OnDestroy {
+export class EventsComponent implements AfterViewInit, OnDestroy {
+
+  @ViewChild(PaginatorComponent)
+  paginatorComponent!: PaginatorComponent;
+
+  @Output() pageDataUpdated = new EventEmitter<{ currentPage: number; totalPages: number }>();
+
+  
+  totalPages !: number ;
+  currentPage !: number;
+  onPageChange(page: number): void {
+    this.currentPage = page;
+    this.fetchEvents(page);
+  }
+
+
   events: any[] = [];
   visibleEvents: any[] = [];
-  pageSize = 6;
+  
+  pageSize = 9; // Number of items per page
+  totalEvents = 0;
+  noEventsFound: boolean = false;
   private subscription: Subscription;
+
 
   constructor(
     private eventsService$: EventsService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef,
   ) {
     this.subscription = new Subscription();
   }
 
-  ngOnInit(): void {
-    this.fetchEvents();
+
+ 
+
+
+  ngAfterViewInit(): void {
+    this.fetchEvents(1); // Fetch events starting from the first page
+    setTimeout(() => {
+      this.pageDataUpdated.emit({ currentPage: this.currentPage, totalPages: this.totalPages });
+      this.cdr.detectChanges(); 
+    }, 100); 
+
+    console.log("pages "+ this.totalPages)
   }
+  
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  fetchEvents(): void {
+  fetchEvents(page: number): void {
     this.subscription.add(
-      this.eventsService$.fetchEvents().subscribe(
+      this.eventsService$.fetchEvents(page).subscribe(
         (response) => {
-          this.events = response.events;
-          this.visibleEvents = [...this.events]; // Initially display all events
+          console.log(response)
+          if (response.status) {
+            this.events = response.events.data;
+            this.visibleEvents = [...this.events];
+            this.totalEvents = response.total;
+            this.totalPages = response.events.last_page
+            this.currentPage = response.events.current_page
+            this.pageDataUpdated.emit({ currentPage: this.currentPage, totalPages: this.totalPages });
+          } else {
+            console.error('Invalid response format:', response);
+          }
         },
         (error) => {
           console.error('Error fetching events:', error);
@@ -42,6 +83,10 @@ export class EventsComponent implements OnInit, OnDestroy {
       )
     );
   }
+  
+  
+  
+  
 
   purchaseTicket(id: number): void {
     const selectedEvent = this.events.find(event => event.id === id);
@@ -57,9 +102,15 @@ export class EventsComponent implements OnInit, OnDestroy {
   filterEventsByCategory(event: any): void {
     const categoryId = event.target.value;
     if (!categoryId || categoryId === '') {
-      this.visibleEvents = [...this.events]; // Show all events if 'All' is selected
+      this.visibleEvents = [...this.events]; 
     } else {
       this.visibleEvents = this.events.filter(event => event.category_id.toString() === categoryId);
+    }
+
+    if (this.visibleEvents.length === 0) {
+      this.noEventsFound = true; // Set flag to true to show error message
+    } else {
+      this.noEventsFound = false; // Reset flag if events are found
     }
   }
 
@@ -84,5 +135,6 @@ export class EventsComponent implements OnInit, OnDestroy {
     }
   }
 
- 
+  
+
 }

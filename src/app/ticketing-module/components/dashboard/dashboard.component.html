@@ -15,7 +15,7 @@
           <div class="col-md-3 col-sm-6 mt-3" *ngFor="let event of events">
             <div class="card border-0 shadow-lg" style="width: 18rem;">
               <!-- Display event image dynamically -->
-              <img class="card-img-top" [src]="event.image" alt="Card image cap" style="height: 12rem;">
+              <img class="card-img-top" [src]="event.image" alt="Card image cap" style="height: 10rem;width: 10rem; ">
               <div class="card-body">
                 <h5 class="card-title">{{ event.name }}</h5>
                 <p class="card-text">Date: {{ event.event_date }}</p>

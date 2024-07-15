@@ -63,9 +63,12 @@
         }
     }
 
-
 }
 
+.text-danger{
+    font-weight: 400;
+    font-size: 2rem;
+}
 
 @media only screen and (min-width: 601px) and (max-width: 980px) {
     .container-fluid{

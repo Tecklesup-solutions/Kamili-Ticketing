@@ -35,9 +35,16 @@
         <div class="col-md-3 col-sm-12">
           <p>Stay in The loop</p>
           <p>Join our mailing list to stay in the loop with our newest for Event and concert</p>
-          <div class="input">
-            <input type="text" class="input-text" placeholder="Enter your email address">
-            <button class="btn-subscribe">Subscribe Now</button>
+
+          <div *ngIf="subscriptionMessage" class="subscription-message">
+            {{ subscriptionMessage }}
+          </div>
+          <div class="input container">
+            <form [formGroup]="newsLetterForm" (ngSubmit)="onSubmit()">
+              <input type="email" class="input-text" placeholder="Enter your email address" formControlName="email">
+              <button class="btn-subscribe" type="submit">Subscribe Now</button>
+            </form>
+            
           </div>
         </div>
       </div>

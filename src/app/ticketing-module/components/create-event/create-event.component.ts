@@ -71,8 +71,10 @@ export class CreateEventComponent implements OnInit, OnDestroy {
     this.subscription = this.eventsService.createEvent(formData).subscribe(
       response => {
         this.loading = false;
-        this.router.navigate(['/ticketing']);
-        console.log('Response:', response);
+  
+        if(response.status == true){
+          this.router.navigate(['/ticketing']);
+        }
       },
       error => {
         this.loading = false;

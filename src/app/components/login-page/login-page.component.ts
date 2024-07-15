@@ -27,15 +27,15 @@ export class LoginPageComponent {
     event?.preventDefault()
     this.loading=true
     this.authService.loginUser(this.loginForm.value).subscribe(response=>{
+      this.loading = true;
       if(response.success){
-        console.log(response)
         this.authService.storeToken(response.token);
         this.loading=false
         if(response.user.org_id == null && response.user.single_user == false ){
           this.router.navigate(['choose_account']);
         }else{
-          
           this.router.navigate(['ticketing']);
+          this.loading = false;
         }
         
       }else{

@@ -1,5 +1,7 @@
 <div class="container-fluid">
-  <div class="row-items" *ngIf="userOrg">
+  <div class="row-items" 
+
+  >
     <div class="left">
       <!-- Include app-sidenav component (assuming it's a custom component) -->
       <app-sidenav></app-sidenav>
@@ -13,10 +15,9 @@
       <app-show-queries *ngIf="!showModal"></app-show-queries>
       <app-create-queries *ngIf="showModal" (queryCreated)="handleQueryCreated()"></app-create-queries>
     </div>
+   
   </div>
-  <div class="organization-check"*ngIf="!userOrg">
+  <!-- <div class="organization-check"*ngIf="!userOrg">
     <app-organization-check></app-organization-check>
-  </div>
-
-
+  </div> -->
 </div>

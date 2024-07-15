@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 import { OrganizationDetailsComponent } from './components/organization-details/organization-details.component';
 import { VerifyLoginComponent } from './components/verify-login/verify-login.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 
 
@@ -44,6 +45,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
     OrganizationDetailsComponent,
     VerifyLoginComponent,
     PrivacyPolicyComponent,
+    PaginatorComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,11 +12,12 @@ export class EventsService {
 
   constructor(private http:HttpClient, private $authServ :AuthServiceService) { }
 
-  fetchEvents():Observable<any>{
-    const url = BASE_URL + 'get_events';
-    return this.http.get<any>(url)
-  }
 
+  
+  fetchEvents(page: number): Observable<any> {
+    const url = `${BASE_URL}get_events?page=${page}&per_page=6`; 
+    return this.http.get<any>(url);
+  }
 
   
 
