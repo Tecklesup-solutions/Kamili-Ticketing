@@ -63,6 +63,7 @@ export class EventsComponent implements AfterViewInit, OnDestroy {
     this.subscription.add(
       this.eventsService$.fetchEvents(page).subscribe(
         (response) => {
+          console.log(response)
           if (response.status) {
             this.events = response.events.data;
             this.visibleEvents = [...this.events];

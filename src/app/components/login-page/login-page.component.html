@@ -19,10 +19,16 @@
               </div>
               <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="text-danger">
                 Password is required.
-              </div>              
-              <div class="forgot">
-                <a (click)="forgotPassword()" class="link">Forgot password?</a>
               </div>
+              <div class="links-nav">
+                <div class="home">
+                  <a (click)="homePage()" class="link">Home Page</a>
+                </div>              
+                <div class="forgot">
+                  <a (click)="forgotPassword()" class="link">Forgot password?</a>
+                </div>
+              </div>
+              
              <div class="button" *ngIf="!loading">
               <button type="submit" class="btn-login mt-3" >Login</button>
              </div>

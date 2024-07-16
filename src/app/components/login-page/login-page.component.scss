@@ -16,16 +16,20 @@
             font-weight: bold;
             font-size: 2rem;
             text-align: center;
+            color:#5522CC;
         }
         p{
             font-size: larger;
         }
         
         form{
-            .forgot{
+            .links-nav{
                 display: flex;
-                justify-content: flex-end;
+                flex-direction: row;
+                justify-content: space-between;
+                padding-top: 1rem;
             }
+            
             .form-group{
                 label{
                     font-size: medium;

@@ -50,7 +50,10 @@ export class LoginPageComponent {
   }
 
   registerRoute() {
-    this.router.navigate(['register'])
+    this.router.navigate(['register']);
+  }
+  homePage(){
+    this.router.navigate(['']);
   }
 
   forgotPassword(){

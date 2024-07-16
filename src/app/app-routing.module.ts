@@ -11,10 +11,11 @@ import { OrganizationDetailsComponent } from './components/organization-details/
 import { VerifyLoginComponent } from './components/verify-login/verify-login.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { ResetPasswordFormComponent } from './components/reset-password-form/reset-password-form.component';
 
 
 const routes: Routes = [
-  // { path: '', component: LandingPageComponent },
+
   {path:'login', component:LoginPageComponent},
   {path:'register', component:RegisterPageComponent},
   {path:'confirm_email', component:ConfirmEmailComponent},
@@ -25,8 +26,9 @@ const routes: Routes = [
   {path:'purchase_ticket/:id', component:PurchaseTicketComponent},
   {path:'verify/:id', component:VerifyLoginComponent},
   {path:'privacy-policy', component:PrivacyPolicyComponent},
-  {path:'forget-pass', component:ForgetPasswordComponent}
- 
+  {path:'forget-pass', component:ForgetPasswordComponent},
+  {path:'reset-password/:token', component:ResetPasswordFormComponent},
+
 ];
 
 @NgModule({

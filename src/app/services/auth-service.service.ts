@@ -34,7 +34,6 @@ export class AuthServiceService {
   fetchUser(){
     
     const url = `${BASE_URL}` + 'fetch_user';
-
     // Get token from AuthServiceService
     const token = this.getToken();
 
@@ -74,6 +73,10 @@ export class AuthServiceService {
 
   forgetPassword(userDetails:any){
     return this.httpClient.post<any>(`${BASE_URL}forgot-password`, userDetails);
+  }
+
+  resetPassword(userDetails:any){
+    return this.httpClient.post<any>(`${BASE_URL}reset-password`, userDetails);
   }
 
 }
