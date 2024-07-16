@@ -25,6 +25,8 @@ import { OrganizationDetailsComponent } from './components/organization-details/
 import { VerifyLoginComponent } from './components/verify-login/verify-login.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { ResetPasswordFormComponent } from './components/reset-password-form/reset-password-form.component';
 
 
 
@@ -46,6 +48,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     VerifyLoginComponent,
     PrivacyPolicyComponent,
     PaginatorComponent,
+    ForgetPasswordComponent,
+    ResetPasswordFormComponent,
   ],
   imports: [
     BrowserModule,

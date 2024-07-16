@@ -21,7 +21,7 @@
                 Password is required.
               </div>              
               <div class="forgot">
-                <a href="" class="link">Forgot password?</a>
+                <a (click)="forgotPassword()" class="link">Forgot password?</a>
               </div>
              <div class="button" *ngIf="!loading">
               <button type="submit" class="btn-login mt-3" >Login</button>

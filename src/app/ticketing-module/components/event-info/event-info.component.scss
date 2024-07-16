@@ -1,9 +1,10 @@
 .container-fluid{
+    
     .row-items{
         display: flex;
 
         .left{
-            height: 100% !important;
+            height: 100% ;
             width: fit-content;
             position: fixed;
         }
@@ -17,17 +18,30 @@
                 width: 60%;
                 // padding: 2rem;
                 height: fit-content;
+                padding: 2rem 0;
                 .card-items{
                     display: flex;
                     flex-direction: row;
                     .left-card{
                         width: 50%;
                         justify-content: center;
+
+                        .event-name{
+                            font-weight:bold;
+                            font-size: 2rem;
+                        }
                        }
                        .right-card{
                         .row{
                             display: flex;
                             justify-content: space-between;
+                            .custom-button{
+                                background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+                                color: white;
+                                border: none;
+                                padding: 0.5rem 3rem;
+                                border-radius: 2rem;
+                            }
                         }
                         
                        }

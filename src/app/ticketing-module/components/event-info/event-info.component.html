@@ -9,7 +9,7 @@
         <div class="card border-0 shadow-lg">
           <div class="card-items">
             <div class="left-card">
-              <h3>Event Name: {{ eventDetails?.name }}</h3>
+              <h3 class="event-name">{{ eventDetails?.name }}</h3>
               <!-- Assuming imageUrl is a property in your eventDetails -->
               <img [src]="eventDetails?.image" alt="Event Image" height="200px" width="200px">
             </div>
@@ -22,12 +22,12 @@
   
               <div class="row">
                 
-                  <button class="btn btn-success" (click)="navigateToAttendeesList()">
+                  <button class="custom-button" (click)="navigateToAttendeesList()">
                     View Attendees
                   </button>
               
                 
-                  <button class="btn btn-danger" (click)="deleteEvent(eventDetails.id)">
+                  <button class="custom-button" (click)="deleteEvent(eventDetails.id)">
                     Delete Event
                   </button>
               

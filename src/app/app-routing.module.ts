@@ -10,6 +10,7 @@ import { ChooseAccountComponent } from './components/choose-account/choose-accou
 import { OrganizationDetailsComponent } from './components/organization-details/organization-details.component';
 import { VerifyLoginComponent } from './components/verify-login/verify-login.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:'', component:EventsComponent},
   {path:'purchase_ticket/:id', component:PurchaseTicketComponent},
   {path:'verify/:id', component:VerifyLoginComponent},
-  {path:'privacy-policy', component:PrivacyPolicyComponent}
+  {path:'privacy-policy', component:PrivacyPolicyComponent},
+  {path:'forget-pass', component:ForgetPasswordComponent}
  
 ];
 

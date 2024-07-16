@@ -13,7 +13,7 @@ export class PurchaseTicketComponent implements OnInit {
   eventId!: number;
   showSpinner: boolean = false;
   showImageModal: boolean = false; // Flag to control image modal display
-  event: any = null;
+  event: any = '';
   remaining_tickets!: number;
 
   ticketingForm!: FormGroup;
@@ -80,46 +80,54 @@ export class PurchaseTicketComponent implements OnInit {
 
   purchaseTickets() {
     this.showSpinner = true;
-
+  
     // Get the number of tickets user wants to purchase
     const noTickets = parseInt(this.ticketingForm.get('noTickets')?.value, 10);
-
-    if (this.remaining_tickets == 0) {
-      alert("Event Sold out!")
+  
+    if (this.remaining_tickets === 0) {
+      alert("Event Sold out!");
       this.resetTicketingForm();
       this.showSpinner = false;
       return;
     } else if (noTickets > this.remaining_tickets) {
-      console.log("remaining tickets is " + this.remaining_tickets);
-      alert("Not enough tickets available")
+      alert("Not enough tickets available");
       this.resetTicketingForm();
       this.showSpinner = false;
       return;
     }
-
+  
     this.$events.purchaseTickets(this.eventId, this.ticketingForm.value).subscribe(
       (response: any) => {
-        const pdfData = response.pdf;
+        const pdfData = response.pdf_data; // Ensure this matches your backend response key
+    
         const blob = this.base64toBlob(pdfData, 'application/pdf');
         const blobUrl = URL.createObjectURL(blob);
-
+    
         const link = document.createElement('a');
         link.href = blobUrl;
         link.download = 'tickets.pdf';
         document.body.appendChild(link);
-
+    
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(blobUrl);
-
+    
         this.showSpinner = false;
         this.router.navigate(['']);
       },
       (error) => {
+        console.error('Error purchasing tickets:', error);
+        if (error.error && error.error.message) {
+          alert(`Error: ${error.error.message}`);
+        } else {
+          alert('Failed to purchase tickets. Please try again later.');
+        }
+    
         this.showSpinner = false;
       }
-    );
+    );    
   }
+  
 
   openImageModal() {
     this.showImageModal = true;
@@ -131,23 +139,24 @@ export class PurchaseTicketComponent implements OnInit {
 
   private base64toBlob(base64Data: string, contentType: string): Blob {
     const sliceSize = 512;
-    const byteCharacters = atob(base64Data);
+    const byteCharacters = atob(base64Data.trim());
     const byteArrays = [];
 
     for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-      const slice = byteCharacters.slice(offset, offset + sliceSize);
+        const slice = byteCharacters.slice(offset, offset + sliceSize);
 
-      const byteNumbers = new Array(slice.length);
-      for (let i = 0; i < slice.length; i++) {
-        byteNumbers[i] = slice.charCodeAt(i);
-      }
+        const byteNumbers = new Array(slice.length);
+        for (let i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+        }
 
-      const byteArray = new Uint8Array(byteNumbers);
-      byteArrays.push(byteArray);
+        const byteArray = new Uint8Array(byteNumbers);
+        byteArrays.push(byteArray);
     }
 
     return new Blob(byteArrays, { type: contentType });
-  }
+}
+
 
   resetTicketingForm() {
     this.ticketingForm.reset({
