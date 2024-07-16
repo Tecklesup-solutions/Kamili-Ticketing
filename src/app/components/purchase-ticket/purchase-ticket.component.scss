@@ -25,3 +25,40 @@
         border-radius: 2rem;
     }
 }
+
+
+/* purchase-ticket.component.scss */
+.container {
+    position: relative; /* Ensure relative positioning for modal overlay */
+  }
+  
+  .image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure modal is on top of everything */
+  }
+  
+  .expanded-image {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain; /* Fit the image within the modal */
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  

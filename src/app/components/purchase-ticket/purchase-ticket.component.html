@@ -1,94 +1,92 @@
 <!-- purchase-ticket.component.html -->
 <div class="container">
   <form [formGroup]="ticketingForm">
-  <div class="row">
-    <!-- Left column with event details -->
-          
-    <div class="col-md-6 col-sm-12">
-      <!-- Display event details -->
-      <p>{{ event.name }}</p>
-      <p>Kes . {{ event.ticket_price }}</p>
-      <p> <b>{{ remaining_tickets == 0 ? 'Events Sold Out!' : 'Tickets Available' }}</b></p>
-      <p>Remaining Tickets : {{ remaining_tickets }}</p>
-      
-      <img class="card-img-top" [src]="event.image" alt="Card image cap" style="height: 10rem;width: 10rem;">
-      <!-- Display total cost based on selected quantity -->
-      <div class="row mt-3">
-        <div class="col">
-          <p>Total</p>
-        </div>
-        <div class="col">
-          <p>{{ 'KSH ' + ticketingForm.get('totalCost')?.value }}</p>
-        </div>
-      </div>
-    </div>
+    <div class="row">
+      <!-- Left column with event details -->
+      <div class="col-md-6 col-sm-12">
+        <!-- Display event details -->
+        <p>{{ event.name }}</p>
+        <p>Kes . {{ event.ticket_price }}</p>
+        <p><b>{{ remaining_tickets == 0 ? 'Events Sold Out!' : 'Tickets Available' }}</b></p>
+        <p>Remaining Tickets : {{ remaining_tickets }}</p>
 
-    <!-- Right column with form inputs -->
-    <div class="col-md-6 col-sm-12">
-      <!-- Quantity selection -->
-      <p>Quantity</p>
+        <!-- Clickable image to open modal -->
+        <img class="card-img-top clickable-image" [src]="event.image" alt="Card image cap" (click)="openImageModal()"style="height: 10rem;width: 10rem;">
 
-      <div class="btn-group" role="group">
-        <button type="button" class="btn btn-secondary" (click)="decreaseQuantity()">-</button>
-        <input type="number" class="form-control text-center" style="color: black;" formControlName="noTickets" [readonly]="true">
-        <button type="button" class="btn btn-secondary" (click)="increaseQuantity()">+</button>
-      </div>
-      
-
-      <!-- Payment method selection -->
-      <!-- <p>Payment Method</p>
-      <div class="row">
-        <div class="col-md-6 col-sm-12">
-          <button class="button">Mpesa</button>
-        </div>
-        <div class="col">
-          <button class="button">Card</button>
-        </div>
-      </div> -->
-
-      <!-- Personal information inputs -->
-      <div class="row">
-        <div class="col">
-          <div class="form-group mt-3">
-            <label for="firstName">First Name *</label>
-            <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" formControlName="firstName" required>
+        <div class="row mt-3">
+          <div class="col">
+            <p>Total</p>
           </div>
-        </div>
-        <div class="col-md-6 col-sm-12">
-          <div class="form-group mt-3">
-            <label for="lastName">Last Name *</label>
-            <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" formControlName="lastName" required>
+          <div class="col">
+            <p>{{ 'KSH ' + ticketingForm.get('totalCost')?.value }}</p>
           </div>
         </div>
       </div>
 
-      <div class="form-group mt-3">
-        <label for="phoneNumber">Phone Number *</label>
-        <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" formControlName="phoneNumber" required>
-      </div>
+      <!-- Right column with form inputs -->
+      <div class="col-md-6 col-sm-12">
+        <!-- Quantity selection -->
+        <p>Quantity</p>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-secondary" (click)="decreaseQuantity()">-</button>
+          <input type="number" class="form-control text-center" style="color: black;" formControlName="noTickets"
+            [readonly]="true">
+          <button type="button" class="btn btn-secondary" (click)="increaseQuantity()">+</button>
+        </div>
 
-      <div class="form-group mt-3">
-        <label for="email">Email Address</label>
-        <input type="email" class="form-control" id="email" placeholder="Email Address" formControlName="email" required>
-      </div>
+        <!-- Personal information inputs -->
+        <div class="row">
+          <div class="col">
+            <div class="form-group mt-3">
+              <label for="firstName">First Name *</label>
+              <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" formControlName="firstName"
+                required>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group mt-3">
+              <label for="lastName">Last Name *</label>
+              <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" formControlName="lastName"
+                required>
+            </div>
+          </div>
+        </div>
 
-      <button class="button mt-3" (click)="purchaseTickets()" [disabled]="event.remaining_tickets === 0 || ticketingForm.get('noTickets')?.value > event.remaining_tickets">
-        PAY NOW
-      </button>
-      
-      <!-- Display error message if no tickets remaining -->
-      <p *ngIf="event.remaining_tickets === 0" class="text-danger">Events Sold Out!</p>
-      
-      <!-- Display error message if user tries to purchase more tickets than available -->
-      <p *ngIf="ticketingForm.get('noTickets')?.value > event.remaining_tickets" class="text-danger">Not enough tickets remaining!</p>
-      
-      
+        <div class="form-group mt-3">
+          <label for="phoneNumber">Phone Number *</label>
+          <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" formControlName="phoneNumber"
+            required>
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="email">Email Address</label>
+          <input type="email" class="form-control" id="email" placeholder="Email Address" formControlName="email" required>
+        </div>
+
+        <button class="button mt-3" (click)="purchaseTickets()"
+          [disabled]="event.remaining_tickets === 0 || ticketingForm.get('noTickets')?.value > event.remaining_tickets">
+          PAY NOW
+        </button>
+
+        <!-- Display error message if no tickets remaining -->
+        <p *ngIf="event.remaining_tickets === 0" class="text-danger">Events Sold Out!</p>
+
+        <!-- Display error message if user tries to purchase more tickets than available -->
+        <p *ngIf="ticketingForm.get('noTickets')?.value > event.remaining_tickets" class="text-danger">Not enough tickets
+          remaining!</p>
+
+      </div>
     </div>
-  </div>
 
-  <!-- Spinner for loading state -->
-  <div class="spinner" *ngIf="showSpinner">
-    <mat-spinner></mat-spinner>
+    <!-- Spinner for loading state -->
+    <div class="spinner" *ngIf="showSpinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </form>
+
+  <!-- Image modal overlay -->
+  <div class="image-modal" *ngIf="showImageModal">
+    <img class="expanded-image" [src]="event.image" alt="Expanded Image">
+    <button class="close-button" (click)="closeImageModal()">Close</button>
   </div>
-</form>
 </div>

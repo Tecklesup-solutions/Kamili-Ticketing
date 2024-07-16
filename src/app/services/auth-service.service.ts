@@ -28,7 +28,7 @@ export class AuthServiceService {
   }
 
   verifyUser(id: string) {
-    return this.httpClient.get(`${BASE_URL}/verify/${id}`);
+    return this.httpClient.get(`${BASE_URL}verify/${id}`);
   }
 
   fetchUser(){

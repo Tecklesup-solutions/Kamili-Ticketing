@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 
@@ -18,11 +18,11 @@ export class LoginPageComponent {
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl(''),
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
     });
+    
   }
-
   onSubmit() {
     this.loading=true
     event?.preventDefault()

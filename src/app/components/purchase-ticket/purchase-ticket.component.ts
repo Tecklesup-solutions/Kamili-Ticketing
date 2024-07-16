@@ -1,3 +1,4 @@
+// purchase-ticket.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,21 +12,22 @@ import { EventsService } from 'src/app/services/events.service';
 export class PurchaseTicketComponent implements OnInit {
   eventId!: number;
   showSpinner: boolean = false;
+  showImageModal: boolean = false; // Flag to control image modal display
   event: any = null;
-  remaining_tickets!:number;
+  remaining_tickets!: number;
 
   ticketingForm!: FormGroup;
 
   constructor(
-    private route: ActivatedRoute, 
-    private $events: EventsService, 
+    private route: ActivatedRoute,
+    private $events: EventsService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.eventId = +params['id'];
-      this.fetchEvent(); 
+      this.fetchEvent();
     });
 
     this.ticketingForm = new FormGroup({
@@ -33,10 +35,10 @@ export class PurchaseTicketComponent implements OnInit {
       lastName: new FormControl(''),
       email: new FormControl(''),
       phoneNumber: new FormControl(''),
-      noTickets: new FormControl(1), 
+      noTickets: new FormControl(1),
       totalCost: new FormControl()
     });
-  
+
     // Subscribe to changes in noTickets to calculate totalCost dynamically
     this.ticketingForm.get('noTickets')?.valueChanges.subscribe(value => {
       if (this.event) {
@@ -48,7 +50,7 @@ export class PurchaseTicketComponent implements OnInit {
       }
     });
   }
-  
+
   increaseQuantity() {
     let currentValue = this.ticketingForm.get('noTickets')?.value;
     currentValue++;
@@ -66,11 +68,8 @@ export class PurchaseTicketComponent implements OnInit {
   fetchEvent() {
     this.$events.fetchSingleEvent(this.eventId).subscribe(
       (response: any) => {
-  
         this.event = response.event;
-        
-        this.remaining_tickets = parseInt(response.remaining_tickets)
-      
+        this.remaining_tickets = parseInt(response.remaining_tickets);
         this.ticketingForm.patchValue({ totalCost: this.event.ticket_price });
       },
       (error) => {
@@ -81,50 +80,54 @@ export class PurchaseTicketComponent implements OnInit {
 
   purchaseTickets() {
     this.showSpinner = true;
-    
+
     // Get the number of tickets user wants to purchase
     const noTickets = parseInt(this.ticketingForm.get('noTickets')?.value, 10);
 
-    if(this.remaining_tickets == 0 ){
+    if (this.remaining_tickets == 0) {
       alert("Event Sold out!")
-      this.resetTicketingForm()
+      this.resetTicketingForm();
       this.showSpinner = false;
-      return
-    }else if(noTickets > this.remaining_tickets){
+      return;
+    } else if (noTickets > this.remaining_tickets) {
       console.log("remaining tickets is " + this.remaining_tickets);
       alert("Not enough tickets available")
-      this.resetTicketingForm()
+      this.resetTicketingForm();
       this.showSpinner = false;
-      return
+      return;
     }
-  
-  
-  
+
     this.$events.purchaseTickets(this.eventId, this.ticketingForm.value).subscribe(
       (response: any) => {
         const pdfData = response.pdf;
         const blob = this.base64toBlob(pdfData, 'application/pdf');
         const blobUrl = URL.createObjectURL(blob);
-  
+
         const link = document.createElement('a');
         link.href = blobUrl;
         link.download = 'tickets.pdf';
         document.body.appendChild(link);
-  
+
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(blobUrl);
-  
+
         this.showSpinner = false;
         this.router.navigate(['']);
       },
       (error) => {
-        console.error('Error purchasing tickets:', error);
         this.showSpinner = false;
       }
     );
   }
-  
+
+  openImageModal() {
+    this.showImageModal = true;
+  }
+
+  closeImageModal() {
+    this.showImageModal = false;
+  }
 
   private base64toBlob(base64Data: string, contentType: string): Blob {
     const sliceSize = 512;

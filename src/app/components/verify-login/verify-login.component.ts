@@ -10,6 +10,7 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 export class VerifyLoginComponent implements OnInit {
   id!: string; // Variable to store the ID from the URL
   verificationFailed: boolean = false; 
+  message !:string;
 
   constructor(private router: Router, 
               private route: ActivatedRoute, // Inject ActivatedRoute
@@ -19,15 +20,23 @@ export class VerifyLoginComponent implements OnInit {
     // Retrieve ID from the URL
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      this.router.navigate(['login']);
     });
 
     // Call the service method
-    this.authServ$.verifyUser(this.id).subscribe(response => {
-      // Handle the response
-    }, error => {
-      // Handle errors
-      this.verificationFailed = true;
-    });
+    this.authServ$.verifyUser(this.id).subscribe(
+      (response: any) => {
+        if (response.success) {
+          // Redirect or do something on successful verification
+          this.router.navigate(['login']);
+        } else {
+          this.verificationFailed = true;
+        }
+      },
+      error => {
+        // Handle HTTP errors
+        this.message = error.error.message
+        this.verificationFailed = true;
+      }
+    );
   }
 }
