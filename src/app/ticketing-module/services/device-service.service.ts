@@ -13,7 +13,6 @@ export class DeviceService {
    token = this.authService.getToken();
   createDevice(deviceDetails: any) {
     
-    
     // Prepare headers with Authorization Bearer token
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.token,

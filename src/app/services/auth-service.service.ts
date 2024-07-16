@@ -72,5 +72,8 @@ export class AuthServiceService {
     return this.httpClient.post<any>(`${BASE_URL}marketing_email`, userDetails);
   }
 
+  forgetPassword(userDetails:any){
+    return this.httpClient.post<any>(`${BASE_URL}forgot-password`, userDetails);
+  }
 
 }

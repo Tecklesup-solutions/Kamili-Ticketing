@@ -20,9 +20,6 @@ export class EventService {
 
     const token = this.authService.getToken();
 
-    // Get token from AuthServiceService
-    
-
     // Prepare headers with Authorization Bearer token
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + token
@@ -57,7 +54,7 @@ export class EventService {
   }
 
   fetchEventNames(): Observable<string[]> {
-    return this.fetchEvents().pipe(
+    return this.fetchOrgEvents().pipe(
       map(response => {
         // Extract event names from the response
         const eventNames: string[] = response.events.map((event: { name: any; }) => event.name);

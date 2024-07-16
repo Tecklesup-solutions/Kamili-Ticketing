@@ -23,18 +23,20 @@ export class CreateDeviceComponent implements OnInit {
   ngOnInit() {
     this.eventService.fetchEventNames().subscribe(
       response => {
-        this.eventNames = response; // Store fetched event names
+        console.log(response)
+        this.eventNames = response; 
       },
       error => {
+        console.log(error)
         
       }
     );
 
     this.deviceForm = new FormGroup({
-      device_name: new FormControl('', Validators.required), // Add Validators.required
-      device_location: new FormControl('', Validators.required), // Add Validators.required
-      device_pin: new FormControl('', Validators.required), // Add Validators.required
-      event: new FormControl('', Validators.required) // Add Validators.required
+      device_name: new FormControl('', Validators.required), 
+      device_location: new FormControl('', Validators.required), 
+      device_pin: new FormControl('', Validators.required), 
+      event: new FormControl('', Validators.required) 
     });
   }
 

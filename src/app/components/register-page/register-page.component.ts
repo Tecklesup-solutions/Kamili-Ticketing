@@ -33,7 +33,7 @@ export class RegisterPageComponent implements OnInit {
     this.authService.registerUser(this.registrationForm.value).subscribe(response => {
       // Optionally, navigate to another page after successful registration
       this.loading = false;
-      this.router.navigate(['confirm_email']); // Navigate to login page on success
+      this.router.navigate(['confirm_email'], { queryParams: { action: 'account_creation' } });
     }, error => {
       this.loading = false;
       this.errorMessage = error.message; // Display error message
