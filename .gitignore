@@ -43,3 +43,4 @@ Thumbs.db
 
 #live api url
 
+/src/app/constants.ts
