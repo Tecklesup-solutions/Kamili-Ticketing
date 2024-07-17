@@ -39,17 +39,25 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .body{
-        .card{
-            .spam{
-                font-weight: bold;
-                font-size: small;
-            }
-            .btn-upgrade{
-                width: fit-content;
-                border-radius: 2rem;
-            }
-        }
+    .card {
+      width: 80%; /* Adjust width for smaller screens */
+      padding: 2rem; /* Adjust padding for smaller screens */
+
+      .spam {
+        font-size: 0.7rem !important;
+      }
+
+      .btn-upgrade {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: fit-content; /* Make button full width on small screens */
+        margin-top: 1rem; /* Adjust spacing from paragraph */
+      }
+
+
+   
     }
 }
 

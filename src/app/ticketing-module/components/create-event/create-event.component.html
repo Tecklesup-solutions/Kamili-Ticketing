@@ -10,8 +10,8 @@
           (ngSubmit)="submitForm()"
           enctype="multipart/form-data"
         >
-          <div class="poster-section">
-            <div class="form-group">
+          <div class="poster-section row">
+            <div class="form-group col-md-6 col-sm-12">
               <label for="exampleFormControlFile1"
                 ><b>Add Existing poster</b></label
               >
@@ -23,7 +23,7 @@
                 accept="image/*"
               />
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6 col-sm-12">
               <button
                 type="button"
                 (click)="createPoster()"
