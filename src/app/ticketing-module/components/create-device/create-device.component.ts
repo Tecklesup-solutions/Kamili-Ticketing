@@ -12,6 +12,7 @@ import { EventService } from '../../services/event.service';
 export class CreateDeviceComponent implements OnInit {
   loading: boolean = false;
   deviceForm!: FormGroup;
+  message!:string;
   eventNames: string[] = []; // Property to hold event names
 
   constructor(
@@ -23,11 +24,10 @@ export class CreateDeviceComponent implements OnInit {
   ngOnInit() {
     this.eventService.fetchEventNames().subscribe(
       response => {
-        console.log(response)
         this.eventNames = response; 
       },
       error => {
-        console.log(error)
+        // console.log(error)
         
       }
     );
@@ -41,14 +41,20 @@ export class CreateDeviceComponent implements OnInit {
   }
 
   createDevice() {
+    this.message=""
     if (this.deviceForm.valid) { // Check if form is valid
       this.loading = true;
       this.deviceService.createDevice(this.deviceForm.value).subscribe(
         response => {
-          this.loading = false;
-          this.router.navigate(['ticketing/devices']);
+          console.log(response)
+          if(response.success){
+            this.loading = false;
+            window.location.reload();
+          }
         },
         error => {
+          console.log(error)
+          this.message = error.error.message;
           this.loading = false;
         }
       );
