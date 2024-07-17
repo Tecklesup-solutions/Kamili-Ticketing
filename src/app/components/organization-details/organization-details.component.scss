@@ -57,10 +57,110 @@
 }
 
 @media only screen and (min-width: 601px) and (max-width: 980px) {
-    
+    .container-fluid{
+        background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .card{
+            width: 100%;
+            padding: 1rem;
+            position: absolute;
+            .title{
+                font-size: 1rem;
+            }
+            .org-title{
+                text-align: center;
+            }
+            p{
+                font-size: larger;
+            }
+            form{
+                .forgot{
+                    display: flex;
+                    justify-content: flex-end;
+                }
+                .form-group{
+                    label{
+                        font-size: medium;
+                        font-weight: 500;
+                        padding: 1rem 0 0.5rem 0;
+                    }
+                }
+                .button{
+                    text-align: center;
+                    .btn-create{
+                        background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+                        color: white;
+                        border: none;
+                        padding: 0.5rem 3rem;
+                        border-radius: 2rem;
+                        margin-top: 2rem;
+                    }
+                }
+            }
+            .spinner {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+        }
+    }
 }
 
 @media only screen and (max-width: 600px) {
-   
-   
+    .container-fluid{
+        background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .card{
+            width: 100%;
+            position: absolute;  
+            padding: 0 1rem;  
+            .title{
+                font-size: 1rem;
+            }
+            .org-title{
+                text-align: center;
+            }
+            p{
+                font-size: larger;
+            }
+            form{
+                .forgot{
+                    display: flex;
+                    justify-content: flex-end;
+                }
+                .form-group{
+                    label{
+                        font-size: medium;
+                        font-weight: 500;
+                        padding: 1rem 0 0.5rem 0;
+                    }
+                }
+
+                .button{
+                    text-align: center;
+                    .btn-create{
+                        background-image: linear-gradient(to right, #ED4690 0%, #5522CC 100%) !important;
+                        color: white;
+                        border: none;
+                        padding: 0.5rem 3rem;
+                        border-radius: 2rem;
+                        margin-top: 2rem;
+                        font-size: 1rem;
+                    }
+                }
+
+            }
+            .spinner {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+        }
+    }
 }
