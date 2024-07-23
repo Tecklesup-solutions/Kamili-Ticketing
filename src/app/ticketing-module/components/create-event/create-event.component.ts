@@ -16,6 +16,7 @@ export class CreateEventComponent implements OnInit, OnDestroy {
   eventsForm: FormGroup;
   loading: boolean = false;
   categories: any[] = [];
+  imageUrl:any;
 
   ticketPriceOptions: string[] = ['Amount', 'Free']; 
 
@@ -50,8 +51,18 @@ export class CreateEventComponent implements OnInit, OnDestroy {
     );
   }
 
+  // onFileSelected(event: any): void {
+  //   this.fileToUpload = event.target.files[0];
+  // }
   onFileSelected(event: any): void {
     this.fileToUpload = event.target.files[0];
+    if (this.fileToUpload) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imageUrl = e.target.result; // Set the image preview URL
+      };
+      reader.readAsDataURL(this.fileToUpload);
+    }
   }
 
   submitForm(): void {

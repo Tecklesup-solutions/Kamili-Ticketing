@@ -12,13 +12,31 @@
             width: 100%;
             padding-top: 10rem;
             .card{
-                width: 80%;
+                width: 100%;
                 padding: 2rem;
                 height: fit-content;
 
                 .poster-section{
                     display: flex;
                     justify-content: space-between;
+
+                    .form-group{
+                   
+                        .image-section {
+                            height: 20rem;
+                            width: 20rem;
+                            border: 1px solid black;
+                            text-align: center;
+                            overflow: hidden; 
+                          }
+                          
+                          .image-section img {
+                            max-width: 100%; /* Ensure the image fits within the container */
+                            max-height: 100%; /* Ensure the image fits within the container */
+                            display: block; /* Remove any default inline spacing */
+                            object-fit: contain; /* Maintain aspect ratio and fit within container */
+                          }
+                    }
                 }
 
                 form{
@@ -69,6 +87,27 @@
                     .poster-section{
                         display: flex;
                         flex-direction: column-reverse;
+
+                        .form-group{
+                            .image-section {
+                                height: 10rem;
+                                width: 10rem;
+                                border: 1px solid black;
+                                text-align: center;
+                                overflow: hidden; 
+                                margin: 1rem 0;
+                              }
+                              
+                              .image-section img {
+                                max-width: 100%; /* Ensure the image fits within the container */
+                                max-height: 100%; /* Ensure the image fits within the container */
+                                display: block; /* Remove any default inline spacing */
+                                object-fit: contain; /* Maintain aspect ratio and fit within container */
+                              }
+                              button{
+                                margin: 1rem 0;
+                              }
+                        }
                        
                     }
     
