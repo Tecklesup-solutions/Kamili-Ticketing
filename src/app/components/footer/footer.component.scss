@@ -7,9 +7,16 @@ footer{
             .col-md-3{
                 text-align: center;
                 .logo{
-                   
+                    
                     img{
-                        height: 2rem;
+                        height:1.5rem;
+                        justify-content: space-evenly;
+                        padding: -5rem;
+                        margin-right: 4px;
+                       
+                        }
+                        img:hover{
+                            background-color: beige;
                     }
                 }
                 .input{
