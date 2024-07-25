@@ -1,8 +1,8 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { EventsService } from 'src/app/services/events.service';
 import { PaginatorComponent } from '../paginator/paginator.component';
+import { EventService } from 'src/app/ticketing-module/services/event.service';
 
 @Component({
   selector: 'app-events',
@@ -35,7 +35,7 @@ export class EventsComponent implements AfterViewInit, OnDestroy {
 
 
   constructor(
-    private eventsService$: EventsService,
+    private eventsService$: EventService,
     private router: Router,
     private cdr: ChangeDetectorRef,
   ) {
@@ -61,7 +61,7 @@ export class EventsComponent implements AfterViewInit, OnDestroy {
 
   fetchEvents(page: number): void {
     this.subscription.add(
-      this.eventsService$.fetchEvents(page).subscribe(
+      this.eventsService$.fetchPublicEvents(page).subscribe(
         (response) => {
           if (response.status) {
             this.events = response.events.data;

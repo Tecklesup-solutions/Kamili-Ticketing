@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { EventsService } from 'src/app/services/events.service';
-import { QueriesService } from '../../services/queriesService.service';
 import { EventService } from '../../services/event.service';
+
 
 @Component({
   selector: 'app-event-info',
@@ -19,7 +18,6 @@ export class EventInfoComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute, // Inject ActivatedRoute
-    private eventsService: EventsService,
     private $eventService : EventService
   ) {}
 
@@ -28,7 +26,7 @@ export class EventInfoComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.eventId = +params['id']; // Convert id to a number (assuming it's a number)
       // Fetch single event using the eventId
-      this.eventsService.fetchSingleEvent(this.eventId).subscribe(
+      this.$eventService.fetchSingleEvent(this.eventId).subscribe(
         response => {
           this.eventDetails = response.event; 
           this.remainingTickets = response.remaining_tickets;
@@ -62,6 +60,12 @@ export class EventInfoComponent implements OnInit {
         }
       );
     }
+  }
+
+
+  editEvent(id: number): void {
+    // Pass eventDetails to state object when navigating to edit screen
+    this.router.navigate(['ticketing/create-event', id, 'edit'], { state: { eventDetails: this.eventDetails } });
   }
 
 }

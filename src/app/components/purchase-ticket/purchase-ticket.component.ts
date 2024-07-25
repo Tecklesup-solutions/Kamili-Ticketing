@@ -2,7 +2,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EventsService } from 'src/app/services/events.service';
+import { EventService } from 'src/app/ticketing-module/services/event.service';
+
+
 
 @Component({
   selector: 'app-purchase-ticket',
@@ -20,7 +22,7 @@ export class PurchaseTicketComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private $events: EventsService,
+    private $events: EventService,
     private router: Router
   ) { }
 

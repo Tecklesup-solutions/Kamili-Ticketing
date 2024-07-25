@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EventsService } from 'src/app/services/events.service';
+import { EventService } from '../../services/event.service';
+
 
 @Component({
   selector: 'app-attendees-list',
@@ -14,7 +15,7 @@ export class AttendeesListComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute, // Inject ActivatedRoute
-    private eventsService: EventsService
+    private eventsService: EventService
   ) {}
 
   ngOnInit(): void {

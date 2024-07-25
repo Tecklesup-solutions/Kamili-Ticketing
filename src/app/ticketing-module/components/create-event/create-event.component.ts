@@ -1,9 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { EventService } from '../../services/event.service'; // Adjust path as needed
-
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-create-event',
@@ -12,54 +11,92 @@ import { EventService } from '../../services/event.service'; // Adjust path as n
 })
 export class CreateEventComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
-  fileToUpload: File | null = null; // Optional file upload
+  fileToUpload: File | null = null;
   eventsForm: FormGroup;
   loading: boolean = false;
   categories: any[] = [];
-  imageUrl:any;
-
-  ticketPriceOptions: string[] = ['Amount', 'Free']; 
+  imageUrl: any;
+  eventId!: number; // Define eventId
 
   constructor(
     private fb: FormBuilder,
     private eventsService: EventService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.subscription = new Subscription();
+    
+    // Initialize form and populate values if available
     this.eventsForm = this.fb.group({
       name: [''],
       capacity: [],
       venue: [''],
-      ticket_price: [''], // Form control for ticket price
-      posterImage: [''], // Form control for poster image
-      category_id: [''] // Form control for category
+      ticket_price: [''],
+      category_id: ['']
+    });
+
+    // Subscribe to route params to fetch eventId
+    this.route.params.subscribe(params => {
+      this.eventId = +params['id'];
+      // Retrieve eventDetails from state object
+      const navigationState = this.router.getCurrentNavigation()?.extras.state;
+      if (navigationState && navigationState['eventDetails']) {
+        // Populate form directly in constructor
+        this.eventsForm.patchValue({
+          name: navigationState['eventDetails'].name,
+          capacity: navigationState['eventDetails'].capacity,
+          venue: navigationState['eventDetails'].venue,
+          ticket_price: navigationState['eventDetails'].ticket_price,
+          category_id: navigationState['eventDetails'].category_id
+        });
+        this.imageUrl = navigationState['eventDetails'].image; // Assuming image URL is directly accessible
+      } else {
+        // Fetch event details if not available in state (handle initial create scenario)
+        this.fetchEventDetails(this.eventId);
+      }
     });
   }
 
   ngOnInit(): void {
-    this.fetchEventCategories(); // Fetch categories on component initialization
+    this.fetchEventCategories();
+  }
+
+  fetchEventDetails(eventId: number): void {
+    this.subscription = this.eventsService.fetchSingleEvent(eventId).subscribe(
+      (response: any) => {
+        // Populate form directly in constructor
+        this.eventsForm.patchValue({
+          name: response.event.name,
+          capacity: response.event.capacity,
+          venue: response.event.venue,
+          ticket_price: response.event.ticket_price,
+          category_id: response.event.category_id
+        });
+        this.imageUrl = response.event.image; // Assuming image URL is directly accessible
+      },
+      error => {
+        console.error('Error fetching event details', error);
+      }
+    );
   }
 
   fetchEventCategories(): void {
     this.subscription = this.eventsService.fetchEventCategories().subscribe(
       (response: any) => {
-        this.categories = response.categories; // Assuming categories are returned as an array under 'categories' key
+        this.categories = response.categories;
       },
       error => {
-        // console.log('Error fetching categories', error);
+        console.error('Error fetching categories', error);
       }
     );
   }
 
-  // onFileSelected(event: any): void {
-  //   this.fileToUpload = event.target.files[0];
-  // }
   onFileSelected(event: any): void {
     this.fileToUpload = event.target.files[0];
     if (this.fileToUpload) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.imageUrl = e.target.result; // Set the image preview URL
+        this.imageUrl = e.target.result;
       };
       reader.readAsDataURL(this.fileToUpload);
     }
@@ -74,23 +111,38 @@ export class CreateEventComponent implements OnInit, OnDestroy {
     formData.append('capacity', this.eventsForm.get('capacity')?.value);
     formData.append('venue', this.eventsForm.get('venue')?.value);
     formData.append('ticket_price', this.eventsForm.get('ticket_price')?.value);
-    formData.append('category_id', this.eventsForm.get('category_id')?.value); // Append category ID
-    formData.append('posterImage', this.eventsForm.get('posterImage')?.value); // Ensure posterImage is appended
+    formData.append('category_id', this.eventsForm.get('category_id')?.value);
     this.loading = true;
 
-    this.subscription = this.eventsService.createEvent(formData).subscribe(
-      response => {
-        this.loading = false;
-  
-        if(response.status == true){
-          this.router.navigate(['/ticketing']);
+    if (this.eventId) {
+      // Update existing event
+      this.subscription = this.eventsService.updateEvent(this.eventId, formData).subscribe(
+        response => {
+          this.loading = false;
+          if (response.status === true) {
+            this.router.navigate(['/ticketing']);
+          }
+        },
+        error => {
+          this.loading = false;
+          console.error('Error updating event:', error);
         }
-      },
-      error => {
-        this.loading = false;
-        console.error('Error:', error);
-      }
-    );
+      );
+    } else {
+      // Create new event
+      this.subscription = this.eventsService.createEvent(formData).subscribe(
+        response => {
+          this.loading = false;
+          if (response.status === true) {
+            this.router.navigate(['/ticketing']);
+          }
+        },
+        error => {
+          this.loading = false;
+          console.error('Error creating event:', error);
+        }
+      );
+    }
   }
 
   createPoster(): void {
