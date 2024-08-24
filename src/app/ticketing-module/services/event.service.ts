@@ -34,6 +34,21 @@ export class EventService {
     return this.http.get<any>(url)
   }
 
+
+
+  fetchPublicEvents(page: number): Observable<any> {
+    const url = `${BASE_URL}get_events?page=${page}&per_page=6`; 
+    return this.http.get<any>(url);
+  }
+
+ 
+
+
+  fetchSingleEvent(id:any):Observable<any>{
+    const url = BASE_URL + `fetchSingleEvent/${id}`;
+    return this.http.get<any>(url)
+  }  
+
   fetchOrgEvents():Observable<any>{
     const token = this.authService.getToken();
     const headers = new HttpHeaders({
@@ -71,6 +86,27 @@ export class EventService {
     });
 
     return this.http.delete<any>(url, { headers });
+  }
+
+  updateEvent(eventId: number, formData: FormData): Observable<any> {
+    const url = `${BASE_URL}update_event/${eventId}`;
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + token
+    });
+    // Use POST instead of PUT
+    return this.http.post<any>(url, formData, { headers });
+  }
+  
+
+  purchaseTickets(eventId: number, ticketDetails: any): Observable<any> {
+    const url = `${BASE_URL}buyTicket/${eventId}`;
+    return this.http.post<any>(url, ticketDetails);
+  }
+
+  fetchEventUsers(id:any):Observable<any>{
+    const url = BASE_URL + `fetchEventUsers/${id}`;
+    return this.http.get<any>(url)
   }
 
 }

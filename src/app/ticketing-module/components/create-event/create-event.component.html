@@ -12,6 +12,11 @@
         >
           <div class="poster-section row">
             <div class="form-group col-md-6 col-sm-12">
+
+              <div class="image-section" >
+                <img [src]="imageUrl || ''" alt="Selected Image Preview">
+              </div>
+              
               <label for="exampleFormControlFile1"
                 ><b>Add Existing poster</b></label
               >
@@ -22,8 +27,7 @@
                 (change)="onFileSelected($event)"
                 accept="image/*"
               />
-            </div>
-            <div class="form-group col-md-6 col-sm-12">
+              
               <button
                 type="button"
                 (click)="createPoster()"
@@ -32,61 +36,74 @@
                 Create Poster
               </button>
             </div>
+            <div class="form-group col-md-6 col-sm-12">
+              <!-- <button
+                type="button"
+                (click)="createPoster()"
+                class="btn-submit"
+              >
+                Create Poster
+              </button> -->
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  placeholder="Enter name"
+                  formControlName="name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="categorySelect">Category</label>
+                <select class="form-control" id="categorySelect" formControlName="category_id" required>
+                  <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="exampleInputCapacity">Capacity</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="exampleInputCapacity"
+                  placeholder="Enter capacity"
+                  formControlName="capacity"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputVenue">Venue</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputVenue"
+                  placeholder="Enter venue"
+                  formControlName="venue"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputTicketPrice">Ticket Price</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="exampleInputCapacity"
+                  placeholder="Enter capacity"
+                  formControlName="ticket_price"
+                />
+                <small>input 0 for free events</small>
+               
+              </div>
+    
+              <button type="submit" class="btn-submit" *ngIf="!loading">
+                Create Event
+              </button>
+
+
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="exampleInputEmail1">Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="exampleInputEmail1"
-              placeholder="Enter name"
-              formControlName="name"
-            />
-          </div>
-          <div class="form-group">
-            <label for="categorySelect">Category</label>
-            <select class="form-control" id="categorySelect" formControlName="category_id" required>
-              <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="exampleInputCapacity">Capacity</label>
-            <input
-              type="number"
-              class="form-control"
-              id="exampleInputCapacity"
-              placeholder="Enter capacity"
-              formControlName="capacity"
-            />
-          </div>
-          <div class="form-group">
-            <label for="exampleInputVenue">Venue</label>
-            <input
-              type="text"
-              class="form-control"
-              id="exampleInputVenue"
-              placeholder="Enter venue"
-              formControlName="venue"
-            />
-          </div>
-          <div class="form-group">
-            <label for="exampleInputTicketPrice">Ticket Price</label>
-            <input
-              type="number"
-              class="form-control"
-              id="exampleInputCapacity"
-              placeholder="Enter capacity"
-              formControlName="ticket_price"
-            />
-            <small>input 0 for free events</small>
-           
-          </div>
 
-          <button type="submit" class="btn-submit" *ngIf="!loading">
-            Create Event
-          </button>
           <div class="spinner" *ngIf="loading">
             <mat-spinner class="inner-spin"></mat-spinner>
           </div>

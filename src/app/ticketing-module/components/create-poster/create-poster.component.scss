@@ -38,3 +38,37 @@
         }
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .container-fluid{
+        .row-items{
+            
+            .right{
+                position: relative;
+                justify-content: center;
+                width: 100%;
+                padding-top: 1rem;
+                
+                
+    
+                .card {
+                    // position: absolute;
+                    // left: 50%;
+                    transform: translateX(-50%);
+                    width: 100%; /* Adjust width as needed */
+                    padding: 2rem;
+                    margin-top: 1rem;
+                    border: 1px solid black; /* Add border */
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+
+                    .buttons{
+                        button{
+                            margin-top: 1rem;
+                        }
+                    }
+                  }
+                
+            }
+        }
+    } 
+}

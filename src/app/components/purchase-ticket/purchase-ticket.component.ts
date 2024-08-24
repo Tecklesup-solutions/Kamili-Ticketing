@@ -2,7 +2,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EventsService } from 'src/app/services/events.service';
+import { EventService } from 'src/app/ticketing-module/services/event.service';
+
+
 
 @Component({
   selector: 'app-purchase-ticket',
@@ -20,7 +22,7 @@ export class PurchaseTicketComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private $events: EventsService,
+    private $events: EventService,
     private router: Router
   ) { }
 
@@ -80,6 +82,8 @@ export class PurchaseTicketComponent implements OnInit {
 
   purchaseTickets() {
     this.showSpinner = true;
+
+    console.log(this.ticketingForm.value);
   
     // Get the number of tickets user wants to purchase
     const noTickets = parseInt(this.ticketingForm.get('noTickets')?.value, 10);
@@ -98,6 +102,7 @@ export class PurchaseTicketComponent implements OnInit {
   
     this.$events.purchaseTickets(this.eventId, this.ticketingForm.value).subscribe(
       (response: any) => {
+        console.log(response)
         const pdfData = response.pdf_data; // Ensure this matches your backend response key
     
         const blob = this.base64toBlob(pdfData, 'application/pdf');

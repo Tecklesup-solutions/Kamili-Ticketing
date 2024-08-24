@@ -31,6 +31,7 @@ const ticketingRoutes: Routes = [
   { path: '', component: DashboardComponent },
   { path: '', component: DashboardComponent },
   {path:'create-event', component:CreateEventComponent},
+  { path: 'create-event/:id/edit', component: CreateEventComponent },
   {path:'event-info/:id', component:EventInfoComponent},
   {path: 'event-info/:id/attendees-list', component: AttendeesListComponent },
   {path:'devices', component:DevicesComponent},
