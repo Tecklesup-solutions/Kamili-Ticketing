@@ -82,6 +82,8 @@ export class PurchaseTicketComponent implements OnInit {
 
   purchaseTickets() {
     this.showSpinner = true;
+
+    console.log(this.ticketingForm.value);
   
     // Get the number of tickets user wants to purchase
     const noTickets = parseInt(this.ticketingForm.get('noTickets')?.value, 10);
@@ -100,6 +102,7 @@ export class PurchaseTicketComponent implements OnInit {
   
     this.$events.purchaseTickets(this.eventId, this.ticketingForm.value).subscribe(
       (response: any) => {
+        console.log(response)
         const pdfData = response.pdf_data; // Ensure this matches your backend response key
     
         const blob = this.base64toBlob(pdfData, 'application/pdf');

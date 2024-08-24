@@ -30,8 +30,7 @@ export class FooterComponent implements OnInit {
         }
       },
       (error) => {
-        console.error('Error:', error);
-        this.subscriptionMessage = 'An error occurred. Please try again later.';
+        this.subscriptionMessage = 'An error occurred  or email already subscribed';
       }
     );
   }
