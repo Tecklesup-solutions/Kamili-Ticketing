@@ -1,57 +1,71 @@
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-body-tertiary text-muted">
-    <div class="contents">
-      <div class="row">
-        <div class="col-md-3 col-sm-12">
-          <img src="../../../assets/images/logo.png" alt="Logo">
-          <div class="logo">
+  <div class="contents">
+    <div class="row">
+      <div class="col-md-3 col-sm-9">
+        <img src="../../../assets/images/logo.png" alt="Logo" />
+        <div class="logo">
+          <a href="">
+            <img src="../../../assets/icons/facebook.png" alt="" />
+          </a>
 
-            <img src="../../../assets/icons/facebook.png" alt="">
+          <a href="https://www.tiktok.com/@tikokamili">
+            <img src="../../../assets/icons/tiktok.png" alt="tiktok" />
+          </a>
 
-            <img src="../../../assets/icons/twitter.png" alt="">
+          <a href="https://www.linkedin.com/company/103887504/admin/dashboard/">
+            <img src="../../../assets/icons/linkedin.png" alt="" />
+          </a>
 
-            <img src="../../../assets/icons/linkedin.png" alt="">
-
-          </div>
+          <a href="https://x.com/TikoKamili">
+            <img src="../../../assets/icons/twitter.png" alt="" />
+          </a>
         </div>
-        <div class="col-md-3 col-sm-12">
-          <p>Plan Events</p>
-          <p>Create and</p>
-          <p>Set Up</p>
-          <p>Sell Tickets</p>
-          <p>Online RSVP</p>
-          <p>Online Events</p>
-        </div>
-        <div class="col-md-3 col-sm-12">
-         
-          <p>About Us</p>
-        
-          <p>Contract Us</p>
-          <p>Help Center</p>
-          <p> How it Works</p>
-          <p>Privacy</p>
-          <p>Terms</p>
-        </div>
-        <div class="col-md-3 col-sm-12">
-          <p>Stay in The loop</p>
-          <p>Join our mailing list to stay in the loop with our newest for Event and concert</p>
+      </div>
+      <div class="col-md-3 col-sm-12">
+        <p>Plan Events</p>
+        <p>Create and</p>
+        <p>Set Up</p>
+        <p>Sell Tickets</p>
+        <p>Online RSVP</p>
+        <p>Online Events</p>
+      </div>
+      <div class="col-md-3 col-sm-12">
+        <p>About Us</p>
 
-          <div *ngIf="subscriptionMessage" class="subscription-message">
-            {{ subscriptionMessage }}
-          </div>
-          <div class="input container">
-            <form [formGroup]="newsLetterForm" (ngSubmit)="onSubmit()">
-              <input type="email" class="input-text" placeholder="Enter your email address" formControlName="email">
-              <button class="btn-subscribe" type="submit">Subscribe Now</button>
-            </form>
-            
-          </div>
+        <p>Contract Us</p>
+        <p>Help Center</p>
+        <p>How it Works</p>
+        <p>Privacy</p>
+        <p>Terms</p>
+      </div>
+      <div class="col-md-3 col-sm-12">
+        <p>Stay in The loop</p>
+        <p>
+          Join our mailing list to stay updated on our newest Events and
+          Concerts
+        </p>
+
+        <div *ngIf="subscriptionMessage" class="subscription-message">
+          {{ subscriptionMessage }}
+        </div>
+        <div class="input container">
+          <form [formGroup]="newsLetterForm" (ngSubmit)="onSubmit()">
+            <input
+              type="email"
+              class="input-text"
+              placeholder="Enter your email address"
+              formControlName="email"
+            />
+            <button class="btn-subscribe" type="submit">Subscribe Now</button>
+          </form>
         </div>
       </div>
     </div>
-  
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-      © 2024 Copyright:
-      <a class="text-reset fw-bold">tiko kamili</a>
-    </div>
-  </footer>
+  </div>
+
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05)">
+    © 2024 Copyright:
+    <a class="text-reset fw-bold">tiko kamili</a>
+  </div>
+</footer>
